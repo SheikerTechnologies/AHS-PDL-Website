@@ -53,19 +53,7 @@ function ClientLogo({ client }: { client: typeof CLIENT_METADATA[0] }) {
   );
 }
 
-  const initials = client.name
-    .split(' ')
-    .filter(word => !['of', 'the', "People's", "Republic", "Authority", "Department", "Corporation", "Board", "Directorate", "General", "Purchase", "Inland", "Water", "Transport"].includes(word))
-    .slice(0, 3)
-    .map(w => w[0])
-    .join('');
-
-  return (
-    <div className="w-10 h-10 rounded-full bg-stone-900 border border-[#c5a257]/45 flex items-center justify-center shadow-md shrink-0">
-      <span className="text-[10px] font-bold text-[#c5a257] uppercase tracking-wide font-mono">{initials || "BD"}</span>
-    </div>
-  );
-}
+ 
 
 export default function Home() {
   const { currency, language, themeAnalyzerOpen, setThemeAnalyzerOpen } = useAppContext();
@@ -209,7 +197,7 @@ export default function Home() {
 
           <span className="text-[10px] font-black text-[#c5a257] uppercase tracking-[0.25em] block mb-2">OUR TRUSTED ACCREDITATIONS & PRESTIGIOUS CLIENTS</span>
           <h2 className="text-xl md:text-2xl font-black text-stone-900 tracking-tight font-sans uppercase">
-            GOVERNMENT & REGULATORY PARTNERS
+            GOVERNMENT PARTNERS
           </h2>
           <p className="text-xs text-stone-500 max-w-2xl mx-auto mt-1 leading-relaxed">
             We coordinate, build, and deliver high-specification properties fully aligned with Bangladesh's premier public authorities, statutory institutions, and specialized national commands.
