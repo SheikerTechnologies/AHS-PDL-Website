@@ -21,263 +21,37 @@ import FAQSection from '@/components/FAQSection';
 import { useAppContext } from './providers';
 
 const CLIENT_METADATA = [
-  {
-    name: "People's Republic of Bangladesh",
-    bengName: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  },
-  {
-    name: "Rajdhani Unnayan Kartripakkha",
-    bengName: "রাজধানী উন্নয়ন কর্তৃপক্ষ (রাজউক)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Rajdhani_Unnayan_Kartripakkha_Logo.svg"
-  },
-  {
-    name: "Bangladesh Navy",
-    bengName: "বাংলাদেশ নৌবাহিনী",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Bangladesh_Navy_Emblem.svg"
-  },
-  {
-    name: "Bangladesh Coast Guard",
-    bengName: "বাংলাদেশ কোস্ট গার্ড",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/36/Bangladesh_Coast_Guard_Emblem.svg"
-  },
-  {
-    name: "Civil Aviation Authority of Bangladesh",
-    bengName: "সিভিল এভিয়েশন অথরিটি, বাংলাদেশ",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b5/Civil_Aviation_Authority_of_Bangladesh_Logo.svg"
-  },
-  {
-    name: "Chittagong Port Authority",
-    bengName: "চট্টগ্রাম বন্দর কর্তৃপক্ষ",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/b/b2/Chittagong_Port_Authority_Logo.svg"
-  },
-  {
-    name: "Mongla Port Authority",
-    bengName: "মংলা বন্দর কর্তৃপক্ষ",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/30/Mongla_Port_Authority_Logo.svg"
-  },
-  {
-    name: "Bangladesh Inland Water Transport Authority",
-    bengName: "বাংলাদেশ অভ্যন্তরীণ নৌ-পরিবহন কর্তৃপক্ষ",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/3/39/Bangladesh_Inland_Water_Transport_Authority_Logo.svg"
-  },
-  {
-    name: "Bangladesh Agricultural Development Corporation",
-    bengName: "বাংলাদেশ কৃষি উন্নয়ন কর্পোরেশন",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/d/df/BADC_Logo.svg"
-  },
-  {
-    name: "Public Works Department",
-    bengName: "গণপূর্ত অধিদপ্তর (পিডব্লিউডি)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  },
-  {
-    name: "Military Engineer Services",
-    bengName: "মিলিটারি ইঞ্জিনিয়ার সার্ভিসেস (এমইএস)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  },
-  {
-    name: "Directorate General Defence Purchase",
-    bengName: "প্রতিরক্ষা ক্রয় মহাপরিদপ্তর (ডিজিডিপি)",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  },
-  {
-    name: "Dhaka Cantonment Board",
-    bengName: "ঢাকা ক্যান্টনমেন্ট বোর্ড",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  },
-  {
-    name: "Department of Public Health Engineering",
-    bengName: "জনস্বাস্থ্য প্রকৌশল অধিদপ্তর",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/8/83/Seal_of_the_People%27s_Republic_of_Bangladesh.svg"
-  }
+  { name: "People's Republic of Bangladesh", bengName: "গণপ্রজাতন্ত্রী বাংলাদেশ সরকার", filename: "bangladesh-govt.png" },
+  { name: "Rajdhani Unnayan Kartripakkha", bengName: "রাজধানী উন্নয়ন কর্তৃপক্ষ (রাজউক)", filename: "rajuk.png" },
+  { name: "Bangladesh Navy", bengName: "বাংলাদেশ নৌবাহিনী", filename: "bangladesh-navy.png" },
+  { name: "Bangladesh Coast Guard", bengName: "বাংলাদেশ কোস্ট গার্ড", filename: "coast-guard.png" },
+  { name: "Civil Aviation Authority of Bangladesh", bengName: "সিভিল এভিয়েশন অথরিটি, বাংলাদেশ", filename: "CAAB.png" },
+  { name: "Chittagong Port Authority", bengName: "চট্টগ্রাম বন্দর কর্তৃপক্ষ", filename: "chittagong-port.png" },
+  { name: "Mongla Port Authority", bengName: "মংলা বন্দর কর্তৃপক্ষ", filename: "mongla-port.png" },
+  { name: "Bangladesh Inland Water Transport Authority", bengName: "বাংলাদেশ অভ্যন্তরীণ নৌ-পরিবহন কর্তৃপক্ষ", filename: "biwta.png" },
+  { name: "Bangladesh Agricultural Development Corporation", bengName: "বাংলাদেশ কৃষি উন্নয়ন কর্পোরেশন", filename: "badc.png" },
+  { name: "Public Works Department", bengName: "গণপূর্ত অধিদপ্তর (পিডব্লিউডি)", filename: "pwd.png" },
+  { name: "Military Engineer Services", bengName: "মিলিটারি ইঞ্জিনিয়ার সার্ভিসেস (এমইএস)", filename: "mes.png" },
+  { name: "Directorate General Defence Purchase", bengName: "প্রতিরক্ষা ক্রয় মহাপরিদপ্তর (ডিজিডিপি)", filename: "dgdp.png" },
+  { name: "Dhaka Cantonment Board", bengName: "ঢাকা ক্যান্টনমেন্ট বোর্ড", filename: "dhaka-cantonment-board.png" },
+  { name: "Department of Public Health Engineering", bengName: "জনস্বাস্থ্য প্রকৌশল অধিদপ্তর", filename: "dphe.png" },
 ];
 
-function getClientLogoSvg(name: string) {
-  switch (name) {
-    case "People's Republic of Bangladesh":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#006a4e" />
-          <circle cx="46" cy="50" r="28" fill="#f42a41" />
-          <path d="M 40,42 L 54,42 L 44,52 L 56,52 Z" fill="#f4b400" />
-          <path d="M 48,32 L 50,42 L 52,32 Z" fill="#f4b400" />
-          <path d="M 48,68 L 50,58 L 52,68 Z" fill="#f4b400" />
-          <path d="M 28,50 C 28,45 35,42 40,45 C 35,48 30,50 28,50 Z" fill="#f4b400" />
-          <path d="M 64,50 C 64,45 57,42 52,45 C 57,48 62,50 64,50 Z" fill="#f4b400" />
-        </svg>
-      );
-    case "Rajdhani Unnayan Kartripakkha":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#e2e8f0" stroke="#006a4e" strokeWidth="4" />
-          <circle cx="50" cy="50" r="32" fill="#006a4e" />
-          <circle cx="50" cy="50" r="16" fill="#f42a41" />
-          <rect x="42" y="38" width="6" height="24" fill="#ffffff" />
-          <rect x="52" y="38" width="6" height="24" fill="#ffffff" />
-          <polygon points="50,22 41,35 59,35" fill="#facc15" />
-        </svg>
-      );
-    case "Bangladesh Navy":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#0b3c5d" />
-          <path d="M 50,20 Q 52,17 50,15 Q 48,17 50,20 H 43 V 26 H 50 V 68 C 50,75 35,72 32,58 H 26 C 28,78 48,82 50,82 C 52,82 72,78 74,58 H 68 C 65,72 50,75 50,68 V 26 H 57 V 20 Z" fill="#e2b13c" />
-          <circle cx="50" cy="23" r="4" fill="none" stroke="#e2b13c" strokeWidth="2.5" />
-          <path d="M 38,23 C 45,18 55,27 62,23" stroke="#ffffff" strokeWidth="2" fill="none" strokeDasharray="3,3" />
-        </svg>
-      );
-    case "Bangladesh Coast Guard":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <polygon points="50,6 90,26 90,70 50,94 10,70 10,26" fill="#1d2731" stroke="#e2b13c" strokeWidth="4" />
-          <polygon points="50,14 82,30 82,66 50,86 18,66 18,30" fill="#0b3c5d" />
-          <path d="M 50,26 V 70 M 35,42 H 65 M 35,46 L 65,58 M 65,46 L 35,58" stroke="#ffffff" strokeWidth="3.5" strokeLinecap="round" />
-          <circle cx="50" cy="50" r="10" fill="#f42a41" />
-          <polygon points="50,44 54,54 46,54" fill="#ffffff" />
-        </svg>
-      );
-    case "Civil Aviation Authority of Bangladesh":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#c5a257" strokeWidth="3" />
-          <path d="M 12,48 C 25,28 45,45 50,48 C 55,45 75,28 88,48 C 75,54 55,49 50,55 C 45,49 25,54 12,48 Z" fill="#e2b13c" stroke="#b8860b" strokeWidth="1" />
-          <circle cx="50" cy="48" r="14" fill="#006a4e" />
-          <circle cx="50" cy="48" r="8" fill="#f42a41" />
-          <path d="M 46,65 H 54 V 75 H 46 Z" fill="#0b3c5d" />
-        </svg>
-      );
-    case "Chittagong Port Authority":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#006a4e" strokeWidth="4" />
-          <circle cx="50" cy="50" r="40" fill="#0f4c81" />
-          <path d="M 20,68 Q 35,63 50,68 T 80,68" fill="none" stroke="#ffffff" strokeWidth="3" />
-          <path d="M 16,76 Q 33,71 50,76 T 84,76" fill="none" stroke="#ffffff" strokeWidth="3" />
-          <circle cx="50" cy="45" r="12" fill="none" stroke="#e2b13c" strokeWidth="3" />
-          <line x1="50" y1="28" x2="50" y2="62" stroke="#e2b13c" strokeWidth="3" />
-          <line x1="33" y1="45" x2="67" y2="45" stroke="#e2b13c" strokeWidth="3" />
-          <line x1="38" y1="33" x2="62" y2="57" stroke="#e2b13c" strokeWidth="2.5" />
-          <line x1="38" y1="57" x2="62" y2="33" stroke="#e2b13c" strokeWidth="2.5" />
-          <circle cx="50" cy="45" r="4" fill="#006a4e" />
-        </svg>
-      );
-    case "Mongla Port Authority":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#0b3861" strokeWidth="4" />
-          <circle cx="50" cy="50" r="40" fill="#0284c7" />
-          <path d="M 50,22 V 68 M 38,40 H 62 M 30,50 Q 50,76 70,50" fill="none" stroke="#ffffff" strokeWidth="4" strokeLinecap="round" />
-          <circle cx="50" cy="22" r="3" fill="#ffffff" />
-          <path d="M 25,30 Q 15,55 35,65" fill="none" stroke="#22c55e" strokeWidth="2" strokeDasharray="2,2" />
-          <path d="M 75,30 Q 85,55 65,65" fill="none" stroke="#22c55e" strokeWidth="2" strokeDasharray="2,2" />
-        </svg>
-      );
-    case "Bangladesh Inland Water Transport Authority":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#006a4e" />
-          <circle cx="50" cy="50" r="42" fill="#ffffff" />
-          <path d="M 25,60 C 40,65 60,65 75,60 C 70,68 30,68 25,60 Z" fill="#093d2c" />
-          <path d="M 52,22 V 58 H 48 V 22 Z" fill="#0f4c81" />
-          <path d="M 54,23 C 65,32 68,54 54,56 Z M 46,25 C 32,32 30,52 46,55 Z" fill="#f42a41" />
-          <path d="M 15,75 Q 32.5,70 50,75 T 85,75" fill="none" stroke="#0284c7" strokeWidth="3" />
-        </svg>
-      );
-    case "Bangladesh Agricultural Development Corporation":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#14532d" />
-          <circle cx="50" cy="50" r="41" fill="#f0fdf4" />
-          <path d="M 50,22 Q 35,50 50,80 Q 65,50 50,22 Z" fill="#16a34a" />
-          <path d="M 50,25 C 45,40 45,60 50,75 C 55,60 55,40 50,25 Z" fill="#facc15" />
-          <circle cx="34" cy="45" r="4.5" fill="#facc15" />
-          <circle cx="37" cy="56" r="4.5" fill="#facc15" />
-          <circle cx="42" cy="67" r="4.5" fill="#facc15" />
-          <circle cx="66" cy="45" r="4.5" fill="#facc15" />
-          <circle cx="63" cy="56" r="4.5" fill="#facc15" />
-          <circle cx="58" cy="67" r="4.5" fill="#facc15" />
-        </svg>
-      );
-    case "Public Works Department":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#991b1b" stroke="#facc15" strokeWidth="3" />
-          <circle cx="50" cy="50" r="40" fill="#ffffff" />
-          <path d="M 40,30 H 60 V 74 H 40 Z" fill="#1e3a8a" />
-          <path d="M 44,24 H 56 V 30 H 44 Z" fill="#dc2626" />
-          <rect x="44" y="36" width="4" height="6" fill="#ffffff" />
-          <rect x="52" y="36" width="4" height="6" fill="#ffffff" />
-          <rect x="44" y="48" width="4" height="6" fill="#ffffff" />
-          <rect x="52" y="48" width="4" height="6" fill="#ffffff" />
-          <rect x="44" y="60" width="4" height="6" fill="#ffffff" />
-          <rect x="52" y="60" width="4" height="6" fill="#ffffff" />
-          <circle cx="50" cy="74" r="14" fill="#475569" />
-          <circle cx="50" cy="74" r="8" fill="#ffffff" />
-        </svg>
-      );
-    case "Military Engineer Services":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <path d="M 12,15 H 88 V 50 C 88,72 50,92 50,92 C 50,92 12,72 12,50 Z" fill="#1e3a8a" stroke="#ffffff" strokeWidth="3" />
-          <path d="M 50,15 H 88 V 50 C 88,72 50,92 50,92 Z" fill="#b91c1c" />
-          <path d="M 32,45 H 68 V 74 H 32 Z" fill="#e2b13c" stroke="#78350f" strokeWidth="2" />
-          <path d="M 30,35 H 38 V 45 H 30 Z M 44,35 H 56 V 45 H 44 Z M 62,35 H 70 V 45 H 62 Z" fill="#e2b13c" stroke="#78350f" strokeWidth="2" />
-          <path d="M 45,74 C 45,60 55,60 55,74 Z" fill="#1e293b" />
-          <polygon points="50,20 53,28 62,28 55,33 57,41 50,36 43,41 45,33 38,28 47,28" fill="#ffffff" />
-        </svg>
-      );
-    case "Directorate General Defence Purchase":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#1e293b" stroke="#e2b13c" strokeWidth="3" />
-          <circle cx="50" cy="50" r="41" fill="#006a4e" />
-          <path d="M 18,36 C 30,28 45,44 50,44 C 55,44 70,28 82,36 C 70,44 55,42 50,48 C 45,42 30,44 18,36 Z" fill="#e2b13c" />
-          <line x1="28" y1="72" x2="72" y2="28" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" />
-          <line x1="72" y1="72" x2="28" y2="28" stroke="#ffffff" strokeWidth="4.5" strokeLinecap="round" />
-          <path d="M 50,35 V 75 M 40,48 H 60" stroke="#facc15" strokeWidth="4" strokeLinecap="round" />
-          <circle cx="50" cy="56" r="14" fill="none" stroke="#facc15" strokeWidth="3" />
-        </svg>
-      );
-    case "Dhaka Cantonment Board":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#15803d" />
-          <circle cx="50" cy="50" r="42" fill="#ffffff" />
-          <circle cx="50" cy="50" r="28" fill="none" stroke="#15803d" strokeWidth="2.5" />
-          <path d="M 50,22 Q 40,35 50,50 Q 60,35 50,22 Z" fill="#16a34a" />
-          <path d="M 50,50 Q 40,65 50,78 Q 60,65 50,50 Z" fill="#16a34a" />
-          <path d="M 22,50 Q 35,40 50,50 Q 35,60 22,50 Z" fill="#16a34a" />
-          <path d="M 50,50 Q 65,40 78,50 Q 65,60 50,50 Z" fill="#16a34a" />
-          <circle cx="50" cy="50" r="12" fill="#f42a41" />
-          <polygon points="50,44 52,48 56,48 53,51 54,55 50,52 46,55 47,51 44,48 48,48" fill="#facc15" />
-        </svg>
-      );
-    case "Department of Public Health Engineering":
-      return (
-        <svg viewBox="0 0 100 100" className="w-full h-full select-none">
-          <circle cx="50" cy="50" r="48" fill="#ffffff" stroke="#0284c7" strokeWidth="4" />
-          <path d="M 50,22 C 30,55 35,78 50,78 C 65,78 70,55 50,22 Z" fill="#0ea5e9" />
-          <path d="M 50,38 C 38,62 42,74 50,74 C 58,74 62,62 50,38 Z" fill="#38bdf8" />
-          <path d="M 25,82 Q 50,78 75,82" fill="none" stroke="#0ea5e9" strokeWidth="2.5" strokeLinecap="round" />
-          <path d="M 35,88 Q 50,85 65,88" fill="none" stroke="#0284c7" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      );
-    default:
-      return null;
-  }
-}
-
 function ClientLogo({ client }: { client: typeof CLIENT_METADATA[0] }) {
-  const customSvg = getClientLogoSvg(client.name);
-
-  if (customSvg) {
-    return (
-      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 border border-stone-200/50 shrink-0 overflow-hidden shadow-sm">
-        {customSvg}
-      </div>
-    );
-  }
+  return (
+    <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-1 border border-stone-200/50 shrink-0 overflow-hidden shadow-sm">
+      <img
+        src={`/assets/ClientList/${client.filename}`}
+        alt={client.name}
+        className="w-full h-full object-contain"
+        onError={(e) => {
+          // Fallback if image is missing
+          (e.target as HTMLImageElement).src = '/assets/ClientList/placeholder.png'; // optional placeholder
+        }}
+      />
+    </div>
+  );
+}
 
   const initials = client.name
     .split(' ')
