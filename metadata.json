@@ -1,0 +1,6 @@
+{
+  "name": "AHS Properties & Development",
+  "description": "A high-fidelity interactive showcase and theme analyzer of the AHS Properties & Development portal, featuring the custom pill-shaped frosted navbar, premium Bangladesh real estate listings, and interactive consultation tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
