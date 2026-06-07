@@ -43,7 +43,13 @@ export interface Agent {
   specialty: string;
 }
 
-export type ActiveTab = 'Home' | 'Properties' | 'Projects' | 'News' | 'About' | 'Resources' | 'Contact';
+export type ActiveTab = 
+  | 'Home' 
+  | 'Projects' 
+  | 'About' 
+  | 'Layout'      
+  | 'Contents'    
+  | 'Contact';
 
 export type Currency = 'BDT' | 'USD' | 'EUR';
 

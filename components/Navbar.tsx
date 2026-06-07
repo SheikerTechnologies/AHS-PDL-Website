@@ -35,6 +35,8 @@ export default function Navbar({
     { label: 'Home', tab: 'Home' },
     { label: 'Projects', tab: 'Projects' },
     { label: 'About', tab: 'About' },
+    { label: 'Layout', tab: 'Layout' },          
+    { label: 'Contents', tab: 'Contents' },
     { label: 'Contact', tab: 'Contact' },
   ];
 

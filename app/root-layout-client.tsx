@@ -20,19 +20,42 @@ export default function RootLayoutClient({
   const router = useRouter();
   const { currency, setCurrency, language, setLanguage, setThemeAnalyzerOpen } = useAppContext();
 
-  // Derive activeTab from current route pathname
-  const activeTab: ActiveTab = pathname === '/projects' ? 'Projects'
-    : pathname === '/about' ? 'About'
-      : pathname === '/contact' ? 'Contact'
-        : pathname === '/properties' ? 'Properties'
-          : 'Home';
+  // Derive activeTab from current route
+  const activeTab: ActiveTab = 
+    pathname === '/projects' ? 'Projects' :
+    pathname === '/about' ? 'About' :
+    pathname === '/layout' ? 'Layout' :           // ← Added
+    pathname === '/contents' ? 'Contents' :       // ← Added
+    pathname === '/contact' ? 'Contact' :
+    pathname === '/properties' ? 'Properties' :
+    'Home';
 
   const handleSetActiveTab = (tab: ActiveTab) => {
-    if (tab === 'Home') router.push('/');
-    else if (tab === 'Projects') router.push('/projects');
-    else if (tab === 'About') router.push('/about');
-    else if (tab === 'Contact') router.push('/contact');
-    else if (tab === 'Properties') router.push('/#discover-properties-section');
+    switch (tab) {
+      case 'Home':
+        router.push('/');
+        break;
+      case 'Projects':
+        router.push('/projects');
+        break;
+      case 'About':
+        router.push('/about');
+        break;
+      case 'Layout':
+        router.push('/layout');
+        break;
+      case 'Contents':
+        router.push('/contents');
+        break;
+      case 'Contact':
+        router.push('/contact');
+        break;
+      case 'Properties':
+        router.push('/#discover-properties-section');
+        break;
+      default:
+        router.push('/');
+    }
   };
 
   const handleGetStartedClick = () => {
@@ -45,7 +68,6 @@ export default function RootLayoutClient({
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Navbar Component */}
       <Navbar
         activeTab={activeTab}
         setActiveTab={handleSetActiveTab}
@@ -57,10 +79,8 @@ export default function RootLayoutClient({
         onOpenThemeAnalyzer={handleOpenThemeAnalyzer}
       />
 
-      {/* Main Content - flex-grow to push footer to bottom */}
       <main className="flex-grow">{children}</main>
 
-      {/* Footer Component */}
       <Footer />
     </div>
   );
