@@ -49,7 +49,8 @@ export type ActiveTab =
   | 'About' 
   | 'Layout'      
   | 'Contents'    
-  | 'Contact';
+  | 'Contact'
+  | 'Properties';
 
 export type Currency = 'BDT' | 'USD' | 'EUR';
 
