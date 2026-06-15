@@ -43,7 +43,6 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
   const [phoneVal, setPhoneVal] = useState('');
   const [propertyType, setPropertyType] = useState('Select property type');
   const [budgetRange, setBudgetRange] = useState('');
-  const [budgetCurrency, setBudgetCurrency] = useState('BDT');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -294,16 +293,8 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Budget Range</label>
-                        <div className="flex gap-2">
-                          <select value={budgetCurrency} onChange={(e) => setBudgetCurrency(e.target.value)}
-                            className="px-2 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm outline-none bg-stone-50 font-semibold cursor-pointer">
-                            <option value="BDT">৳ BDT</option>
-                            <option value="USD">USD $</option>
-                            <option value="EUR">EUR €</option>
-                          </select>
-                          <input type="text" placeholder="e.g., 500,000 - 1,000,000" value={budgetRange} onChange={(e) => setBudgetRange(e.target.value)}
-                            className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none transition-all font-medium text-stone-800" />
-                        </div>
+                        <input type="text" placeholder="e.g., 500,000 - 1,000,000" value={budgetRange} onChange={(e) => setBudgetRange(e.target.value)}
+                          className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none transition-all font-medium text-stone-800" />
                       </div>
                     </div>
 

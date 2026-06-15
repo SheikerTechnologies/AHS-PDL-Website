@@ -12,7 +12,7 @@ import {
   Search
 } from 'lucide-react';
 import { Property } from '@/lib/types';
-import { CURRENCY_SYMBOLS, EXCHANGE_RATES, PROPERTIES, TRANSLATIONS } from '@/lib/data';
+import { PROPERTIES } from '@/lib/data';
 import AHSLogo from '@/components/AHSLogo';
 import ThemeAnalyzer from '@/components/ThemeAnalyzer';
 import PropertySearch from '@/components/PropertySearch';
@@ -45,18 +45,15 @@ function ClientLogo({ client }: { client: typeof CLIENT_METADATA[0] }) {
         alt={client.name}
         className="w-full h-full object-contain"
         onError={(e) => {
-          // Fallback if image is missing
-          (e.target as HTMLImageElement).src = '/assets/ClientList/placeholder.png'; // optional placeholder
+          (e.target as HTMLImageElement).src = '/assets/ClientList/placeholder.png';
         }}
       />
     </div>
   );
 }
 
- 
-
 export default function Home() {
-  const { currency, language, themeAnalyzerOpen, setThemeAnalyzerOpen } = useAppContext();
+  const { themeAnalyzerOpen, setThemeAnalyzerOpen } = useAppContext();
 
   // Custom live design sandbox states
   const [blurLevel, setBlurLevel] = useState<string>('md');
@@ -70,9 +67,8 @@ export default function Home() {
 
   // Services Accordion State
   const [activeService, setActiveService] = useState<number>(1); // Index 1 is Property Valuation expanded by default
-  const [showFullWelcome, setShowFullWelcome] = useState(false);
-
-  const t = TRANSLATIONS[language];
+  const [showBengali, setShowBengali] = useState(false);
+  const [showFullMessage, setShowFullMessage] = useState(false);
 
   const handleGetStarted = () => {
     const element = document.getElementById('discover-properties-section');
@@ -81,10 +77,11 @@ export default function Home() {
     }
   };
 
-  const handleBaysideInquiry = () => {
-    const bayside = PROPERTIES.find(p => p.id === 'prop-bayside');
-    if (bayside) {
-      setActivePropertyInquiry(bayside);
+  const handleFeaturedInquiry = () => {
+    // Selects the first available showcase signature property
+    const featuredProp = PROPERTIES[0];
+    if (featuredProp) {
+      setActivePropertyInquiry(featuredProp);
       document.getElementById('contact-broker-section')?.scrollIntoView({ behavior: 'smooth' });
     }
   };
@@ -146,7 +143,7 @@ export default function Home() {
             </motion.p>
           </div>
 
-          {/* Right: Floating featured Bayside card */}
+          {/* Right: Floating featured card */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.95 }}
             animate={{ opacity: 1, x: 0, scale: 1 }}
@@ -155,27 +152,21 @@ export default function Home() {
             className="w-full lg:w-[360px] self-end lg:self-center"
           >
             <div
-              onClick={handleBaysideInquiry}
+              onClick={handleFeaturedInquiry}
               className="backdrop-blur-xl bg-slate-900/35 hover:bg-slate-900/45 border border-white/20 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 text-left cursor-pointer transition-all duration-300 transform select-none"
             >
               <div className="flex flex-col gap-1.5">
                 <span className="bg-[#e49b2c] text-white text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider w-fit">
-                  👑 Just Listed
-                </span>
-                <span className="text-[10px] text-stone-300 font-extrabold uppercase tracking-widest">
-                  FEATURED
+                  👑 Featured Space
                 </span>
               </div>
 
               <div>
                 <h3 className="text-3xl font-bold tracking-tight text-white font-sans">
-                  Bayside
+                  Premium Suite
                 </h3>
-                <p className="text-xl font-bold text-white mt-1">
-                  ৳ 65.0M BDT
-                </p>
                 <p className="text-xs text-stone-300 leading-normal mt-2 line-clamp-2">
-                  Luxurious waterfront villa situated in Pereybere, offering ocean vistas and immediate shoreline access.
+                  Luxurious layout situated in structural hubs, offering metropolitan vistas and immediate urban access.
                 </p>
               </div>
 
@@ -237,105 +228,178 @@ export default function Home() {
       </section>
 
       {/* 2. CEO WELCOME MESSAGE SECTION */}
-<section className="w-full bg-[#fcfbfc] border-b border-stone-200/60 py-20 select-none">
-  <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
-    
-    {/* Section Main Title */}
-    <div className="text-center lg:text-left mb-16">
-      <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#104a32] block mb-3">
-        Leadership Message
-      </span>
-      <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight relative inline-block">
-        Message from our CEO
-        <span className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-16 h-[3px] bg-[#104a32]"></span>
-      </h2>
-    </div>
+      <section className="w-full bg-[#fcfbfc] border-b border-stone-200/60 py-20 select-none">
+        <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
 
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-      
-      {/* Left Column: CEO Image / Badge Area */}
-      <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
-        <div className="relative group w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-md border-4 border-white mb-6 transition-transform duration-300 hover:scale-[1.02]">
-          {/* Replace src with actual CEO image path */}
-          <img 
-            src="/images/ceo-profile.jpg" 
-            alt="Md. Shown" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#104a32]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-        <div>
-          <h4 className="text-xl font-bold text-stone-900 tracking-tight">Md. [CEO Name]</h4>
-          <p className="text-xs font-semibold uppercase tracking-wider text-[#104a32] mt-1">Chief Executive Officer</p>
-          <p className="text-xs text-stone-400 mt-0.5">AHS Properties & Development Ltd.</p>
-        </div>
-      </div>
+          {/* Section Main Title */}
+          <div className="text-center lg:text-left mb-16">
+            <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#104a32] block mb-3">
+              Leadership Message
+            </span>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight relative inline-block">
+              Message from our CEO
+              <span className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-16 h-[3px] bg-[#104a32]"></span>
+            </h2>
+          </div>
 
-      {/* Right Column: Message Content */}
-      <div className="lg:col-span-8 bg-white rounded-3xl border border-stone-200/80 p-8 md:p-10 shadow-sm relative overflow-hidden">
-        {/* Decorative Quote Icon */}
-        <div className="absolute top-6 right-8 text-stone-100 font-serif text-8xl leading-none pointer-events-none select-none">
-          “
-        </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-        <div className="mb-6">
-          <h3 className="text-xl md:text-2xl font-bold text-stone-900 tracking-tight">
-            Building Tomorrow with Trust & Innovation
-          </h3>
-        </div>
+            {/* Left Column: CEO Image / Badge Area */}
+            <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
+              <div className="relative group w-64 h-64 md:w-72 md:h-72 rounded-2xl overflow-hidden shadow-md border-4 border-white mb-6 transition-transform duration-300 hover:scale-[1.02]">
+                <img
+                  src="/images/ceo-profile.jpg"
+                  alt="Md. Sohanur Rahman Sohan"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#104a32]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+              <div>
+                <h4 className="text-xl font-bold text-stone-900 tracking-tight">Md. Sohanur Rahman Sohan</h4>
+                <p className="text-xs font-semibold uppercase tracking-wider text-[#104a32] mt-1">Chief Executive Officer</p>
+                <p className="text-xs text-stone-400 mt-0.5">AHS Properties & Development Ltd.</p>
+                <div className="mt-4 text-xs text-stone-500 space-y-0.5">
+                  <p>Managing Director, Sun Solaris Ltd.</p>
+                  <p>Proprietor, AHS Enterprise</p>
+                </div>
+              </div>
+            </div>
 
-        {/* Short Format Message (Always Visible) */}
-        <div className="text-stone-600 space-y-4 text-base leading-relaxed font-normal">
-          <p>
-            Welcome to AHS Properties & Development Ltd. We are dedicated to creating sustainable, elegant living spaces that enrich communities and reflect the architectural heritage of Bangladesh. Our approach seamlessly combines modern design innovation, deep local insights, and an unwavering commitment to structural quality.
-          </p>
-        </div>
+            {/* Right Column: Message Content */}
+            <div className="lg:col-span-8 bg-white rounded-3xl border border-stone-200/80 p-8 md:p-10 shadow-sm relative overflow-hidden">
+              {/* Decorative Quote Icon */}
+              <div className="absolute top-6 right-8 text-stone-100 font-serif text-8xl leading-none pointer-events-none select-none">
+                “
+              </div>
 
-        {/* Expandable Content with Smooth Transition */}
-        <div 
-          className={`overflow-hidden transition-all duration-500 ease-in-out ${
-            showFullWelcome ? 'max-h-[800px] opacity-100 mt-4' : 'max-h-0 opacity-0'
-          }`}
-        >
-          <div className="text-stone-600 space-y-4 text-base leading-relaxed border-t border-stone-100 pt-4">
-            <p>
-              As CEO, I believe every property should tell a story of trust, strength, and future growth. We strive to deliver remarkable developments, and we work closely with government agencies, elite architects, and private partners to ensure each project becomes a landmark of excellence.
-            </p>
-            <p>
-              Thank you for considering AHS for your next investment or dream home. Together, we are not just constructing buildings—we are shaping a stronger, more beautiful Bangladesh.
-            </p>
+              <div className="mb-8">
+                <h3 className="text-2xl md:text-3xl font-bold text-stone-900 tracking-tight">
+                  Building Legacies, Shaping the Future
+                </h3>
+                <p className="text-[#104a32] font-medium mt-2">Welcome to AHS Properties & Development Ltd.</p>
+              </div>
+
+              {/* Short Preview */}
+              <div className="text-stone-600 space-y-4 text-[15.2px] leading-relaxed font-normal">
+                <p>
+                  Our journey began with a vision– “We Build Tomorrow” to establish a benchmark of unyielding reliability, top-tier quality, and strategic innovation in Bangladesh’s most vital sectors...
+                </p>
+              </div>
+
+              {/* Full Expandable Message */}
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${showFullMessage ? 'max-h-[2000px] opacity-100 mt-8' : 'max-h-0 opacity-0'}`}>
+                <div className="text-stone-600 space-y-6 text-[15.2px] leading-relaxed border-t border-stone-100 pt-8">
+                  <p>
+                    Over the years, through M/S. AHS Enterprise and Sun Solaris Limited, we have had the distinct honor of serving as a trusted partner to both the military and civil sectors of our nation.
+                  </p>
+
+                  <p>
+                    From executing high-stakes strategic projects for the Bangladesh Armed Forces through the DGDP, to delivering critical maritime solutions for the Bangladesh Navy (including the prestigious supply of submarine machinery spares), our track record speaks for itself. Our deep-rooted enlistments with premier national authorities—such as Dhaka Cantonment Board, BIWTA, PWD, HED, CAAB, MES, BADC, RAJUK, DPHE, CPA, PPA and Distributor of Moddhapara Granite & Mining Co. Ltd —reflect a legacy built entirely on trust and flawless execution.
+                  </p>
+
+                  <div className="pt-4 border-t border-stone-100">
+                    <h4 className="text-lg font-semibold text-stone-800 mb-3">The Evolution: Trust Meets Sustainable Living</h4>
+                    <p>
+                      True leadership lies in adaptability and forward-thinking. Having mastered major civil construction and critical supply chains, expanding our expertise into premium real estate and sustainable infrastructure was a natural evolution.
+                    </p>
+                    <p>
+                      At AHS Properties & Development Ltd., we don't just build structures; we create environments where modern living aligns with strategic foresight. We bring the same military-grade precision, absolute faithfulness, and uncompromising quality that defined our past successes straight into the property development sector.
+                    </p>
+                  </div>
+
+                  <div>
+                    <h4 className="text-lg font-semibold text-stone-800 mb-3">A Vision for Tomorrow</h4>
+                    <p>
+                      Parallel to shaping urban landscapes, our sister concern, Sun Solaris Limited, is actively driving a mission toward a carbon-free world by making renewable energy both accessible and affordable. This dual commitment to excellence—crafting superior real estate spaces while championing sustainable, green energy solutions—positions us at the forefront of Bangladesh's modern development era.
+                    </p>
+                  </div>
+
+                  <div className="pt-6 border-t border-stone-100 text-stone-700">
+                    <p className="italic">
+                      To our clients, partners, and stakeholders: thank you for your unwavering trust. As we step into this new era of growth, we pledge to continue delivering superior results, pushing the boundaries of innovation, and building a brighter, more sustainable future for generations to come.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bengali Version */}
+              <div className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 border-t border-stone-100 pt-8 ${showBengali ? 'max-h-[1600px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                <div className="text-stone-600 space-y-6 text-[15px] leading-relaxed">
+                  <p className="font-medium text-stone-800 text-lg">গৌরবময় অর্জনের ধারায় আগামীর রূপরেখা…</p>
+                  <p>
+                    আমাদের যাত্রাটি মূলত শুরু “গড়ি আগামী”- এই লক্ষ্যে অটল আস্থা ও নির্ভরতায় কৌশলগত উদ্ভাবনের দ্বারা উৎকর্ষ মানদন্ড বিনির্মাণ। সময়ের পরিক্রমায়, এ এইচ এস এন্টারপ্রাইজ ও সান সোলারিস লিঃ এর মাধ্যমে সামরিক ও বেসামরিক উভয় খাতে বিশ্বস্ত অংশীদার হিসেবে সেবা করার গৌরব অর্জন করেছি।
+                  </p>
+                  <p>
+                    বাংলাদেশ সশস্ত্র বাহিনীর উচ্চ অগ্রাধিকারপ্রাপ্ত কৌশলগত চাহিদাগুলো ডিজিডিপি ( DGDP ) এর প্রকল্পের মাধ্যমে নির্ভুলভাবে বাস্তবায়ন, বাংলাদেশ নেভি’র জন্য গুরুত্বপূর্ণ সামুদ্রিক সমাধান (বিশেষত, সাবমেরিন এর যুদ্ধাস্ত্র ও খুচরা যন্ত্রাংশ) দক্ষতার সাথে সরবরাহ – প্রতিটি ক্ষেত্রেই আমাদের কর্মদক্ষতা, নিষ্ঠা ও উৎকর্ষের অঙ্গীকার সুস্পষ্টভাবে প্রতিফলিত হয়েছে যা আমাদের সাফল্যের ধারাবাহিকতা নির্দেশক।
+                  </p>
+                  <p>
+                    ঢাকা ক্যান্টনমেন্ট বোর্ড, BIWTA, PWD, HED, CAAB, MES, BADC, RAJUK, DPHE, CPA, PPA and Distributor of Moddhapara Granite & Mining Co. Ltd প্রভৃতি শীর্ষস্থানীয় সরকারি দপ্তর ও সংস্থার সাথে স্বীকৃত প্রাতিষ্ঠানিক সম্পৃক্ততা আমাদের নিখুঁত কর্মতৎপরতা ও গুণগত মান রক্ষায় আপসহীনতার সম্মিলন।
+                  </p>
+                  <div className="pt-4 border-t border-stone-100">
+                    <p className="font-medium text-stone-800 mb-3">আস্থার শক্তিতে সমৃদ্ধ আবাসনের – অগ্রযাত্রা…</p>
+                    <p>
+                      প্রকৃত নেতৃত্বের শক্তি নিহিত থাকে দূরदर्शी চেতনায় এবং পরিবর্তনের সাথে খাপ খাইয়ে নেয়ায়। বৃহৎ বেসামরিক নির্মাণ প্রকল্প নিখুঁতভাবে বাস্তবায়ন ও হস্তান্তর এবং গুরুত্ববহ কৌশলগত সরবরাহ ব্যবস্থাপনায় সুনামের সাথে সাফল্য অর্জন এবং দীর্ঘ অভিজ্ঞতার পরে অভিজাত মানের রিয়েল এস্টেট এবং আধুনিক দীর্ঘমেয়াদী অবকাঠামো নির্মাণশিল্পে আমাদের পদচারণা একটি সুপরিকল্পিত পদক্ষেপ।
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="mt-10 pt-6 border-t border-stone-100 flex flex-wrap items-center gap-4 justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-[#104a32] animate-pulse"></span>
+                  <span className="text-xs text-stone-400 font-medium tracking-wide">AHS Executive Office</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <button
+                    type="button"
+                    onClick={() => setShowFullMessage(prev => !prev)}
+                    className="inline-flex items-center gap-2 bg-[#104a32] hover:bg-[#0b3322] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 shadow-sm hover:shadow"
+                  >
+                    {showFullMessage ? 'View Less' : 'See More'}
+                    <svg
+                      className={`w-3 h-3 transition-transform duration-300 ${showFullMessage ? 'rotate-180' : ''}`}
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => setShowBengali(prev => !prev)}
+                    className="inline-flex items-center gap-2 text-xs font-medium text-[#104a32] hover:text-[#0b3322] transition-colors"
+                  >
+                    {showBengali ? 'Hide Bengali' : 'বাংলায় পড়ুন'}
+                  </button>
+
+                  <a
+                    href="mailto:info@ahs-enterprise.com"
+                    className="inline-flex items-center gap-2 bg-[#104a32] hover:bg-[#0b3322] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 shadow-sm hover:shadow"
+                  >
+                    Contact CEO
+                  </a>
+                </div>
+              </div>
+
+              {/* Signature */}
+              <div className="mt-8 pt-6 border-t border-stone-100 flex items-center gap-4 text-sm">
+                <div>
+                  <p className="font-semibold text-stone-900">Md. Sohanur Rahman Sohan</p>
+                  <p className="text-[#104a32] text-xs">CEO, AHS Properties & Development Ltd.</p>
+                </div>
+                <div className="text-xs text-stone-500 ml-auto text-right">
+                  +8801725555700 &nbsp; | &nbsp; +8801625555700<br />
+                  info@ahs-enterprise.com
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Action Button */}
-        <div className="mt-8 pt-4 border-t border-stone-100 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#104a32] animate-pulse"></span>
-            <span className="text-xs text-stone-400 font-medium tracking-wide">AHS Executive Office</span>
-          </div>
-          
-          <button
-            type="button"
-            onClick={() => setShowFullWelcome(prev => !prev)}
-            className="inline-flex items-center gap-2 bg-[#104a32] hover:bg-[#0b3322] text-white text-xs font-bold uppercase tracking-wider px-6 py-3 rounded-xl transition-all duration-200 active:scale-95 shadow-sm hover:shadow"
-          >
-            <span>{showFullWelcome ? 'View Less' : 'View All'}</span>
-            <svg 
-              className={`w-3 h-3 transition-transform duration-300 ${showFullWelcome ? 'rotate-180' : ''}`} 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
-            </svg>
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* 2. LIVE INTEGRATED THEME AUDITOR PANEL */}
       {themeAnalyzerOpen && (
@@ -424,7 +488,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 5. CALL TO ACTION: "READY TO FIND YOUR DREAM PROPERTY?" CARD */}
+      {/* 5. CALL TO ACTION CARD */}
       <section className="w-full py-12 bg-[#fafaf9] select-none">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-8">
           <motion.div
@@ -486,12 +550,10 @@ export default function Home() {
           <span className="text-xs font-extrabold text-[#1e2a4a] tracking-widest uppercase block mb-1">REAL ESTATE DECK</span>
           <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight">Our Signature Properties</h2>
           <p className="text-sm text-stone-500 max-w-2xl">
-            Filter by location coastal zones, property categories, or budgets online.
+            Filter by location architectural zones or specific project blueprints online.
           </p>
         </div>
         <PropertySearch
-          currency={currency}
-          language={language}
           selectedCoast={selectedCoast}
           setSelectedCoast={setSelectedCoast}
           onInquire={(prop) => {

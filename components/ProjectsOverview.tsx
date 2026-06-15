@@ -5,17 +5,17 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Search, 
-  MapPin, 
-  Layers, 
-  Compass, 
-  HelpCircle, 
-  Heart, 
-  ArrowRight, 
-  Sparkles, 
-  Building2, 
-  CheckCircle2, 
+import {
+  Search,
+  MapPin,
+  Layers,
+  Compass,
+  HelpCircle,
+  Heart,
+  ArrowRight,
+  Sparkles,
+  Building2,
+  CheckCircle2,
   SlidersHorizontal,
   ArrowLeft,
   Download,
@@ -33,12 +33,10 @@ import {
   CircleHelp,
   ShieldCheck
 } from 'lucide-react';
-import { DevelopmentProject, Currency, Language } from '@/lib/types';
-import { DEVELOPMENT_PROJECTS, EXCHANGE_RATES, CURRENCY_SYMBOLS, TRANSLATIONS } from '@/lib/data';
+import { DevelopmentProject } from '@/lib/types';
+import { DEVELOPMENT_PROJECTS } from '@/lib/data';
 
 interface ProjectsOverviewProps {
-  currency: Currency;
-  language: Language;
   onInquire: (title: string) => void;
 }
 
@@ -47,7 +45,6 @@ interface ProjectUnit {
   name: string;
   beds: number;
   sizeSqm: number;
-  priceBDT: number;
   status: 'Available' | 'Only 1 Left' | 'Reserved' | 'Sold';
 }
 
@@ -71,9 +68,9 @@ const PROJECT_EXTRAS: Record<string, {
       'Lush green Jolshiri parkland buffers'
     ],
     units: [
-      { name: '2-Bed Seascape Garden Residence', beds: 2, sizeSqm: 135, priceBDT: 23000000, status: 'Available' },
-      { name: '3-Bed Ocean View Suite', beds: 3, sizeSqm: 185, priceBDT: 31500000, status: 'Only 1 Left' },
-      { name: 'Lagoon Signature Duplex with Pool', beds: 4, sizeSqm: 240, priceBDT: 42000000, status: 'Reserved' },
+      { name: '2-Bed Seascape Garden Residence', beds: 2, sizeSqm: 135, status: 'Available' },
+      { name: '3-Bed Ocean View Suite', beds: 3, sizeSqm: 185, status: 'Only 1 Left' },
+      { name: 'Lagoon Signature Duplex with Pool', beds: 4, sizeSqm: 240, status: 'Reserved' },
     ]
   },
   'proj-west-bay': {
@@ -89,8 +86,8 @@ const PROJECT_EXTRAS: Record<string, {
       'On-site managed rental desk'
     ],
     units: [
-      { name: '2-Bed Sunset Vista Flat', beds: 2, sizeSqm: 120, priceBDT: 24000000, status: 'Available' },
-      { name: '3-Bed Coastal Horizon Penthouse', beds: 3, sizeSqm: 215, priceBDT: 37500000, status: 'Only 1 Left' },
+      { name: '2-Bed Sunset Vista Flat', beds: 2, sizeSqm: 120, status: 'Available' },
+      { name: '3-Bed Coastal Horizon Penthouse', beds: 3, sizeSqm: 215, status: 'Only 1 Left' },
     ]
   },
   'proj-river-edge': {
@@ -106,9 +103,9 @@ const PROJECT_EXTRAS: Record<string, {
       'Electric automated security shutter gates'
     ],
     units: [
-      { name: '3-Bed Forest Edge Apartment', beds: 3, sizeSqm: 160, priceBDT: 15000000, status: 'Available' },
-      { name: '3-Bed Canopy Garden Duplex', beds: 3, sizeSqm: 210, priceBDT: 21500000, status: 'Available' },
-      { name: 'Grand River Penthouse with Mooring', beds: 4, sizeSqm: 320, priceBDT: 39000000, status: 'Reserved' },
+      { name: '3-Bed Forest Edge Apartment', beds: 3, sizeSqm: 160, status: 'Available' },
+      { name: '3-Bed Canopy Garden Duplex', beds: 3, sizeSqm: 210, status: 'Available' },
+      { name: 'Grand River Penthouse with Mooring', beds: 4, sizeSqm: 320, status: 'Reserved' },
     ]
   },
   'proj-coastal-view-3': {
@@ -124,9 +121,9 @@ const PROJECT_EXTRAS: Record<string, {
       'High insulation thermal ceiling act'
     ],
     units: [
-      { name: '2-Bed Modern Corner Loft', beds: 2, sizeSqm: 110, priceBDT: 13000000, status: 'Available' },
-      { name: '3-Bed Family Veranda Home', beds: 3, sizeSqm: 155, priceBDT: 17200000, status: 'Available' },
-      { name: 'Skyline Terrace Duplex Suite', beds: 3, sizeSqm: 190, priceBDT: 22800000, status: 'Reserved' },
+      { name: '2-Bed Modern Corner Loft', beds: 2, sizeSqm: 110, status: 'Available' },
+      { name: '3-Bed Family Veranda Home', beds: 3, sizeSqm: 155, status: 'Available' },
+      { name: 'Skyline Terrace Duplex Suite', beds: 3, sizeSqm: 190, status: 'Reserved' },
     ]
   },
   'proj-emara': {
@@ -142,8 +139,8 @@ const PROJECT_EXTRAS: Record<string, {
       'Integrated VRF silent cooling systems'
     ],
     units: [
-      { name: '2-Bed Boulevard Nest Flat', beds: 2, sizeSqm: 115, priceBDT: 25000000, status: 'Available' },
-      { name: '3-Bed Premium Penthouse Suite', beds: 3, sizeSqm: 180, priceBDT: 35000000, status: 'Only 1 Left' },
+      { name: '2-Bed Boulevard Nest Flat', beds: 2, sizeSqm: 115, status: 'Available' },
+      { name: '3-Bed Premium Penthouse Suite', beds: 3, sizeSqm: 180, status: 'Only 1 Left' },
     ]
   },
   'proj-amali': {
@@ -159,9 +156,9 @@ const PROJECT_EXTRAS: Record<string, {
       'Bespoke modern furnishings package'
     ],
     units: [
-      { name: '2-Bed Smart Urban Apartment', beds: 2, sizeSqm: 112, priceBDT: 19500000, status: 'Available' },
-      { name: '3-Bed Sky Oasis Penthouse', beds: 3, sizeSqm: 205, priceBDT: 29800000, status: 'Available' },
-      { name: 'Master Signature Villa Pod', beds: 4, sizeSqm: 380, priceBDT: 49000000, status: 'Reserved' },
+      { name: '2-Bed Smart Urban Apartment', beds: 2, sizeSqm: 112, status: 'Available' },
+      { name: '3-Bed Sky Oasis Penthouse', beds: 3, sizeSqm: 205, status: 'Available' },
+      { name: 'Master Signature Villa Pod', beds: 4, sizeSqm: 380, status: 'Reserved' },
     ]
   },
   'proj-le-loft': {
@@ -177,8 +174,8 @@ const PROJECT_EXTRAS: Record<string, {
       'Fiber home entertainment paths'
     ],
     units: [
-      { name: '1-Bed Urban Executive Loft', beds: 1, sizeSqm: 75, priceBDT: 8500000, status: 'Available' },
-      { name: '2-Bed City Classic Apartment', beds: 2, sizeSqm: 110, priceBDT: 12000000, status: 'Available' },
+      { name: '1-Bed Urban Executive Loft', beds: 1, sizeSqm: 75, status: 'Available' },
+      { name: '2-Bed City Classic Apartment', beds: 2, sizeSqm: 110, status: 'Available' },
     ]
   },
   'proj-vantage': {
@@ -194,26 +191,23 @@ const PROJECT_EXTRAS: Record<string, {
       'Double-brick sound insulating walls'
     ],
     units: [
-      { name: '2-Bed Skyline Panorama Suite', beds: 2, sizeSqm: 115, priceBDT: 9500000, status: 'Available' },
-      { name: '3-Bed Mountain View Residence', beds: 3, sizeSqm: 165, priceBDT: 14500000, status: 'Available' },
+      { name: '2-Bed Skyline Panorama Suite', beds: 2, sizeSqm: 115, status: 'Available' },
+      { name: '3-Bed Mountain View Residence', beds: 3, sizeSqm: 165, status: 'Available' },
     ]
   }
 };
 
 export default function ProjectsOverview({
-  currency,
-  language,
   onInquire,
 }: ProjectsOverviewProps) {
-  const t = TRANSLATIONS[language];
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedCoast, setSelectedCoast] = useState<string>('All');
   const [selectedStatus, setSelectedStatus] = useState<string>('All');
   const [savedProjects, setSavedProjects] = useState<string[]>([]);
-  
+
   // High-fidelity Project Detail View state
   const [activeProject, setActiveProject] = useState<DevelopmentProject | null>(null);
-  
+
   // Selected Unit inside the detail view for dynamic calculators
   const [selectedUnitIndex, setSelectedUnitIndex] = useState<number>(0);
 
@@ -223,46 +217,22 @@ export default function ProjectsOverview({
   const [bookingPhone, setBookingPhone] = useState<string>('');
   const [bookingSubmitted, setBookingSubmitted] = useState<boolean>(false);
 
-  // Format Prices safely based on selected currency
-  const formatPrice = (priceInBDT: number) => {
-    const rate = EXCHANGE_RATES[currency];
-    const converted = priceInBDT * rate;
-    const symbol = CURRENCY_SYMBOLS[currency];
-
-    if (currency === 'BDT') {
-      return `${symbol} ${(converted / 1000000).toFixed(1)}M`;
-    }
-    return `${symbol} ${Math.round(converted).toLocaleString()}`;
-  };
-
-  // Convert price directly to USD to support statutory checks
-  const isEligibleForResidency = (priceBDT: number) => {
-    const usdRate = EXCHANGE_RATES['USD'];
-    const priceUSD = priceBDT * usdRate;
-    return priceUSD >= 375000;
-  };
-
-  const getPriceInUSD = (priceBDT: number) => {
-    const usdRate = EXCHANGE_RATES['USD'];
-    return priceBDT * usdRate;
-  };
-
   const toggleSave = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
-    setSavedProjects(prev => 
+    setSavedProjects(prev =>
       prev.includes(id) ? prev.filter(pId => pId !== id) : [...prev, id]
     );
   };
 
   // Filter projects lists
   const filteredProjects = DEVELOPMENT_PROJECTS.filter(project => {
-    const matchesSearch = searchQuery === '' || 
+    const matchesSearch = searchQuery === '' ||
       project.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       project.description.toLowerCase().includes(searchQuery.toLowerCase());
 
     const matchesCoast = selectedCoast === 'All' || project.coast === selectedCoast;
-    const matchesStatus = selectedStatus === 'All' || 
+    const matchesStatus = selectedStatus === 'All' ||
       (selectedStatus === 'Under Construction' && project.status === 'UNDER CONSTRUCTION') ||
       (selectedStatus === 'Pre-Launch' && project.status === 'PRE LAUNCH MARKETING');
 
@@ -277,23 +247,21 @@ export default function ProjectsOverview({
       coBroker: 'Junaid Nuzeebun',
       amenities: ['Pristine parkland path', 'Elite layout', 'Gated estate parameters', 'RAJUK Approved Developer'],
       units: [
-        { name: 'Signature Luxury Apartment', beds: 3, sizeSqm: 180, priceBDT: activeProject.startingPriceBDT, status: 'Available' }
+        { name: 'Signature Luxury Apartment', beds: 3, sizeSqm: 180, status: 'Available' }
       ]
     };
 
     const selectedUnitObj = extras.units[selectedUnitIndex] || extras.units[0];
-    const residencyQualified = isEligibleForResidency(selectedUnitObj.priceBDT);
-    const usdEquivalent = getPriceInUSD(selectedUnitObj.priceBDT);
     const agentName = extras.coBroker || 'Junaid Nuzeebun';
     const agentTel = agentName === 'Yalda Sheri' ? '01625-555700' : '01725-555700';
     const agentEmail = 'ahspropertiesdevelopmentltd@gmail.com';
-    const agentPhoto = agentName === 'Yalda Sheri' 
+    const agentPhoto = agentName === 'Yalda Sheri'
       ? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80'
       : 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80';
 
     return (
       <div className="flex flex-col gap-12 w-full max-w-7xl mx-auto py-4 select-none font-sans animate-in fade-in slide-in-from-bottom-6 duration-300">
-        
+
         {/* Back and Bookmark Actions Header bar */}
         <div className="flex justify-between items-center bg-white p-4 rounded-2xl border border-stone-200/80 shadow-sm">
           <button
@@ -318,11 +286,10 @@ export default function ProjectsOverview({
             </span>
             <button
               onClick={() => toggleSave(activeProject.id)}
-              className={`flex items-center justify-center p-2.5 rounded-full border transition-all cursor-pointer ${
-                savedProjects.includes(activeProject.id) 
-                  ? 'bg-rose-500/10 text-rose-400 border-rose-500/35' 
-                  : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
-              }`}
+              className={`flex items-center justify-center p-2.5 rounded-full border transition-all cursor-pointer ${savedProjects.includes(activeProject.id)
+                ? 'bg-rose-500/10 text-rose-400 border-rose-500/35'
+                : 'bg-stone-50 text-stone-600 border-stone-200 hover:bg-stone-100'
+                }`}
               title="Save project"
             >
               <Heart className={`w-4 h-4 ${savedProjects.includes(activeProject.id) ? 'fill-rose-500 text-rose-500' : ''}`} />
@@ -361,7 +328,7 @@ export default function ProjectsOverview({
               <Sparkles className="w-3.5 h-3.5 fill-[#c5a257]/20" />
               <span>OFF-PLAN PREMIUM MANDATE</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-6xl font-black tracking-tight drop-shadow-md font-sans mb-1 md:mb-3">
               {activeProject.title}
             </h1>
@@ -396,7 +363,7 @@ export default function ProjectsOverview({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             <div className="bg-white border border-stone-200/80 p-6 rounded-2xl flex flex-col gap-3 shadow-sm hover:border-stone-300 transition-colors">
               <div className="w-10 h-10 rounded-xl bg-orange-100 flex items-center justify-center text-orange-700 shrink-0">
                 <Building2 className="w-5 h-5" />
@@ -446,7 +413,7 @@ export default function ProjectsOverview({
         */}
         <section className="bg-white border border-stone-200/80 rounded-[32px] p-6 md:p-10 text-left flex flex-col gap-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             <div className="lg:col-span-7 flex flex-col gap-5">
               <span className="text-xs font-black text-[#c5a257] uppercase tracking-widest pl-0.5">SECTION 02</span>
               <h2 className="text-3xl md:text-4xl font-black text-stone-900 tracking-tight font-sans uppercase">
@@ -455,7 +422,7 @@ export default function ProjectsOverview({
               <p className="text-sm text-stone-600 leading-relaxed font-normal">
                 True luxury is not merely observed — it is felt. The core architectural plans at <strong>{activeProject.title}</strong> are crafted around passive design frameworks. Floor plans are mathematically modeled to utilize trade winds, allowing natural cross-ventilation to keep rooms refreshing while minimizing environmental footprints.
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
                 {[
                   { title: 'Seamless Lifestyles', desc: 'Soaring 3m sliding portals open onto wide private lap pools and sunny endemic botanical garden buffers.' },
@@ -477,7 +444,7 @@ export default function ProjectsOverview({
             </div>
 
             <div className="lg:col-span-5 h-[260px] md:h-[350px] rounded-2xl overflow-hidden shadow-inner border border-stone-200 relative animate-in fade-in duration-500">
-              <img 
+              <img
                 src={activeProject.image}
                 alt="Architecture design theme"
                 referrerPolicy="no-referrer"
@@ -515,7 +482,7 @@ export default function ProjectsOverview({
           <div className="bg-stone-50 rounded-2xl p-6 md:p-8 border border-stone-100 flex flex-col md:flex-row gap-6 items-center md:items-start">
             {/* Portrait inside premium border */}
             <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-white border-4 border-white shadow-md shrink-0">
-              <img 
+              <img
                 src={agentPhoto}
                 alt={agentName}
                 referrerPolicy="no-referrer"
@@ -534,24 +501,24 @@ export default function ProjectsOverview({
                 <p className="text-xs text-stone-500 font-medium font-sans">AHS Properties & Development Ltd. — Certified Investment Advisory Expert</p>
               </div>
 
-               <p className="text-xs text-stone-600 leading-relaxed font-normal max-w-3xl">
+              <p className="text-xs text-stone-600 leading-relaxed font-normal max-w-3xl">
                 With over a decade of experience escorting high-net-worth families to pristine residential properties, {agentName} provides uncompromised fiduciary representation. Fully accredited to coordinate directly across regulatory authorities and prime general contractors to ensure secure, seamless property transactions and transfers.
               </p>
 
               <div className="flex flex-wrap gap-4 items-center justify-center md:justify-start pt-2 border-t border-stone-200/50 mt-1">
-                <a 
+                <a
                   href={`tel:${agentTel}`}
                   className="bg-white hover:bg-stone-100 text-stone-850 px-5 py-2.5 rounded-xl border border-stone-200 text-xs font-bold transition-all inline-flex items-center gap-1.5"
                 >
                   <Phone className="w-4 h-4 text-[#c5a257]" /> {agentTel}
                 </a>
-                <a 
+                <a
                   href={`mailto:${agentEmail}`}
                   className="bg-stone-900 hover:bg-stone-850 text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5"
                 >
                   <Mail className="w-4 h-4 text-[#dfad42]" /> {agentEmail}
                 </a>
-                <button 
+                <button
                   onClick={() => alert(`Direct Secure Broker Link: Your secure consultation token has been generated. ${agentName} is reachable on VIP Channels.`)}
                   className="bg-[#c5a257] hover:bg-[#b08e48] text-white px-5 py-2.5 rounded-xl text-xs font-bold transition-all inline-flex items-center gap-1.5 cursor-pointer"
                 >
@@ -572,14 +539,14 @@ export default function ProjectsOverview({
           {/* Left panel of CTA - Awards and Accreditations */}
           <div className="lg:w-5/12 flex flex-col gap-6 select-none">
             <span className="text-xs font-black text-[#dfad42] uppercase tracking-widest pl-0.5">SECTION 04</span>
-            
+
             <div className="flex items-center gap-2">
               <Award className="w-10 h-10 text-[#dfad42] animate-bounce" />
               <h2 className="text-2xl md:text-3xl font-black text-white font-sans uppercase tracking-tight leading-tight">
                 Ready to Find Your Award Lifestyle?
               </h2>
             </div>
-            
+
             <p className="text-xs md:text-sm text-stone-300 leading-relaxed font-normal">
               AHS Properties & Development Ltd. is the proud recipient of the <strong className="text-white font-semibold">Bangladesh Real Estate Excellence Award</strong> for uncompromised engineering quality and flawless service. Initiate your direct, confidential consultation with {agentName} directly inside our secure ecosystem today.
             </p>
@@ -611,7 +578,7 @@ export default function ProjectsOverview({
           {/* Right panel of CTA - Interactive Multi-stage Booking console */}
           <div className="lg:w-7/12 bg-white text-stone-900 rounded-2xl p-6 md:p-8 border border-white/5 shadow-2xl flex flex-col gap-5">
             {!bookingSubmitted ? (
-              <form 
+              <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   if (!bookingName || !bookingEmail || !bookingPhone) {
@@ -636,8 +603,8 @@ export default function ProjectsOverview({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[10px] font-black text-stone-500 uppercase tracking-wider">Your Full Name</label>
-                    <input 
-                      type="text" 
+                    <input
+                      type="text"
                       required
                       placeholder="e.g. Admiral Alexander Sterling"
                       value={bookingName}
@@ -647,8 +614,8 @@ export default function ProjectsOverview({
                   </div>
                   <div className="flex flex-col gap-1.5">
                     <label className="text-[10px] font-black text-stone-500 uppercase tracking-wider">Secure Phone Number</label>
-                    <input 
-                      type="tel" 
+                    <input
+                      type="tel"
                       required
                       placeholder="e.g. +44 7911 123456"
                       value={bookingPhone}
@@ -660,8 +627,8 @@ export default function ProjectsOverview({
 
                 <div className="flex flex-col gap-1.5 text-left">
                   <label className="text-[10px] font-black text-stone-500 uppercase tracking-wider">Encrypted Email Address</label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     required
                     placeholder="e.g. alexander@sterlingholdings.com"
                     value={bookingEmail}
@@ -675,7 +642,7 @@ export default function ProjectsOverview({
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
                   <p className="text-[10px] text-stone-600 leading-normal font-normal">
-                    By submitting guidance, AHS Properties registers a formal <strong className="text-stone-900">Priority Investment Option Letter</strong> with the construction development firm on your selected unit <strong>"{selectedUnitObj.name}"</strong> ({formatPrice(selectedUnitObj.priceBDT)}). Re-routing or canceling this Priority Option entails zero charges.
+                    By submitting guidance, AHS Properties registers a formal <strong className="text-stone-900">Priority Investment Option Letter</strong> with the construction development firm on your selected unit <strong>"{selectedUnitObj.name}"</strong>. Re-routing or canceling this Priority Option entails zero charges.
                   </p>
                 </div>
 
@@ -720,10 +687,6 @@ export default function ProjectsOverview({
                     <span className="font-semibold text-stone-900">{extras.scheme}</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-stone-400">SELECTED ESTIMATE:</span>
-                    <span className="font-extrabold text-[#c5a257]">{formatPrice(selectedUnitObj.priceBDT)}</span>
-                  </div>
-                  <div className="flex justify-between">
                     <span className="text-stone-400">RAJUK STATUS:</span>
                     <span className="text-emerald-700 font-extrabold uppercase">AUTO-QUEUED</span>
                   </div>
@@ -760,10 +723,10 @@ export default function ProjectsOverview({
     );
   }
 
-  // Otherwise, render the main project catalog grid
+ // Otherwise, render the main project catalog grid
   return (
     <div className="flex flex-col gap-8 w-full max-w-7xl mx-auto py-4 select-none">
-      
+
       {/* DEVELOPMENT SCHEMES MASTER TITLE HEADER */}
       <div className="text-left mb-2 animate-in fade-in duration-300">
         <span className="text-xs font-extrabold text-[#c5a257] tracking-widest uppercase block mb-1">DEVELOPMENT SCHEMES</span>
@@ -772,11 +735,8 @@ export default function ProjectsOverview({
           AHS Properties & Development Ltd. represents premium developments in Bangladesh. Explore pre-construction apartments and high-yield residential portfolios in Jolshiri Abashon and Dhaka.
         </p>
       </div>
-      
-      {/* 
-        STATISTICS SUB-BAR
-        Renders the exact counts requested for the luxury context.
-      */}
+
+      {/* STATISTICS SUB-BAR */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-2xl border border-stone-200/80 shadow-sm animate-in fade-in duration-300">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
           {/* Total Listings */}
@@ -785,14 +745,14 @@ export default function ProjectsOverview({
             <span className="text-xs font-bold text-stone-400 uppercase tracking-widest">Total Listings</span>
           </div>
           <div className="hidden md:block w-[1px] h-8 bg-stone-200" />
-          
+
           {/* For Sale */}
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
             <span className="text-xl font-bold text-stone-900">70</span>
             <span className="text-xs font-bold text-stone-500 uppercase tracking-widest">For Sale</span>
           </div>
-          
+
           {/* For Rent */}
           <div className="flex items-center gap-2">
             <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
@@ -807,12 +767,10 @@ export default function ProjectsOverview({
         </div>
       </div>
 
-      {/* 
-        SEARCH AND FILTER COCKPIT
-      */}
+      {/* SEARCH AND FILTER COCKPIT */}
       <div className="bg-white border border-stone-200/80 rounded-3xl p-5 md:p-6 shadow-sm flex flex-col gap-5">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
-          
+
           {/* Text input search */}
           <div className="col-span-1 md:col-span-6 flex flex-col gap-1.5">
             <label className="text-xs font-bold text-stone-600 uppercase tracking-wider pl-1 font-sans">
@@ -859,23 +817,25 @@ export default function ProjectsOverview({
             </label>
             <div className="relative">
               <Compass className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400 pointer-events-none" />
+
               <select
                 value={selectedCoast}
                 onChange={(e) => setSelectedCoast(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-stone-200 bg-white text-sm focus:outline-none focus:border-stone-400 transition-all font-medium text-stone-800 appearance-none cursor-pointer"
+                aria-label="Filter locations by region"
+                className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-stone-200 bg-white text-sm focus:outline-none focus:border-stone-400 transition-all font-medium text-stone-800 appearance-none cursor-pointer"
               >
-                <option value="All">{t.allCoasts}</option>
-                <option value="North">{t.northCoast}</option>
-                <option value="West">{t.westCoast}</option>
-                <option value="East">{t.eastCoast}</option>
-                <option value="South">{t.southCoast}</option>
+                <option value="All">All Locations</option>
+                <option value="North">North</option>
+                <option value="West">West</option>
+                <option value="East">East</option>
+                <option value="South">South</option>
               </select>
-              <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-stone-400">
+
+              <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[10px] text-stone-400">
                 ▼
               </div>
             </div>
           </div>
-
         </div>
 
         {/* Quick Reset block */}
@@ -895,10 +855,7 @@ export default function ProjectsOverview({
         )}
       </div>
 
-      {/* 
-        GRID DECK LAYOUT 
-        Matches the second screenshot - premium dark luxury containers with dynamic indicators.
-      */}
+      {/* GRID DECK LAYOUT */}
       {filteredProjects.length > 0 ? (
         <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-4 animate-in fade-in-50 duration-300">
           <AnimatePresence mode="popLayout">
@@ -928,7 +885,6 @@ export default function ProjectsOverview({
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover opacity-60 scale-100 group-hover:scale-103 transition-transform duration-700 ease-out"
                     />
-                    {/* Subtle dark ambient overlay masking */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
                     <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/80 to-transparent" />
                   </div>
@@ -940,50 +896,37 @@ export default function ProjectsOverview({
                         {proj.type}
                       </span>
                     </div>
-                    
-                    {/* Green badge label */}
+
                     <span className="flex items-center gap-1.5 text-[9px] font-extrabold uppercase tracking-widest text-[#4ade80] bg-black/40 backdrop-blur-md border border-[#4ade80]/30 px-3 py-1.5 rounded-full">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse" />
                       {proj.availableUnits} Available Units
                     </span>
                   </div>
 
-                  {/* Project Body details (Z-index ensure on-top) */}
+                  {/* Project Body details */}
                   <div className="relative z-10 flex flex-col gap-4 text-left">
-                    
                     <div className="flex flex-col gap-2">
-                      {/* Status label under construction / pre launch */}
                       <span className="text-[10px] font-extrabold text-[#c5a257] uppercase tracking-widest flex items-center gap-1.5">
                         <Sparkles className="w-3 h-3 text-[#c5a257] fill-[#c5a257]/20" />
                         {proj.status}
                       </span>
 
-                      {/* Massive title heading */}
                       <h3 className="text-3xl md:text-4xl font-extrabold font-sans text-white tracking-tight leading-none group-hover:text-[#dfad42] transition-colors">
                         {proj.title}
                       </h3>
 
-                      {/* Location marker */}
                       <div className="flex items-center gap-1.5 text-stone-300 text-xs font-semibold">
                         <MapPin className="w-3.5 h-3.5 text-stone-400" />
                         <span>{proj.location}</span>
                       </div>
 
-                      {/* Faded description limited to 2 lines block */}
                       <p className="text-xs text-stone-200/80 leading-relaxed font-normal line-clamp-2 mt-1">
                         {proj.description}
                       </p>
                     </div>
 
-                    {/* Horizontal parameters bar (Price, Total Units, Available %) */}
-                    <div className="grid grid-cols-3 gap-4 border-t border-white/12 pt-4 mt-2 text-white/90">
-                      <div className="flex flex-col text-left">
-                        <span className="text-[10px] uppercase font-bold text-stone-400 tracking-wider">Starting From</span>
-                        <span className="text-sm font-extrabold text-[#c5a257] mt-0.5 font-mono">
-                          {formatPrice(proj.startingPriceBDT)}
-                        </span>
-                      </div>
-
+                    {/* Horizontal parameters bar */}
+                    <div className="grid grid-cols-2 gap-4 border-t border-white/12 pt-4 mt-2 text-white/90">
                       <div className="flex flex-col text-left">
                         <span className="text-[10px] uppercase font-bold text-stone-400 tracking-wider">Total Units</span>
                         <span className="text-sm font-extrabold mt-0.5 font-mono">{proj.totalUnits} Units</span>
@@ -997,15 +940,14 @@ export default function ProjectsOverview({
 
                     {/* Custom progress loading bar */}
                     <div className="w-full h-1 bg-stone-800 rounded-full overflow-hidden mt-1 select-none">
-                      <div 
-                        className="bg-gradient-to-r from-[#dfad42] to-emerald-400 h-full rounded-full" 
+                      <div
+                        className="bg-gradient-to-r from-[#dfad42] to-emerald-400 h-full rounded-full"
                         style={{ width: `${proj.percentAvailable}%` }}
                       />
                     </div>
 
                     {/* Buttons line */}
                     <div className="flex items-center gap-3 mt-3">
-                      {/* Golden Explore capsule button */}
                       <button
                         className="bg-[#c5a257] group-hover:bg-[#dfad42] text-stone-950 text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full flex items-center gap-1.5 transition-colors cursor-pointer"
                       >
@@ -1013,20 +955,17 @@ export default function ProjectsOverview({
                         <ArrowRight className="w-3.5 h-3.5" />
                       </button>
 
-                      {/* Heart button to save/bookmark */}
                       <button
                         onClick={(e) => toggleSave(proj.id, e)}
-                        className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full border transition-all cursor-pointer ${
-                          isSaved 
-                            ? 'bg-rose-500/10 text-rose-400 border-rose-500/35' 
-                            : 'bg-white/10 text-stone-200 border-white/20 hover:bg-white/20'
-                        }`}
+                        className={`flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider px-4 py-2.5 rounded-full border transition-all cursor-pointer ${isSaved
+                          ? 'bg-rose-500/10 text-rose-400 border-rose-500/35'
+                          : 'bg-white/10 text-stone-200 border-white/20 hover:bg-white/20'
+                          }`}
                       >
                         <Heart className={`w-3.5 h-3.5 ${isSaved ? 'fill-rose-500 text-rose-500' : 'text-stone-300'}`} />
                         <span>{isSaved ? 'Saved' : 'Save'}</span>
                       </button>
                     </div>
-
                   </div>
                 </motion.div>
               );
@@ -1053,9 +992,7 @@ export default function ProjectsOverview({
         </div>
       )}
 
-      {/* 
-        BENEFITS SECTOR TO ENRICH PORTAL AT BOTTOM
-      */}
+      {/* BENEFITS SECTOR TO ENRICH PORTAL AT BOTTOM */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
         <div className="bg-[#fafaf9] border rounded-2xl p-5 flex gap-4 items-start text-left">
           <div className="w-10 h-10 rounded-full bg-[#104a32]/10 flex items-center justify-center text-xl shrink-0 text-[#104a32]">

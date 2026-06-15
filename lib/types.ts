@@ -8,7 +8,6 @@ export interface Property {
   title: string;
   location: string;
   coast: 'North' | 'East' | 'South' | 'West';
-  priceBDT: number; // in Bangladeshi Taka
   type: 'Villa' | 'Apartment' | 'Penthouse' | 'Duplex';
   bedrooms: number;
   bathrooms: number;
@@ -24,7 +23,6 @@ export interface DevelopmentProject {
   title: string;
   location: string;
   coast: 'North' | 'East' | 'South' | 'West';
-  startingPriceBDT: number;
   type: string;
   availableUnits: number;
   totalUnits: number;
@@ -50,8 +48,4 @@ export type ActiveTab =
   | 'Layout'      
   | 'Contents'    
   | 'Contact'
-  | 'Properties';
-
-export type Currency = 'BDT' | 'USD' | 'EUR';
-
-export type Language = 'EN' | 'FR';
+  | 'Services';

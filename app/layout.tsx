@@ -20,13 +20,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AHS Properties & Development | Premium Real Estate in Bangladesh",
+  title: "AHS Properties & Development | Premium Real Estate",
   description:
-    "Discover premium properties and development projects in Bangladesh. Explore villas, apartments, and investment opportunities with AHS Properties & Development.",
+    "Discover premium properties and development projects. Explore villas, apartments, and investment opportunities with AHS Properties & Development.",
   keywords: [
     "real estate",
     "properties",
-    "Bangladesh",
     "villas",
     "apartments",
     "investment",
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AHS Properties & Development",
     description:
-      "Premium Properties & Development in Bangladesh. Transforming real estate dreams into reality.",
+      "Premium Properties & Development. Transforming real estate dreams into reality.",
     type: "website",
     siteName: "AHS Properties & Development",
   },

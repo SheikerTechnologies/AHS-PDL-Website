@@ -5,16 +5,12 @@
 
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { ActiveTab, Currency, Language } from '@/lib/types';
+import { ActiveTab } from '@/lib/types';
 import AHSLogo from './AHSLogo';
 
 interface NavbarProps {
   activeTab: ActiveTab;
   setActiveTab: (tab: ActiveTab) => void;
-  currency: Currency;
-  setCurrency: (currency: Currency) => void;
-  language: Language;
-  setLanguage: (language: Language) => void;
   onGetStartedClick: () => void;
   onOpenThemeAnalyzer: () => void;
 }
@@ -22,10 +18,6 @@ interface NavbarProps {
 export default function Navbar({
   activeTab,
   setActiveTab,
-  currency,
-  setCurrency,
-  language,
-  setLanguage,
   onGetStartedClick,
   onOpenThemeAnalyzer,
 }: NavbarProps) {
@@ -34,6 +26,7 @@ export default function Navbar({
   const navItems: { label: string; tab: ActiveTab }[] = [
     { label: 'Home', tab: 'Home' },
     { label: 'Projects', tab: 'Projects' },
+    { label: 'Services', tab: 'Services' },
     { label: 'Layout', tab: 'Layout' },          
     { label: 'Contents', tab: 'Contents' },
     { label: 'About', tab: 'About' },

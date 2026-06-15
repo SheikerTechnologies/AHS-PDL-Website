@@ -15,12 +15,6 @@ export const PROJECTS_PER_PAGE = 8;
 export const DEFAULT_COAST = 'All Locations';
 export const DEFAULT_PROPERTY_TYPE = 'All Property Types';
 
-// Currency defaults
-export const DEFAULT_CURRENCY = 'BDT';
-
-// Language defaults
-export const DEFAULT_LANGUAGE = 'EN';
-
 // Navigation routes
 export const ROUTES = {
   HOME: '/',
@@ -30,6 +24,9 @@ export const ROUTES = {
   ABOUT: '/about',
   CONTACT: '/contact',
   RESOURCES: '/resources',
+  LAYOUT: '/layout',
+  CONTENTS: '/contents',
+  SERVICES: '/services',
 } as const;
 
 // API endpoints (if needed for future backend integration)
