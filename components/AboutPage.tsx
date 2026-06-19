@@ -4,6 +4,7 @@
  */
 
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 import { 
   Trophy, 
@@ -12,8 +13,6 @@ import {
   Clock, 
   Heart, 
   TrendingUp, 
-  Sparkles, 
-  Check, 
   ArrowUpRight,
   Award,
   GraduationCap,
@@ -86,15 +85,20 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
       {/* SECTION 1: HERO EXQUISITE HEADER */}
       <section className="relative w-full h-[50vh] md:h-[60vh] flex items-center justify-center overflow-hidden bg-stone-950">
         <div className="absolute inset-0">
-          <motion.img
+          <motion.div
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1.02, opacity: 0.6 }}
             transition={{ duration: 1.5 }}
-            src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80"
-            alt="AHS Catalog and blueprint luxury presentation"
-            referrerPolicy="no-referrer"
-            className="w-full h-full object-cover"
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1920&q=80"
+              alt="AHS Catalog and blueprint luxury presentation"
+              fill
+              className="object-cover"
+              preload
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/90 via-stone-900/65 to-stone-950/90" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#fafaf9] to-transparent" />
         </div>
@@ -147,7 +151,7 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
                 AHS Properties & Development Ltd. is a premier real estate development company in Bangladesh, specializing in the construction and sale of apartment blocks, luxury duplexes, and residential properties tailored for modern lifestyles. Founded with a distinguished legacy of property developers with over 30 years of experience, we have successfully completed and delivered high-quality architectural spaces across Dhaka.
               </p>
               <p>
-                We focus on strategic locations (centering much of our premier portfolio directly in the revolutionary Jolshiri Abashon smart city township), competitive pricing, and exceptional build quality. Whether you're looking to invest in modern apartments, secure residential properties, or explore high-yield commercial spaces, AHS provides expert guidance and uncompromised fiduciary representation in finding the perfect property, whether for secure family living or a profitable investment.
+                We focus on strategic locations (centering much of our premier portfolio directly in the revolutionary Jolshiri Abashon smart city township), competitive pricing, and exceptional build quality. Whether you&rsquo;re looking to invest in modern apartments, secure residential properties, or explore high-yield commercial spaces, AHS provides expert guidance and uncompromised fiduciary representation in finding the perfect property, whether for secure family living or a profitable investment.
               </p>
             </div>
           </motion.div>
@@ -161,11 +165,12 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
             className="lg:col-span-5 relative"
           >
             <div className="relative aspect-[4/3] sm:aspect-[16/11] rounded-[32px] overflow-hidden bg-stone-100 shadow-xl group border border-stone-200/40">
-              <img 
+              <Image 
                 src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80"
                 alt="Beautiful tropical mountain seaside"
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                referrerPolicy="no-referrer"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/40 via-transparent to-transparent pointer-events-none" />
 
@@ -255,12 +260,12 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
               <div className="flex flex-col gap-6">
                 {/* Header portion */}
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-[#dfad42]/30 shadow-md">
-                    <img 
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-[#dfad42]/30 shadow-md">
+                    <Image 
                       src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=300&h=300&q=80"
                       alt="Lt. Gen. Sabbir Ahmed"
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                   <div className="flex flex-col text-left">
@@ -340,12 +345,12 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
               <div className="flex flex-col gap-6">
                 {/* Header portion */}
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center">
-                  <div className="w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-[#dfad42]/30 shadow-md">
-                    <img 
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden shrink-0 border-2 border-[#dfad42]/30 shadow-md">
+                    <Image 
                       src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=300&h=300&q=80"
                       alt="DIG Md. Abu Kalam Siddique"
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
+                      fill
+                      className="object-cover"
                     />
                   </div>
                   <div className="flex flex-col text-left">
@@ -428,7 +433,7 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
               Where We Build
             </h2>
             <p className="text-sm text-stone-500 leading-relaxed font-normal">
-              Explore our properties across Bangladesh's most desirable locations
+              Explore our properties across Bangladesh’s most desirable locations
             </p>
           </div>
 
@@ -446,11 +451,12 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
               >
                 {/* Photo aspect 4/3 */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-stone-100">
-                  <img 
+                  <Image 
                     src={loc.img} 
                     alt={loc.name} 
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-104"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-stone-950/20 to-transparent pointer-events-none" />
                 </div>

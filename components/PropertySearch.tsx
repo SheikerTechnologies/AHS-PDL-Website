@@ -5,7 +5,9 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Search, MapPin, Layers, HelpCircle, ArrowUpRight, BedDouble, Bath, Square, Sparkles, X, Check } from 'lucide-react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { Search, MapPin, Layers, HelpCircle, ArrowUpRight, BedDouble, Bath, Square, Sparkles, X, Check, Eye } from 'lucide-react';
 import { Property } from '@/lib/types';
 import { PROPERTIES } from '@/lib/data';
 
@@ -13,12 +15,16 @@ interface PropertySearchProps {
   onInquire: (property: Property) => void;
   selectedCoast: string;
   setSelectedCoast: (coast: string) => void;
+  maxItems?: number;
+  viewAllHref?: string;
 }
 
 export default function PropertySearch({
   onInquire,
   selectedCoast,
   setSelectedCoast,
+  maxItems,
+  viewAllHref,
 }: PropertySearchProps) {
   const [selectedType, setSelectedType] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -54,6 +60,10 @@ export default function PropertySearch({
 
     return matchesCoast && matchesType && matchesSearch;
   });
+
+  // Limit displayed items when maxItems is set and no filters are active
+  const isFiltering = searchQuery !== '' || selectedCoast !== 'All' || selectedType !== 'All';
+  const displayedProperties = !isFiltering && maxItems ? filteredProperties.slice(0, maxItems) : filteredProperties;
 
   return (
     <div className="flex flex-col gap-8">
@@ -151,7 +161,7 @@ export default function PropertySearch({
       {filteredProperties.length > 0 ? (
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {filteredProperties.map((p, idx) => (
+            {displayedProperties.map((p, idx) => (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -163,11 +173,12 @@ export default function PropertySearch({
                 className="group bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between cursor-pointer"
               >
                 <div className="relative overflow-hidden aspect-[4/3] bg-slate-100">
-                  <img
+                  <Image
                     src={p.image}
                     alt={p.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   />
                   
                   <span className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-widest uppercase">
@@ -257,6 +268,20 @@ export default function PropertySearch({
         </div>
       )}
 
+      {/* See More / View All Button */}
+      {viewAllHref && !isFiltering && filteredProperties.length > (maxItems || 0) && (
+        <div className="flex justify-center pt-4">
+          <Link
+            href={viewAllHref}
+            className="inline-flex items-center gap-2.5 bg-slate-900 hover:bg-[#1e2a4a] text-white text-sm font-bold px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-95 group"
+          >
+            <Eye className="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" />
+            <span>See More Projects</span>
+            <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" />
+          </Link>
+        </div>
+      )}
+
       {/* Property Detail Modal */}
       <AnimatePresence>
         {detailedPropForModal && (
@@ -284,11 +309,12 @@ export default function PropertySearch({
 
               <div className="overflow-y-auto">
                 <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
-                  <img
+                  <Image
                     src={detailedPropForModal.image}
                     alt={detailedPropForModal.title}
-                    referrerPolicy="no-referrer"
-                    className="w-full h-full object-cover"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 672px) 100vw, 672px"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                     <div>

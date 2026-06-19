@@ -41,11 +41,10 @@ export interface Agent {
   specialty: string;
 }
 
-export type ActiveTab = 
-  | 'Home' 
-  | 'Projects' 
-  | 'About' 
-  | 'Layout'      
-  | 'Contents'    
+export type ActiveTab =
+  | 'Home'
+  | 'Projects'
+  | 'About'
+  | 'Layout'
   | 'Contact'
   | 'Services';

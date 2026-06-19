@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   Search,
@@ -16,21 +17,14 @@ import {
   Sparkles,
   Building2,
   CheckCircle2,
-  SlidersHorizontal,
   ArrowLeft,
-  Download,
-  Calculator,
   Shield,
   Calendar,
-  Maximize2,
   Check,
-  ExternalLink,
   ChevronRight,
-  Info,
   Award,
   Phone,
   Mail,
-  CircleHelp,
   ShieldCheck
 } from 'lucide-react';
 import { DevelopmentProject } from '@/lib/types';
@@ -216,6 +210,8 @@ export default function ProjectsOverview({
   const [bookingEmail, setBookingEmail] = useState<string>('');
   const [bookingPhone, setBookingPhone] = useState<string>('');
   const [bookingSubmitted, setBookingSubmitted] = useState<boolean>(false);
+  // Stable random booking ref, generated once on mount
+  const [bookingRef] = useState(() => Math.floor(Math.random() * 900000 + 100000));
 
   const toggleSave = (id: string, e?: React.MouseEvent) => {
     if (e) e.stopPropagation();
@@ -303,11 +299,12 @@ export default function ProjectsOverview({
         */}
         <div className="relative h-[320px] md:h-[420px] rounded-[32px] overflow-hidden bg-stone-950 border border-stone-800 flex items-end p-6 md:p-12 shadow-lg">
           <div className="absolute inset-0 z-0">
-            <img
+            <Image
               src={activeProject.image}
               alt={activeProject.title}
-              referrerPolicy="no-referrer"
-              className="w-full h-full object-cover opacity-60 scale-102"
+              fill
+              className="object-cover opacity-60"
+              preload
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent" />
             <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-black/65 to-transparent" />
@@ -444,11 +441,11 @@ export default function ProjectsOverview({
             </div>
 
             <div className="lg:col-span-5 h-[260px] md:h-[350px] rounded-2xl overflow-hidden shadow-inner border border-stone-200 relative animate-in fade-in duration-500">
-              <img
+              <Image
                 src={activeProject.image}
                 alt="Architecture design theme"
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-stone-950/25" />
               <div className="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-4 rounded-xl border border-stone-200/80 text-left">
@@ -482,11 +479,11 @@ export default function ProjectsOverview({
           <div className="bg-stone-50 rounded-2xl p-6 md:p-8 border border-stone-100 flex flex-col md:flex-row gap-6 items-center md:items-start">
             {/* Portrait inside premium border */}
             <div className="relative w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden bg-white border-4 border-white shadow-md shrink-0">
-              <img
+              <Image
                 src={agentPhoto}
                 alt={agentName}
-                referrerPolicy="no-referrer"
-                className="w-full h-full object-cover"
+                fill
+                className="object-cover"
               />
               <span className="absolute bottom-1 right-2 inline-flex items-center justify-center p-1.5 rounded-full bg-emerald-500 border-2 border-white animate-pulse" title="Online" />
             </div>
@@ -642,7 +639,7 @@ export default function ProjectsOverview({
                     <ShieldCheck className="w-3.5 h-3.5" />
                   </div>
                   <p className="text-[10px] text-stone-600 leading-normal font-normal">
-                    By submitting guidance, AHS Properties registers a formal <strong className="text-stone-900">Priority Investment Option Letter</strong> with the construction development firm on your selected unit <strong>"{selectedUnitObj.name}"</strong>. Re-routing or canceling this Priority Option entails zero charges.
+                    By submitting guidance, AHS Properties registers a formal <strong className="text-stone-900">Priority Investment Option Letter</strong> with the construction development firm on your selected unit                    <strong>&ldquo;{selectedUnitObj.name}&rdquo;</strong>. Re-routing or canceling this Priority Option entails zero charges.
                   </p>
                 </div>
 
@@ -664,7 +661,7 @@ export default function ProjectsOverview({
                   <span className="text-[10px] font-black uppercase text-emerald-600 tracking-widest">Appointment Confirmed</span>
                   <h3 className="text-xl font-bold text-stone-950 font-sans tracking-tight">Escrow Reserved & Saved</h3>
                   <p className="text-xs text-stone-500 leading-relaxed font-normal max-w-md">
-                    Thank you, <strong className="text-stone-900">{bookingName}</strong>. Your priority reservation for <strong className="text-stone-950">"{selectedUnitObj.name}"</strong> has been successfully broadcast to <strong className="text-stone-955">{agentName}</strong>.
+                    Thank you, <strong className="text-stone-900">{bookingName}</strong>. Your priority reservation for                    <strong className="text-stone-950">&ldquo;{selectedUnitObj.name}&rdquo;</strong> has been successfully broadcast to <strong className="text-stone-955">{agentName}</strong>.
                   </p>
                 </div>
 
@@ -672,7 +669,7 @@ export default function ProjectsOverview({
                 <div className="bg-stone-50 border border-stone-200/80 rounded-xl p-4 w-full max-w-sm text-left flex flex-col gap-2 font-mono text-[11px] text-stone-700">
                   <div className="flex justify-between border-b pb-1">
                     <span className="text-stone-400">BOOKING REF ID:</span>
-                    <span className="font-extrabold text-stone-900 uppercase">AHS-{Math.floor(Math.random() * 900000 + 100000)}</span>
+                    <span className="font-extrabold text-stone-900 uppercase">AHS-{bookingRef}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-stone-400">CLIENT EMAIL:</span>
@@ -879,11 +876,12 @@ export default function ProjectsOverview({
                 >
                   {/* Background Unsplash Seascape image */}
                   <div className="absolute inset-0 z-0">
-                    <img
+                    <Image
                       src={proj.image}
                       alt={proj.title}
-                      referrerPolicy="no-referrer"
-                      className="w-full h-full object-cover opacity-60 scale-100 group-hover:scale-103 transition-transform duration-700 ease-out"
+                      fill
+                      className="object-cover opacity-60 group-hover:scale-105 transition-transform duration-700 ease-out"
+                      sizes="(max-width: 1024px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent" />
                     <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-black/80 to-transparent" />
@@ -977,7 +975,7 @@ export default function ProjectsOverview({
           <HelpCircle className="w-10 h-10 text-stone-400 mb-3" />
           <h4 className="font-extrabold text-[#111827] text-sm">No Development Projects Found</h4>
           <p className="text-xs text-stone-500 mt-1 max-w-sm">
-            We currently don't have ongoing construction or pre-launch real estate matching your current coastal filter tags.
+            We currently don&rsquo;t have ongoing construction or pre-launch real estate matching your current coastal filter tags.
           </p>
           <button
             onClick={() => {

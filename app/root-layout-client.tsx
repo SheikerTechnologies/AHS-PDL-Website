@@ -3,6 +3,7 @@
 import { usePathname, useRouter } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import FloatingContactIcons from '@/components/FloatingContactIcons';
 import { ActiveTab } from '@/lib/types';
 import { useAppContext } from './providers';
 
@@ -10,7 +11,6 @@ const routeMap: Record<string, ActiveTab> = {
   '/projects': 'Projects',
   '/about': 'About',
   '/layout': 'Layout',
-  '/contents': 'Contents',
   '/contact': 'Contact',
   '/services': 'Services',
 };
@@ -32,7 +32,6 @@ export default function RootLayoutClient({
       Projects: '/projects',
       About: '/about',
       Layout: '/layout',
-      Contents: '/contents',
       Contact: '/contact',
       Services: '/services',
     };
@@ -53,6 +52,9 @@ export default function RootLayoutClient({
 
       <main className="flex-grow">{children}</main>
       <Footer />
+
+      {/* Floating Contact Icons - WhatsApp, Messenger, Phone */}
+      <FloatingContactIcons />
     </div>
   );
 }

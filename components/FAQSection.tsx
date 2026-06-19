@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { HelpCircle, ChevronDown, Sparkles, AlertCircle, ShieldCheck, KeyRound } from 'lucide-react';
 
@@ -12,7 +12,7 @@ interface FAQItem {
   question: string;
   answer: string;
   category: 'General' | 'Legalities' | 'Investments' | 'Customization';
-  icon: any;
+  icon: React.ComponentType<{ className?: string }>;
 }
 
 export default function FAQSection() {

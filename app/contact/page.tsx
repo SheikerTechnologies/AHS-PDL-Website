@@ -1,19 +1,22 @@
-'use client';
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useRouter } from 'next/navigation';
-import ContactPage from '@/components/ContactPage';
+import type { Metadata } from "next";
+import ContactRouteClient from "./page-client";
+
+export const metadata: Metadata = {
+  title: "Contact | AHS Properties & Development Ltd.",
+  description:
+    "Get in touch with AHS Properties & Development Ltd. Visit our offices in Dhaka Cantonment, Jolshiri Abashon, or Corporate HQ at China Town, VIP Road.",
+  openGraph: {
+    title: "Contact AHS Properties & Development Ltd.",
+    description:
+      "Visit our offices across Dhaka. Corporate HQ, Cantonment Office, and Jolshiri Site.",
+  },
+};
 
 export default function ContactRoute() {
-  const router = useRouter();
-
-  const handleInquireClick = () => {
-    router.push('/#discover-properties-section');
-  };
-
-  return <ContactPage onInquireClick={handleInquireClick} />;
+  return <ContactRouteClient />;
 }

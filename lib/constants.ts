@@ -25,7 +25,6 @@ export const ROUTES = {
   CONTACT: '/contact',
   RESOURCES: '/resources',
   LAYOUT: '/layout',
-  CONTENTS: '/contents',
   SERVICES: '/services',
 } as const;
 

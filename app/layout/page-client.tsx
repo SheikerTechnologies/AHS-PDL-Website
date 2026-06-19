@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import { motion } from "motion/react";
 
-export default function JolshiriLayoutPage() {
+export default function JolshiriLayoutPageClient() {
   const sectors = [
     { sector: "01", page: 2, title: "Sector 01", desc: "Prime Residential Plots" },
     { sector: "02", page: 3, title: "Sector 02", desc: "Lake View & Green Belt" },
@@ -30,8 +30,8 @@ export default function JolshiriLayoutPage() {
     <div className="min-h-screen bg-[#fafaf9] pt-24 relative overflow-hidden">
       {/* Master Plan Background */}
       <div className="absolute inset-0 z-0 opacity-60">
-        <Image 
-          src="/assets/maps/Jolshiri_Layout_Plan_by_RAJUK.jpg" 
+        <Image
+          src="/assets/maps/Jolshiri_Layout_Plan_by_RAJUK.jpg"
           alt="Jolshiri Master Plan Background"
           fill
           className="object-cover"
@@ -62,13 +62,12 @@ export default function JolshiriLayoutPage() {
               className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-stone-200 hover:shadow-2xl transition-all duration-300"
             >
               <div className="h-64 bg-stone-100 relative overflow-hidden">
-                <Image 
-                  src={`/assets/maps/sector-${item.sector}.jpg`} 
+                <Image
+                  src={`/assets/maps/sector-${item.sector}.jpg`}
                   alt={`Sector ${item.sector}`}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   onError={(e) => {
-                    // Fallback if image doesn't exist
                     const target = e.currentTarget as HTMLImageElement;
                     target.src = '/assets/maps/Jolshiri_Layout_Plan_by_RAJUK.jpg';
                   }}

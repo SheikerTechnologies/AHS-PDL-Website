@@ -4,7 +4,8 @@
  */
 
 import React, { useState, FormEvent } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'motion/react';
 import {
   Mail,
   Phone,
@@ -12,7 +13,6 @@ import {
   Check,
   ArrowUpRight,
   CheckCircle,
-  Building2,
   Navigation,
 } from 'lucide-react';
 import AHSLogo from './AHSLogo';
@@ -124,15 +124,20 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
       {/* HERO */}
       <section className="relative w-full h-[45vh] md:h-[55vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b border-stone-200">
         <div className="absolute inset-0 z-0">
-          <motion.img
+          <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
             animate={{ scale: 1, opacity: 0.35 }}
             transition={{ duration: 1.4 }}
-            src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&q=80"
-            alt="Bangladesh Road Network Map"
-            className="w-full h-full object-cover filter saturate-0 contrast-125"
-            referrerPolicy="no-referrer"
-          />
+            className="absolute inset-0"
+          >
+            <Image
+              src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=1920&q=80"
+              alt="Bangladesh Road Network Map"
+              fill
+              className="object-cover saturate-0 contrast-125"
+              preload
+            />
+          </motion.div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-transparent to-stone-950/80" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fafaf9] to-transparent" />
@@ -166,7 +171,7 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
               Send Us an Enquiry
             </h2>
             <p className="text-sm text-stone-500 leading-normal font-normal">
-              Fill out the form below and we'll get back to you within 24 hours
+              Fill out the form below and we&rsquo;ll get back to you within 24 hours
             </p>
           </div>
 

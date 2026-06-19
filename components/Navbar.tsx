@@ -19,16 +19,16 @@ export default function Navbar({
   activeTab,
   setActiveTab,
   onGetStartedClick,
-  onOpenThemeAnalyzer,
+  onOpenThemeAnalyzer: _onOpenThemeAnalyzer,
 }: NavbarProps) {
+  void _onOpenThemeAnalyzer;
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const navItems: { label: string; tab: ActiveTab }[] = [
     { label: 'Home', tab: 'Home' },
     { label: 'Projects', tab: 'Projects' },
     { label: 'Services', tab: 'Services' },
-    { label: 'Layout', tab: 'Layout' },          
-    { label: 'Contents', tab: 'Contents' },
+    { label: 'Layout', tab: 'Layout' },
     { label: 'About', tab: 'About' },
     { label: 'Contact', tab: 'Contact' },
   ];
@@ -41,7 +41,7 @@ export default function Navbar({
       */}
       <div
         id="ahs-navbar"
-        className="w-full bg-white/25 backdrop-blur-xl border border-white/35 rounded-full py-2 px-3 md:px-6 shadow-[0_12px_40px_rgba(0,0,0,0.12)] flex items-center justify-between pointer-events-auto transition-all duration-300 hover:border-white/50 overflow-hidden"
+        className="w-full bg-white border border-stone-200/80 rounded-full py-2 px-3 md:px-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)] flex items-center justify-between pointer-events-auto transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] overflow-hidden"
       >
         {/* Left: Brand Logo & Typography */}
         <div
@@ -60,18 +60,16 @@ export default function Navbar({
               <button
                 key={item.tab}
                 onClick={() => setActiveTab(item.tab)}
-                className={`px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 hover:bg-white/40 ${isActive
-                  ? 'bg-white/85 text-[#b84822] shadow-[0_2px_10px_rgba(0,0,0,0.06)]'
-                  : 'text-zinc-800 hover:text-[#b84822]'
+                className={`px-4 py-1.5 rounded-full text-[13px] font-semibold transition-all duration-200 ${isActive
+                  ? 'bg-[#b84822]/10 text-[#b84822] shadow-[0_2px_10px_rgba(0,0,0,0.06)]'
+                  : 'text-zinc-800 hover:bg-stone-100 hover:text-[#b84822]'
                   }`}
               >
                 {item.label}
               </button>
             );
           })}
-        </nav>
-
-        {/* Right: Selectors & CTA */}
+        </nav>        {/* Right: Selectors & CTA */}
         <div className="flex items-center gap-2">
           {/* Core Get Started CTA */}
           <button

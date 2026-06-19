@@ -1,28 +1,22 @@
-'use client';
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useRouter } from 'next/navigation';
-import ProjectsOverview from '@/components/ProjectsOverview';
+import type { Metadata } from "next";
+import ProjectsRouteClient from "./page-client";
+
+export const metadata: Metadata = {
+  title: "Projects | AHS Properties & Development Ltd.",
+  description:
+    "Explore premium development projects by AHS Properties & Development Ltd. in Jolshiri Abashon and Dhaka: apartments, villas, duplexes and investment opportunities.",
+  openGraph: {
+    title: "Projects - AHS Properties & Development Ltd.",
+    description:
+      "Premium real estate development projects in Bangladesh.",
+  },
+};
 
 export default function ProjectsPage() {
-  const router = useRouter();
-
-  const handleInquire = (title: string) => {
-    // Navigate back to the home page's contact broker form and pass the project title if needed
-    router.push(`/#contact-broker-section`);
-  };
-
-  return (
-    <div className="w-full bg-[#fafaf9] min-h-screen py-12">
-      <section className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-8">
-        <ProjectsOverview
-          onInquire={handleInquire}
-        />
-      </section>
-    </div>
-  );
+  return <ProjectsRouteClient />;
 }

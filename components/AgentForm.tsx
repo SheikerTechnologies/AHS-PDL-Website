@@ -1,10 +1,9 @@
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
- */
-
-import { useState, FormEvent, useEffect } from 'react';
-import { Send, Phone, Mail, CheckCircle, HelpCircle, Star, Sparkles } from 'lucide-react';
+ */import React, { useState, FormEvent } from 'react';
+import Image from 'next/image';
+import { Send, Phone, Mail, CheckCircle, Sparkles } from 'lucide-react';
 import { Agent, Property } from '@/lib/types';
 import { AGENTS } from '@/lib/data';
 
@@ -17,26 +16,30 @@ export default function AgentForm({
   selectedProperty,
   onClose,
 }: AgentFormProps) {
+  // Use key on parent to force remount when selectedProperty changes
   // Form fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [message, setMessage] = useState(
-    selectedProperty
-      ? `Hello, I'm interested in viewing the "${selectedProperty.title}" located in ${selectedProperty.location}. Please provide pricing details and visiting times.`
-      : "Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh."
-  );
+
+  const initialMessage = selectedProperty
+    ? `Hello, I'm interested in viewing the "${selectedProperty.title}" located in ${selectedProperty.location}. Please provide pricing details and visiting times.`
+    : "Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.";
+  const [message, setMessage] = useState(initialMessage);
   const [selectedAgent, setSelectedAgent] = useState<Agent>(AGENTS[0]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  // Update message when selected property changes
+  /* eslint-disable react-hooks/set-state-in-effect */
+  React.useEffect(() => {
     if (selectedProperty) {
       setMessage(`Hello, I'm interested in viewing the "${selectedProperty.title}" located in ${selectedProperty.location}. Please provide pricing details and visiting times.`);
     } else {
       setMessage("Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.");
     }
-  }, [selectedProperty?.title, selectedProperty?.location]);
+  }, [selectedProperty]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -84,12 +87,15 @@ export default function AgentForm({
                       : 'border-transparent hover:bg-white/5 opacity-70 hover:opacity-90'
                   }`}
                 >
-                  <img
-                    src={agent.image}
-                    alt={agent.name}
-                    referrerPolicy="no-referrer"
-                    className="w-10 h-10 rounded-full object-cover border border-white/20"
-                  />
+                  <div className="relative w-10 h-10 rounded-full overflow-hidden border border-white/20 shrink-0">
+                    <Image
+                      src={agent.image}
+                      alt={agent.name}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
                   <div className="flex-1">
                     <div className="flex justify-between items-center">
                       <span className="text-xs font-bold text-white leading-none">{agent.name}</span>
@@ -156,12 +162,15 @@ export default function AgentForm({
               </h3>
               {selectedProperty && (
                 <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100/50 flex gap-2.5 items-center mt-2">
-                  <img
-                    src={selectedProperty.image}
-                    alt={selectedProperty.title}
-                    referrerPolicy="no-referrer"
-                    className="w-10 h-10 rounded-lg object-cover"
-                  />
+                  <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
+                    <Image
+                      src={selectedProperty.image || '/assets/ahspdl1.png'}
+                      alt={selectedProperty.title}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                    />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] font-extrabold text-[#1e2a4a] tracking-widest block uppercase">Selected Property</span>
                     <span className="text-xs font-bold text-slate-800 block truncate">{selectedProperty.title}</span>

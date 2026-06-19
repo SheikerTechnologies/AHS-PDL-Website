@@ -5,30 +5,13 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, FormEvent } from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram, ArrowRight } from 'lucide-react';
+import React from 'react';
+import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
 import FooterLogo from './FooterLogo';
 import { AGENTS } from '@/lib/data';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-  const [email, setEmail] = useState('');
-  const [subscribeLoading, setSubscribeLoading] = useState(false);
-  const [subscribeSuccess, setSubscribeSuccess] = useState(false);
-
-  const handleNewsletterSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    if (!email) return;
-
-    setSubscribeLoading(true);
-    setTimeout(() => {
-      setSubscribeLoading(false);
-      setSubscribeSuccess(true);
-      setEmail('');
-      setTimeout(() => setSubscribeSuccess(false), 3000);
-    }, 800);
-  };
-
   const primaryAgent = AGENTS[0];
 
   return (
@@ -47,16 +30,22 @@ export default function Footer() {
             {/* Social Media Links */}
             <div className="flex gap-3 pt-2">
               <a
-                href="#"
+                href="https://facebook.com/ahsp"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#b84822]/10 hover:bg-[#b84822] text-[#b84822] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                 title="Facebook"
+                aria-label="Follow us on Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
-                href="#"
+                href="https://instagram.com/ahsp"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-[#b84822]/10 hover:bg-[#b84822] text-[#b84822] hover:text-white rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110"
                 title="Instagram"
+                aria-label="Follow us on Instagram"
               >
                 <Instagram size={18} />
               </a>
@@ -70,28 +59,28 @@ export default function Footer() {
             </h3>
             <nav className="flex flex-col gap-3">
               <a
-                href="#"
+                href="/#discover-properties-section"
                 className="text-sm text-stone-600 hover:text-[#b84822] transition-colors duration-200 flex items-center gap-2 group"
               >
                 <span className="w-1.5 h-1.5 bg-[#b84822]/50 rounded-full group-hover:bg-[#b84822] transition-colors" />
                 Property Search
               </a>
               <a
-                href="#"
+                href="/services"
                 className="text-sm text-stone-600 hover:text-[#b84822] transition-colors duration-200 flex items-center gap-2 group"
               >
                 <span className="w-1.5 h-1.5 bg-[#b84822]/50 rounded-full group-hover:bg-[#b84822] transition-colors" />
                 Investment Advisory
               </a>
               <a
-                href="#"
+                href="/services"
                 className="text-sm text-stone-600 hover:text-[#b84822] transition-colors duration-200 flex items-center gap-2 group"
               >
                 <span className="w-1.5 h-1.5 bg-[#b84822]/50 rounded-full group-hover:bg-[#b84822] transition-colors" />
                 Consultation
               </a>
               <a
-                href="#"
+                href="/services"
                 className="text-sm text-stone-600 hover:text-[#b84822] transition-colors duration-200 flex items-center gap-2 group"
               >
                 <span className="w-1.5 h-1.5 bg-[#b84822]/50 rounded-full group-hover:bg-[#b84822] transition-colors" />
@@ -177,25 +166,27 @@ export default function Footer() {
           </p>
           <div className="flex gap-6 flex-wrap justify-center">
             <a
-              href="#"
+              href="/legal#privacy-policy"
               className="hover:text-[#b84822] transition-colors duration-200"
             >
               Privacy Policy
             </a>
             <a
-              href="#"
+              href="/legal#terms-of-service"
               className="hover:text-[#b84822] transition-colors duration-200"
             >
               Terms of Service
             </a>
             <a
-              href="#"
+              href="/legal#cookie-settings"
               className="hover:text-[#b84822] transition-colors duration-200"
             >
               Cookie Settings
             </a>
             <a
-              href="#"
+              href="/sitemap.xml"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hover:text-[#b84822] transition-colors duration-200"
             >
               Sitemap
