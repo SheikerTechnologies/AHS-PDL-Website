@@ -13,7 +13,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: "About AHS Properties & Development Ltd.",
     description:
-      "Building Trust, Delivering Excellence. Premier real estate development in Bangladesh.",
+      "Building Trust, Delivering Excellence. Premier real estate development in Bangladesh with over 30 years of experience.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About AHS Properties & Development Ltd.",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About AHS Properties & Development Ltd.",
+    description:
+      "Building Trust, Delivering Excellence. Premier real estate development in Bangladesh with over 30 years of experience.",
+    images: ["/opengraph-image.png"],
+  },
+  alternates: {
+    canonical: "https://ahspdl.com/about",
   },
 };
 

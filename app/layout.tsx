@@ -9,13 +9,15 @@ import "./globals.css";
 import { AppProvider } from "./providers";
 import RootLayoutClient from "./root-layout-client";
 
-const jsonLd = {
+const siteUrl = "https://ahspdl.com";
+
+const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "RealEstateAgent",
   name: "AHS Properties & Development Ltd.",
-  url: "https://ahspdl.com",
-  logo: "https://ahspdl.com/assets/ahspdLogoL.png",
-  image: "https://ahspdl.com/assets/ahspdLogoL.png",
+  url: siteUrl,
+  logo: `${siteUrl}/assets/ahspdLogoL.png`,
+  image: `${siteUrl}/opengraph-image.png`,
   description:
     "Premium real estate development company in Bangladesh specializing in residential plots, apartments, villas, and luxury properties in Jolshiri Abashon and Dhaka.",
   address: {
@@ -80,6 +82,23 @@ const jsonLd = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "AHS Properties & Development Ltd.",
+  url: siteUrl,
+  description:
+    "Premium real estate development company in Bangladesh. Find luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: {
+      "@type": "EntryPoint",
+      urlTemplate: `${siteUrl}/projects?search={search_term_string}`,
+    },
+    "query-input": "required name=search_term_string",
+  },
+};
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -90,25 +109,41 @@ const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
 });
 
-const siteUrl = "https://ahspdl.com";
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: "AHS Properties & Development | Premium Real Estate",
+  title: "AHS Properties & Development Ltd. | Premium Real Estate in Bangladesh",
   description:
-    "Discover premium properties and development projects. Explore villas, apartments, and investment opportunities with AHS Properties & Development.",
+    "AHS Properties & Development Ltd. — Bangladesh's premier real estate developer offering luxury villas, apartments, residential plots, and investment opportunities in Jolshiri Abashon and Dhaka.",
   keywords: [
-    "real estate",
-    "properties",
-    "villas",
-    "apartments",
-    "investment",
-    "development projects",
-    "Bangladesh",
+    "AHS Properties",
+    "real estate Bangladesh",
     "Jolshiri Abashon",
+    "Dhaka properties",
+    "luxury villas",
+    "apartments",
+    "residential plots",
+    "real estate development",
+    "Bangladesh property",
+    "investment",
+    "RAJUK",
+    "property developer Bangladesh",
   ],
-  authors: [{ name: "AHS Properties & Development" }],
+  authors: [{ name: "AHS Properties & Development Ltd." }],
+  creator: "AHS Properties & Development Ltd.",
+  publisher: "AHS Properties & Development Ltd.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+  },
+  manifest: "/manifest.json",
   alternates: {
+    canonical: siteUrl,
     languages: {
       "en": siteUrl,
       "bn": siteUrl,
@@ -116,32 +151,41 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "AHS Properties & Development",
+    title: "AHS Properties & Development Ltd. | Premium Real Estate in Bangladesh",
     description:
-      "Premium Properties & Development. Transforming real estate dreams into reality.",
+      "Bangladesh's premier real estate developer. Luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka. 30+ years of excellence.",
     type: "website",
-    siteName: "AHS Properties & Development",
+    siteName: "AHS Properties & Development Ltd.",
     url: siteUrl,
+    locale: "en_US",
     images: [
       {
-        url: "/assets/ahspdLogoL.png",
-        width: 600,
-        height: 200,
-        alt: "AHS Properties & Development Ltd.",
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AHS Properties & Development Ltd. — Premium Real Estate",
       },
     ],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   twitter: {
     card: "summary_large_image",
-    title: "AHS Properties & Development",
+    title: "AHS Properties & Development Ltd. | Premium Real Estate in Bangladesh",
     description:
-      "Premium Properties & Development. Transforming real estate dreams into reality.",
-    images: ["/assets/ahspdLogoL.png"],
+      "Bangladesh's premier real estate developer. Luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka.",
+    images: ["/opengraph-image.png"],
   },
+  category: "real estate",
 };
 
 export default function RootLayout({
@@ -159,7 +203,11 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body

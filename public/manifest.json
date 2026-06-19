@@ -1,0 +1,21 @@
+{
+  "name": "AHS Properties & Development Ltd.",
+  "short_name": "AHS P&D Ltd.",
+  "description": "Premium real estate development company in Bangladesh specializing in residential plots, apartments, villas, and luxury properties.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fafaf9",
+  "theme_color": "#1e2a4a",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

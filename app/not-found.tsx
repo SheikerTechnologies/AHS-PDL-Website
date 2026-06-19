@@ -14,6 +14,19 @@ export const metadata: Metadata = {
     index: false,
     follow: false,
   },
+  openGraph: {
+    title: "Page Not Found | AHS Properties & Development Ltd.",
+    description:
+      "The page you are looking for does not exist. Return to the AHS Properties & Development homepage.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AHS Properties & Development Ltd.",
+      },
+    ],
+  },
 };
 
 export default function NotFound() {

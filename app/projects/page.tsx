@@ -13,7 +13,25 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Projects - AHS Properties & Development Ltd.",
     description:
-      "Premium real estate development projects in Bangladesh.",
+      "Premium real estate development projects in Bangladesh. Explore apartments, villas, duplexes, and investment opportunities in Jolshiri Abashon and Dhaka.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AHS Properties & Development Projects",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects - AHS Properties & Development Ltd.",
+    description:
+      "Premium real estate development projects in Bangladesh. Explore apartments, villas, duplexes, and investment opportunities in Jolshiri Abashon and Dhaka.",
+    images: ["/opengraph-image.png"],
+  },
+  alternates: {
+    canonical: "https://ahspdl.com/projects",
   },
 };
 

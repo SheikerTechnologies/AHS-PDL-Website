@@ -9,11 +9,29 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Legal | AHS Properties & Development Ltd.",
   description:
-    "Privacy Policy, Terms of Service, and Cookie Settings for AHS Properties & Development Ltd.",
+    "Privacy Policy, Terms of Service, and Cookie Settings for AHS Properties & Development Ltd. Learn how we protect your data.",
   openGraph: {
     title: "Legal Information — AHS Properties & Development Ltd.",
     description:
-      "Review our Privacy Policy, Terms of Service, and Cookie Settings.",
+      "Review our Privacy Policy, Terms of Service, and Cookie Settings for AHS Properties & Development Ltd.",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "AHS Properties & Development Legal Information",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Legal Information — AHS Properties & Development Ltd.",
+    description:
+      "Review our Privacy Policy, Terms of Service, and Cookie Settings for AHS Properties & Development Ltd.",
+    images: ["/opengraph-image.png"],
+  },
+  alternates: {
+    canonical: "https://ahspdl.com/legal",
   },
 };
 
