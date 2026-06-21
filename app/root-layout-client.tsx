@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import FloatingContactIcons from '@/components/FloatingContactIcons';
 import { ActiveTab } from '@/lib/types';
-import { useAppContext } from './providers';
 
 const routeMap: Record<string, ActiveTab> = {
   '/projects': 'Projects',
@@ -22,7 +21,6 @@ export default function RootLayoutClient({
 }) {
   const pathname = usePathname();
   const router = useRouter();
-  const { setThemeAnalyzerOpen } = useAppContext();
 
   const activeTab: ActiveTab = routeMap[pathname] || 'Home';
 
@@ -39,15 +37,13 @@ export default function RootLayoutClient({
   };
 
   const handleGetStartedClick = () => router.push('/services');
-  const handleOpenThemeAnalyzer = () => setThemeAnalyzerOpen(true);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-surface">
       <Navbar
         activeTab={activeTab}
         setActiveTab={handleSetActiveTab}
         onGetStartedClick={handleGetStartedClick}
-        onOpenThemeAnalyzer={handleOpenThemeAnalyzer}
       />
 
       <main className="flex-grow">{children}</main>

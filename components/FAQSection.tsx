@@ -67,7 +67,7 @@ export default function FAQSection() {
   const filteredFaqs = faqs.filter(faq => selectedCategory === 'All' || faq.category === selectedCategory);
 
   return (
-    <section id="ahs-faq-section" className="w-full py-20 bg-stone-50/50 border-t border-stone-200/60 select-none">
+    <section id="ahs-faq-section" className="w-full py-20 bg-surface-muted/50 border-t border-border-main/60 select-none">
       <div className="w-full max-w-5xl mx-auto px-6 md:px-8 flex flex-col gap-12">
         
         {/* Typographic Heading */}
@@ -76,10 +76,10 @@ export default function FAQSection() {
             <HelpCircle className="w-3.5 h-3.5 text-[#b84822]" />
             Client Help & Support
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-main tracking-tight leading-tight">
             Frequently Asked Questions
           </h2>
-          <p className="text-xs md:text-sm text-stone-500 font-normal mt-1 leading-relaxed">
+          <p className="text-xs md:text-sm text-text-secondary font-normal mt-1 leading-relaxed">
             Get accurate details regarding our military-backed leadership, legal approvals, payment procedures, and elite smart-city planning.
           </p>
         </div>
@@ -92,8 +92,8 @@ export default function FAQSection() {
               onClick={() => setSelectedCategory(cat.value)}
               className={`px-4.5 py-2.5 rounded-full text-xs font-bold transition-all duration-300 ${
                 selectedCategory === cat.value
-                  ? 'bg-stone-900 text-white shadow-md scale-[1.02]'
-                  : 'bg-white border border-stone-200/80 text-stone-600 hover:bg-stone-100 hover:text-stone-900'
+                  ? 'bg-accent text-text-on-accent shadow-md scale-[1.02]'
+                  : 'bg-surface-alt border border-border-main/80 text-text-secondary hover:bg-surface-muted hover:text-text-main'
               }`}
             >
               {cat.label}
@@ -102,7 +102,7 @@ export default function FAQSection() {
         </div>
 
         {/* FAQ Area */}
-        <div className="flex flex-col max-w-3xl mx-auto w-full border border-stone-200 bg-white rounded-3xl overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.02)] divide-y divide-stone-150">
+        <div className="flex flex-col max-w-3xl mx-auto w-full border border-border-main bg-surface-alt rounded-3xl overflow-hidden shadow-[0_10px_35px_rgba(0,0,0,0.02)] divide-y divide-border-light">
           <AnimatePresence mode="popLayout">
             {filteredFaqs.map((faq) => {
               const isOpen = activeFAQ === faq.id;
@@ -116,7 +116,7 @@ export default function FAQSection() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="w-full flex flex-col text-left transition-colors duration-300 hover:bg-stone-50/40"
+                  className="w-full flex flex-col text-left transition-colors duration-300 hover:bg-surface-muted/40"
                 >
                   {/* Trigger Header */}
                   <button
@@ -125,18 +125,18 @@ export default function FAQSection() {
                   >
                     <div className="flex items-center gap-3.5">
                       <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 border transition-all ${
-                        isOpen ? 'bg-amber-50 border-amber-200/60 text-[#b84822]' : 'bg-stone-50 border-stone-200 text-stone-500'
+                        isOpen ? 'bg-amber-50 border-amber-200/60 text-accent' : 'bg-surface-muted border-border-main text-text-secondary'
                       }`}>
                         <IconComp className="w-4 h-4" />
                       </div>
-                      <span className="text-sm md:text-base font-extrabold text-stone-900 pr-2">
+                      <span className="text-sm md:text-base font-extrabold text-text-main pr-2">
                         {faq.question}
                       </span>
                     </div>
                     <motion.div
                       animate={{ rotate: isOpen ? 180 : 0 }}
                       transition={{ duration: 0.25 }}
-                      className="text-stone-400 shrink-0"
+                      className="text-text-muted shrink-0"
                     >
                       <ChevronDown className="w-5 h-5" />
                     </motion.div>
@@ -151,9 +151,8 @@ export default function FAQSection() {
                         exit={{ height: 0, opacity: 0 }}
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
                         className="overflow-hidden"
-                      >
-                        <div className="px-6 pb-6 md:px-8 md:pb-6 pl-[54px] md:pl-[74px] border-t border-stone-100 bg-stone-50/10">
-                          <p className="text-xs md:text-sm text-stone-600 leading-relaxed font-normal">
+                      >                          <div className="px-6 pb-6 md:px-8 md:pb-6 pl-[54px] md:pl-[74px] border-t border-border-light bg-surface-muted/10">
+                          <p className="text-xs md:text-sm text-text-secondary leading-relaxed font-normal">
                             {faq.answer}
                           </p>
                         </div>

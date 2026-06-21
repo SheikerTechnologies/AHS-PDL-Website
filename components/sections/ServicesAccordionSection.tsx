@@ -41,7 +41,7 @@ export default function ServicesAccordionSection() {
   return (
     <section
       id="about-services-section"
-      className="w-full py-20 bg-white border-y border-stone-100 select-none"
+      className="w-full py-20 bg-surface-alt border-y border-border-light select-none"
     >
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
         <motion.div
@@ -55,10 +55,10 @@ export default function ServicesAccordionSection() {
             <span className="w-1.5 h-1.5 rounded-full bg-[#1e2a4a]" />
             Our Services
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight font-sans">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-main tracking-tight font-sans">
             What We Offer?
           </h2>
-          <p className="text-sm md:text-base text-stone-500 leading-relaxed font-normal">
+          <p className="text-sm md:text-base text-text-secondary leading-relaxed font-normal">
             Buying or selling a property can be overwhelming — we make it effortless.
           </p>
         </motion.div>
@@ -68,7 +68,7 @@ export default function ServicesAccordionSection() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7 }}
-          className="lg:col-span-7 flex flex-col border-t border-stone-200"
+          className="lg:col-span-7 flex flex-col border-t border-border-main"
         >
           {SERVICES.map((serv) => {
             const isOpen = activeService === serv.id;
@@ -77,7 +77,7 @@ export default function ServicesAccordionSection() {
                 layout="position"
                 key={serv.id}
                 onClick={() => setActiveService(isOpen ? 0 : serv.id)}
-                className="group py-5 border-b border-stone-200 cursor-pointer flex flex-col justify-start text-left transition-all duration-300 overflow-hidden"
+                className="group py-5 border-b border-border-main cursor-pointer flex flex-col justify-start text-left transition-all duration-300 overflow-hidden"
               >
                 <div className="flex justify-between items-center">
                   <h3

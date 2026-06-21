@@ -13,7 +13,7 @@ const siteUrl = "https://ahspdl.com";
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "RealEstateAgent",
+  "@type": "RealEstateDeveloper",
   name: "AHS Properties & Development Ltd.",
   url: siteUrl,
   logo: `${siteUrl}/assets/ahspdLogoL.png`,
@@ -146,7 +146,6 @@ export const metadata: Metadata = {
     canonical: siteUrl,
     languages: {
       "en": siteUrl,
-      "bn": siteUrl,
       "x-default": siteUrl,
     },
   },
@@ -199,8 +198,24 @@ export default function RootLayout({
       className={`${inter.variable} ${jetbrainsMono.variable} h-full scroll-smooth antialiased`}
     >
       <head>
-        <meta name="theme-color" content="#fafaf9" />
+        <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#0c0c0a" media="(prefers-color-scheme: dark)" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* FOUC prevention — apply dark class before React hydrates */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('ahsp-theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
@@ -212,7 +227,7 @@ export default function RootLayout({
       </head>
       <body
         className="h-full flex flex-col antialiased"
-        style={{ backgroundColor: "#f5f5ecff" }}
+        style={{ backgroundColor: "var(--color-surface)" }}
       >
         <AppProvider>
           <RootLayoutClient>{children}</RootLayoutClient>

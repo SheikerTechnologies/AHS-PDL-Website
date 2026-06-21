@@ -31,12 +31,12 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-[#fafaf9] flex items-center justify-center px-6 py-24">
+    <div className="min-h-screen bg-surface flex items-center justify-center px-6 py-24">
       <div className="max-w-lg w-full text-center">
         {/* Decorative element */}
         <div className="mb-8 flex justify-center">
           <div className="relative">
-            <div className="text-[120px] md:text-[160px] font-black text-stone-200 leading-none select-none tracking-tighter">
+            <div className="text-[120px] md:text-[160px] font-black text-text-muted/20 leading-none select-none tracking-tighter">
               404
             </div>
             <div className="absolute inset-0 flex items-center justify-center">
@@ -45,11 +45,11 @@ export default function NotFound() {
           </div>
         </div>
 
-        <h1 className="text-2xl md:text-3xl font-extrabold text-stone-900 tracking-tight mb-3">
+        <h1 className="text-2xl md:text-3xl font-extrabold text-text-main tracking-tight mb-3">
           Page Not Found
         </h1>
 
-        <p className="text-sm text-stone-500 leading-relaxed mb-8 max-w-sm mx-auto">
+        <p className="text-sm text-text-secondary leading-relaxed mb-8 max-w-sm mx-auto">
           The page you are looking for might have been moved, deleted, or
           perhaps never existed. Let us help you find your way back.
         </p>
@@ -58,7 +58,7 @@ export default function NotFound() {
         <div className="flex flex-col sm:flex-row gap-3 justify-center mb-12">
           <Link
             href="/"
-            className="inline-flex items-center justify-center gap-2 bg-[#b84822] hover:bg-[#a03d1b] text-white text-xs font-bold px-6 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg"
+            className="inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-text-on-accent text-xs font-bold px-6 py-3 rounded-full transition-all duration-200 shadow-md hover:shadow-lg dark:btn-glow-accent"
           >
             <svg
               className="w-4 h-4"
@@ -78,7 +78,7 @@ export default function NotFound() {
 
           <Link
             href="/projects"
-            className="inline-flex items-center justify-center gap-2 border border-stone-300 hover:border-stone-400 text-stone-700 hover:text-stone-900 text-xs font-bold px-6 py-3 rounded-full transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 border border-border-main hover:border-border-main text-text-secondary hover:text-text-main text-xs font-bold px-6 py-3 rounded-full transition-all duration-200"
           >
             <svg
               className="w-4 h-4"
@@ -98,7 +98,7 @@ export default function NotFound() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center gap-2 border border-stone-300 hover:border-stone-400 text-stone-700 hover:text-stone-900 text-xs font-bold px-6 py-3 rounded-full transition-all duration-200"
+            className="inline-flex items-center justify-center gap-2 border border-border-main hover:border-border-main text-text-secondary hover:text-text-main text-xs font-bold px-6 py-3 rounded-full transition-all duration-200"
           >
             <svg
               className="w-4 h-4"
@@ -117,13 +117,12 @@ export default function NotFound() {
           </Link>
         </div>
 
-        {/* Divider */}
-        <div className="relative mb-8">
+        {/* Divider */}          <div className="relative mb-8">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-stone-200" />
+            <div className="w-full border-t border-border-main" />
           </div>
           <div className="relative flex justify-center">
-            <span className="bg-[#fafaf9] px-4 text-[10px] font-bold text-stone-400 uppercase tracking-widest">
+            <span className="bg-surface px-4 text-[10px] font-bold text-text-muted uppercase tracking-widest">
               Quick Links
             </span>
           </div>
@@ -142,7 +141,7 @@ export default function NotFound() {
             <Link
               key={link.href}
               href={link.href}
-              className="bg-white border border-stone-200 hover:border-stone-300 hover:shadow-sm rounded-xl px-3 py-2.5 text-xs font-semibold text-stone-600 hover:text-stone-900 transition-all duration-200"
+              className="bg-surface-alt border border-border-main hover:border-border-main hover:shadow-sm rounded-xl px-3 py-2.5 text-xs font-semibold text-text-secondary hover:text-text-main transition-all duration-200"
             >
               {link.label}
             </Link>
@@ -150,7 +149,7 @@ export default function NotFound() {
         </div>
 
         {/* Footer text */}
-        <p className="mt-10 text-[10px] text-stone-400">
+        <p className="mt-10 text-[10px] text-text-muted">
           AHS Properties &amp; Development Ltd. &copy; {new Date().getFullYear()}
         </p>
       </div>

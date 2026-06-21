@@ -19,6 +19,8 @@ export default function FooterLogo({ className = '' }: FooterLogoProps) {
           alt="AHS Properties & Development Ltd."
           fill
           className="object-contain"
+          sizes="220px"
+          loading="lazy"
         />
       </div>
     </div>

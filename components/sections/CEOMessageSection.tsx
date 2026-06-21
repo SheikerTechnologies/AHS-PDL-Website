@@ -13,14 +13,14 @@ export default function CEOMessageSection() {
   const [showFullMessage, setShowFullMessage] = useState(false);
 
   return (
-    <section className="w-full bg-[#fcfbfc] border-b border-stone-200/60 py-20 select-none">
+    <section className="w-full bg-surface border-b border-border-main/60 py-20 select-none">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-8">
         {/* Section Main Title */}
         <div className="text-center lg:text-left mb-16">
           <span className="text-xs font-bold uppercase tracking-[0.3em] text-[#104a32] block mb-3">
             Leadership Message
           </span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight relative inline-block">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-text-main tracking-tight relative inline-block">
             Message from our CEO
             <span className="absolute bottom-[-10px] left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0 w-16 h-[3px] bg-[#104a32]"></span>
           </h2>
@@ -35,17 +35,19 @@ export default function CEOMessageSection() {
                 alt="Md. Sohanur Rahman Sohan"
                 fill
                 className="object-cover"
+                sizes="(max-width: 768px) 256px, 288px"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#104a32]/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <div>
-              <h4 className="text-xl font-bold text-stone-900 tracking-tight">
+              <h4 className="text-xl font-bold text-text-main tracking-tight">
                 Md. Sohanur Rahman Sohan
               </h4>
               <p className="text-xs font-semibold uppercase tracking-wider text-[#104a32] mt-1">
                 Chief Executive Officer
               </p>
-              <p className="text-xs text-stone-400 mt-0.5">AHS Properties & Development Ltd.</p>
+              <p className="text-xs text-text-muted mt-0.5">AHS Properties & Development Ltd.</p>
               <div className="mt-4 text-xs text-stone-500 space-y-0.5">
                 <p>Managing Director, Sun Solaris Ltd.</p>
                 <p>Proprietor, AHS Enterprise</p>
@@ -54,14 +56,14 @@ export default function CEOMessageSection() {
           </div>
 
           {/* Right Column: Message Content */}
-          <div className="lg:col-span-8 bg-white rounded-3xl border border-stone-200/80 p-8 md:p-10 shadow-sm relative overflow-hidden">
+          <div className="lg:col-span-8 bg-surface-alt rounded-3xl border border-border-main/80 p-8 md:p-10 shadow-sm relative overflow-hidden">
             {/* Decorative Quote Icon */}
             <div className="absolute top-6 right-8 text-stone-100 font-serif text-8xl leading-none pointer-events-none select-none">
               &ldquo;
             </div>
 
             <div className="mb-8">
-              <h3 className="text-2xl md:text-3xl font-bold text-stone-900 tracking-tight">
+              <h3 className="text-2xl md:text-3xl font-bold text-text-main tracking-tight">
                 Building Legacies, Shaping the Future
               </h3>
               <p className="text-[#104a32] font-medium mt-2">
@@ -70,7 +72,7 @@ export default function CEOMessageSection() {
             </div>
 
             {/* Short Preview */}
-            <div className="text-stone-600 space-y-4 text-[15.2px] leading-relaxed font-normal">
+            <div className="text-text-secondary space-y-4 text-[15.2px] leading-relaxed font-normal">
               <p>
                 Our journey began with a vision&ndash; &ldquo;We Build Tomorrow&rdquo; to establish
                 a benchmark of unyielding reliability, top-tier quality, and strategic innovation in
@@ -86,7 +88,7 @@ export default function CEOMessageSection() {
                   : "max-h-0 opacity-0"
               }`}
             >
-              <div className="text-stone-600 space-y-6 text-[15.2px] leading-relaxed border-t border-stone-100 pt-8">
+              <div className="text-text-secondary space-y-6 text-[15.2px] leading-relaxed border-t border-border-light pt-8">
                 <p>
                   Over the years, through M/S. AHS Enterprise and Sun Solaris Limited, we have had
                   the distinct honor of serving as a trusted partner to both the military and civil
@@ -102,7 +104,7 @@ export default function CEOMessageSection() {
                   Ltd &mdash;reflect a legacy built entirely on trust and flawless execution.
                 </p>
                 <div className="pt-4 border-t border-stone-100">
-                  <h4 className="text-lg font-semibold text-stone-800 mb-3">
+                  <h4 className="text-lg font-semibold text-grey-900 mb-3">
                     The Evolution: Trust Meets Sustainable Living
                   </h4>
                   <p>
@@ -119,7 +121,7 @@ export default function CEOMessageSection() {
                   </p>
                 </div>
                 <div>
-                  <h4 className="text-lg font-semibold text-stone-800 mb-3">
+                  <h4 className="text-lg font-semibold text-grey-900 mb-3">
                     A Vision for Tomorrow
                   </h4>
                   <p>
@@ -131,7 +133,7 @@ export default function CEOMessageSection() {
                     development era.
                   </p>
                 </div>
-                <div className="pt-6 border-t border-stone-100 text-stone-700">
+                <div className="pt-6 border-t border-border-light text-text-secondary">
                   <p className="italic">
                     To our clients, partners, and stakeholders: thank you for your unwavering trust.
                     As we step into this new era of growth, we pledge to continue delivering superior
@@ -144,12 +146,12 @@ export default function CEOMessageSection() {
 
             {/* Bengali Version */}
             <div
-              className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 border-t border-stone-100 pt-8 ${
+              className={`overflow-hidden transition-all duration-500 ease-in-out mt-10 border-t border-border-light pt-8 ${
                 showBengali ? "max-h-[1600px] opacity-100" : "max-h-0 opacity-0"
               }`}
             >
-              <div className="text-stone-600 space-y-6 text-[15px] leading-relaxed">
-                <p className="font-medium text-stone-800 text-lg">
+              <div className="text-text-secondary space-y-6 text-[15px] leading-relaxed">
+                <p className="font-medium text-grey-900 text-lg">
                   গৌরবময় অর্জনের ধারায় আগামীর রূপরেখা&hellip;
                 </p>
                 <p>
@@ -172,7 +174,7 @@ export default function CEOMessageSection() {
                   নিখুঁত কর্মতৎপরতা ও গুণগত মান রক্ষায় আপসহীনতার সম্মিলন।
                 </p>
                 <div className="pt-4 border-t border-stone-100">
-                  <p className="font-medium text-stone-800 mb-3">
+                  <p className="font-medium text-grey-900 mb-3">
                     আস্থার শক্তিতে সমৃদ্ধ আবাসনের &ndash; অগ্রযাত্রা&hellip;
                   </p>
                   <p>

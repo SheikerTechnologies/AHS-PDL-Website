@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Property, Agent, DevelopmentProject } from './types';
+import { Agent, DevelopmentProject } from './types';
 
 export interface ClientMeta {
   name: string;
@@ -26,107 +26,6 @@ export const CLIENT_METADATA: ClientMeta[] = [
   { name: "Directorate General Defence Purchase", bengName: "প্রতিরক্ষা ক্রয় মহাপরিদপ্তর (ডিজিডিপি)", filename: "dgdp.png" },
   { name: "Dhaka Cantonment Board", bengName: "ঢাকা ক্যান্টনমেন্ট বোর্ড", filename: "dhaka-cantonment-board.png" },
   { name: "Department of Public Health Engineering", bengName: "জনস্বাস্থ্য প্রকৌশল অধিদপ্তর", filename: "dphe.png" },
-];
-
-export const PROPERTIES: Property[] = [
-  {
-    id: 'prop-bayside',
-    title: 'AHS Jolshiri Signature Villa',
-    location: 'Sector 16, Jolshiri Abashon, Dhaka',
-    coast: 'North',
-    type: 'Villa',
-    bedrooms: 3,
-    bathrooms: 3,
-    areaSqm: 280,
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-    description: 'A masterpiece of modern smart-city architecture, this signature residence captures open parkland views, premium marble finishes, and outstanding safety features in Sector 16.',
-    features: ['Lake Access', 'Infinity Pool', 'Terrace Garden', '24/7 Gated Security'],
-    isFeatured: true,
-  },
-  {
-    id: 'prop-1',
-    title: 'The Solaris Prime Estate',
-    location: 'Sector 16, Jolshiri Abashon, Dhaka',
-    coast: 'North',
-    type: 'Villa',
-    bedrooms: 5,
-    bathrooms: 5.5,
-    areaSqm: 520,
-    image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80',
-    description: 'This masterfully designed residential estate features double-height glass panels opening onto a lush green lawn, completely capturing the essence of modern Jolshiri elite living.',
-    features: ['Infinity Pool', 'Security Enclave', 'Automated Smart Systems', 'Chef Kitchen', 'Bespoke Fittings'],
-    isFeatured: true,
-  },
-  {
-    id: 'prop-2',
-    title: 'The Cantonment Heights Penthouse',
-    location: 'Rajnigandha Tower Area, Dhaka Cantonment',
-    coast: 'South',
-    type: 'Penthouse',
-    bedrooms: 3,
-    bathrooms: 3.5,
-    areaSqm: 310,
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80',
-    description: 'Boasting uninterrupted panoramic views of the military enclave, this premium penthouse features double-height ceilings, a wrap-around sky terrace, and private card-access elevators.',
-    features: ['Cantonment Views', 'Sky Terrace', 'Private Jacuzzi', '24/7 Military-Grade Security', 'Gym Access'],
-    isFeatured: true,
-  },
-  {
-    id: 'prop-3',
-    title: 'Jolshiri Serene Apartments',
-    location: 'Sector 15, Jolshiri Abashon, Dhaka',
-    coast: 'East',
-    type: 'Apartment',
-    bedrooms: 2,
-    bathrooms: 2,
-    areaSqm: 145,
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80',
-    description: 'Experience pure urban serenity in this modern canal-facing apartment. Walk directly onto the landscaped greenways of Jolshiri and enjoy refreshing tree-lined views.',
-    features: ['Canal Facing', 'Manicured Gardens', 'Common Lounge & Pool', 'Fully Furnished', '24/7 Power Backup'],
-    isFeatured: false,
-  },
-  {
-    id: 'prop-4',
-    title: 'Rajnigandha Luxury Duplex',
-    location: 'Dhaka Cantonment, Dhaka',
-    coast: 'South',
-    type: 'Duplex',
-    bedrooms: 4,
-    bathrooms: 4,
-    areaSqm: 260,
-    image: 'https://images.unsplash.com/photo-1615529182904-14819c35db37?auto=format&fit=crop&w=1200&q=80',
-    description: 'A stylish and spacious duplex positioned perfectly to capture secure cantonment living. Enjoy wide balconies, personal manicured lawns, and robust building structural safety.',
-    features: ['Scenic City Views', 'Private Garden', 'Swimming Lounge', 'Walking Track Proximity', 'Solar Backup Panels'],
-    isFeatured: false,
-  },
-  {
-    id: 'prop-5',
-    title: 'Nayapaltan Executive Residence',
-    location: 'VIP Road, Nayapaltan, Dhaka',
-    coast: 'West',
-    type: 'Villa',
-    bedrooms: 6,
-    bathrooms: 7,
-    areaSqm: 680,
-    image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=1200&q=80',
-    description: 'Uncompromising prestige nestled on a secured plot along VIP Road. Features high-end security command, professional-grade home theater capabilities, and private corporate-meeting lounge.',
-    features: ['City Skyline Views', 'Professional Boardroom', 'Private Cinema Loft', 'Double Garage', 'Guest Suite Pavilion'],
-    isFeatured: true,
-  },
-  {
-    id: 'prop-6',
-    title: 'Jolshiri Lakeside Sanctuary',
-    location: 'Sector 16, Jolshiri Abashon, Dhaka',
-    coast: 'North',
-    type: 'Apartment',
-    bedrooms: 3,
-    bathrooms: 3,
-    areaSqm: 180,
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80',
-    description: 'Positioned in Jolshiri\'s most prestigious residential pocket. Offering premium imported fittings, an open-concept modular kitchen layout, and views overlooking the neighborhood lake.',
-    features: ['Lakeside Balcony', 'Gated Community Access', 'Suburban Vistas', 'Underground Secure Parking', 'Storage Area'],
-    isFeatured: false,
-  },
 ];
 
 export const AGENTS: Agent[] = [
@@ -160,7 +59,8 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
     percentAvailable: 57,
     status: 'UNDER CONSTRUCTION',
     description: "Located in the premium core of Sector 16, AHS Jolshiri Central offers an exclusive lifestyle in the nation's premier smart city.",
-    image: 'https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/projects/Properties01-01.jpg',
+    images: ['/assets/projects/Properties01-01.jpg','/assets/projects/Properties01-02.jpg','/assets/projects/Properties01-03.jpg','/assets/projects/Properties01-04.jpg','/assets/projects/Properties01-05.jpg']
   },
   {
     id: 'proj-west-bay',
@@ -173,7 +73,8 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
     percentAvailable: 18,
     status: 'UNDER CONSTRUCTION',
     description: "Ideally located in Nayapaltan, VIP Square offers high-connectivity workspaces and executive residences.",
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/projects/Properties02-01.jpg',
+    images: ['/assets/projects/Properties02-01.jpg','/assets/projects/Properties02-02.jpg','/assets/projects/Properties02-03.jpg','/assets/projects/Properties02-04.jpg']
   },
   {
     id: 'proj-river-edge',
@@ -186,7 +87,8 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
     percentAvailable: 100,
     status: 'PRE LAUNCH MARKETING',
     description: "A refined collection of residences positioned next to the beautiful central canals of Jolshiri Abashon.",
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/projects/Properties03-01.jpg',
+    images: ['/assets/projects/Properties03-01.jpg','/assets/projects/Properties03-02.jpg','/assets/projects/Properties03-03.jpg','/assets/projects/Properties03-04.jpg']
   },
   {
     id: 'proj-coastal-view-3',
@@ -199,7 +101,8 @@ export const DEVELOPMENT_PROJECTS: DevelopmentProject[] = [
     percentAvailable: 38,
     status: 'PRE LAUNCH MARKETING',
     description: "A beautifully designed G+2 residential scheme offering modern townhouses with panoramic views of the Jolshiri landscape.",
-    image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=80'
+    image: '/assets/projects/Properties04-01.jpg',
+    images: ['/assets/projects/Properties04-01.jpg','/assets/projects/Properties04-02.jpg','/assets/projects/Properties04-03.jpg','/assets/projects/Properties04-04.jpg','/assets/projects/Properties04-05.jpg','/assets/projects/Properties04-06.jpg','/assets/projects/Properties04-07.jpg']
   },
   {
     id: 'proj-emara',

@@ -7,8 +7,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { Property } from "@/lib/types";
-import { PROPERTIES } from "@/lib/data";
+import { DevelopmentProject } from "@/lib/types";
+import { DEVELOPMENT_PROJECTS } from "@/lib/data";
 import HeroSection from "@/components/sections/HeroSection";
 import ClientMarqueeSection from "@/components/sections/ClientMarqueeSection";
 import CEOMessageSection from "@/components/sections/CEOMessageSection";
@@ -26,7 +26,7 @@ export default function Home() {
 
   const [blurLevel, setBlurLevel] = useState<string>("md");
   const [roundedLevel, setRoundedLevel] = useState<string>("full");
-  const [activePropertyInquiry, setActivePropertyInquiry] = useState<Property | null>(null);
+  const [activeProjectInquiry, setActiveProjectInquiry] = useState<DevelopmentProject | null>(null);
   const [selectedCoast, setSelectedCoast] = useState<string>("All");
 
   const handleGetStarted = () => {
@@ -37,9 +37,9 @@ export default function Home() {
   };
 
   const handleFeaturedInquiry = () => {
-    const featuredProp = PROPERTIES[0];
-    if (featuredProp) {
-      setActivePropertyInquiry(featuredProp);
+    const featuredProject = DEVELOPMENT_PROJECTS[0];
+    if (featuredProject) {
+      setActiveProjectInquiry(featuredProject);
       document
         .getElementById("contact-broker-section")
         ?.scrollIntoView({ behavior: "smooth" });
@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#fafaf9] text-stone-850 relative flex flex-col justify-between selection:bg-[#1e2a4a] selection:text-white">
+    <div className="min-h-screen bg-surface text-text-main relative flex flex-col justify-between selection:bg-navy selection:text-text-on-accent">
       {/* Hero */}
       <HeroSection onFeaturedInquiry={handleFeaturedInquiry} />
 
@@ -83,19 +83,19 @@ export default function Home() {
         onContextMenu={(e) => e.preventDefault()}
       >
         <div className="text-center mb-10">
-          <span className="text-xs font-extrabold text-[#1e2a4a] tracking-widest uppercase block mb-1">
+          <span className="text-xs font-extrabold text-navy tracking-widest uppercase block mb-1">
             OFFICIAL CREDENTIALS
           </span>
-          <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight">
+          <h2 className="text-3xl font-extrabold text-text-main tracking-tight">
             APDL RJSC Registration Certificate
           </h2>
-          <p className="text-sm text-stone-500 max-w-2xl mx-auto mt-2">
+          <p className="text-sm text-text-secondary max-w-2xl mx-auto mt-2">
             Authenticated by the Registrar of Joint Stock Companies &amp; Firms, Government of the People&rsquo;s Republic of Bangladesh
           </p>
         </div>
 
         <div className="max-w-4xl mx-auto relative select-none">
-          <div className="relative rounded-2xl overflow-hidden border-4 border-stone-200 shadow-xl bg-stone-100">
+          <div className="relative rounded-2xl overflow-hidden border-4 border-border-main shadow-xl bg-surface-muted">
             <Image
               src="/attachments/APDL_RJSC-1.png"
               alt="APDL RJSC Registration Certificate"
@@ -103,9 +103,10 @@ export default function Home() {
               height={2376}
               className="w-full h-auto object-contain"
               draggable={false}
+              loading="lazy"
             />
           </div>
-          <p className="text-center text-xs text-stone-400 mt-4 select-none">
+          <p className="text-center text-xs text-text-muted mt-4 select-none">
             Official Registration Certificate — AHS Properties &amp; Development Ltd.
           </p>
         </div>
@@ -117,13 +118,13 @@ export default function Home() {
         className="w-full max-w-7xl mx-auto px-6 md:px-8 py-12 flex flex-col gap-6 scroll-mt-24"
       >
         <div>
-          <span className="text-xs font-extrabold text-[#1e2a4a] tracking-widest uppercase block mb-1">
+          <span className="text-xs font-extrabold text-navy tracking-widest uppercase block mb-1">
             REAL ESTATE DECK
           </span>
-          <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight">
+          <h2 className="text-3xl font-extrabold text-text-main tracking-tight">
             Our Signature Properties
           </h2>
-          <p className="text-sm text-stone-500 max-w-2xl">
+          <p className="text-sm text-text-secondary max-w-2xl">
             Filter by location architectural zones or specific project blueprints online.
           </p>
         </div>
@@ -132,8 +133,8 @@ export default function Home() {
           setSelectedCoast={setSelectedCoast}
           maxItems={6}
           viewAllHref="/projects"
-          onInquire={(prop) => {
-            setActivePropertyInquiry(prop);
+          onInquire={(project) => {
+            setActiveProjectInquiry(project);
             document
               .getElementById("contact-broker-section")
               ?.scrollIntoView({ behavior: "smooth" });
@@ -150,11 +151,11 @@ export default function Home() {
       {/* Contact Broker Form */}
       <section
         id="contact-broker-section"
-        className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16 border-t border-stone-200/50 scroll-mt-24"
+        className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16 border-t border-border-main/50 scroll-mt-24"
       >
         <AgentForm
-          selectedProperty={activePropertyInquiry}
-          onClose={() => setActivePropertyInquiry(null)}
+          selectedProject={activeProjectInquiry}
+          onClose={() => setActiveProjectInquiry(null)}
         />
       </section>
     </div>

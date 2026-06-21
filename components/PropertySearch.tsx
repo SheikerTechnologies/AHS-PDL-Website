@@ -7,12 +7,12 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Search, MapPin, Layers, HelpCircle, ArrowUpRight, BedDouble, Bath, Square, Sparkles, X, Check, Eye } from 'lucide-react';
-import { Property } from '@/lib/types';
-import { PROPERTIES } from '@/lib/data';
+import { Search, MapPin, Layers, HelpCircle, ArrowUpRight, Sparkles, X, Check, Eye, Building2, Calendar } from 'lucide-react';
+import { DevelopmentProject } from '@/lib/types';
+import { DEVELOPMENT_PROJECTS } from '@/lib/data';
 
 interface PropertySearchProps {
-  onInquire: (property: Property) => void;
+  onInquire: (project: DevelopmentProject) => void;
   selectedCoast: string;
   setSelectedCoast: (coast: string) => void;
   maxItems?: number;
@@ -28,7 +28,7 @@ export default function PropertySearch({
 }: PropertySearchProps) {
   const [selectedType, setSelectedType] = useState<string>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
-  const [detailedPropForModal, setDetailedPropForModal] = useState<Property | null>(null);
+  const [detailedPropForModal, setDetailedPropForModal] = useState<DevelopmentProject | null>(null);
 
   // Coasts list
   const coasts = [
@@ -39,68 +39,66 @@ export default function PropertySearch({
     { value: 'West', label: 'West Coast' },
   ];
 
-  // Types list
+  // Derive unique types from DEVELOPMENT_PROJECTS
+  const projectTypes = Array.from(new Set(DEVELOPMENT_PROJECTS.map(p => p.type)));
   const types = [
     { value: 'All', label: 'All Types' },
-    { value: 'Villa', label: 'Villa' },
-    { value: 'Apartment', label: 'Apartment' },
-    { value: 'Penthouse', label: 'Penthouse' },
-    { value: 'Duplex', label: 'Duplex' },
+    ...projectTypes.map(t => ({ value: t, label: t })),
   ];
 
   // Filters logic
-  const filteredProperties = PROPERTIES.filter((p) => {
+  const filteredProjects = DEVELOPMENT_PROJECTS.filter((p) => {
     const matchesCoast = selectedCoast === 'All' || p.coast === selectedCoast;
     const matchesType = selectedType === 'All' || p.type === selectedType;
     const matchesSearch =
       searchQuery === '' ||
       p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.features.some((f) => f.toLowerCase().includes(searchQuery.toLowerCase()));
+      p.description.toLowerCase().includes(searchQuery.toLowerCase());
 
     return matchesCoast && matchesType && matchesSearch;
   });
 
   // Limit displayed items when maxItems is set and no filters are active
   const isFiltering = searchQuery !== '' || selectedCoast !== 'All' || selectedType !== 'All';
-  const displayedProperties = !isFiltering && maxItems ? filteredProperties.slice(0, maxItems) : filteredProperties;
+  const displayedProjects = !isFiltering && maxItems ? filteredProjects.slice(0, maxItems) : filteredProjects;
 
   return (
     <div className="flex flex-col gap-8">
       {/* Filter Panel */}
       <div 
         id="property-search-filter"
-        className="w-full bg-stone-50 border border-slate-200/80 rounded-3xl p-5 md:p-6 shadow-sm flex flex-col gap-5 select-none"
+        className="w-full bg-surface-muted border border-border-main/80 rounded-3xl p-5 md:p-6 shadow-sm flex flex-col gap-5 select-none"
       >
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-end">
           {/* Search */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-bold text-slate-700 tracking-wide uppercase pl-1">
+            <span className="text-xs font-bold text-text-main tracking-wide uppercase pl-1">
               Search Keyword
             </span>
             <div className="relative">
-              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Search properties..."
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border-main bg-surface-alt text-sm focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main"
               />
             </div>
           </div>
 
           {/* Type Selector */}
           <div className="flex flex-col gap-1.5">
-            <span className="text-xs font-bold text-slate-700 tracking-wide uppercase pl-1">
+            <span className="text-xs font-bold text-text-main tracking-wide uppercase pl-1">
               Property Categories
             </span>
             <div className="relative">
-              <Layers className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+              <Layers className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none" />
               <select
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-white text-sm focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800 appearance-none cursor-pointer"
+                className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border-main bg-surface-alt text-sm focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main appearance-none cursor-pointer"
               >
                 {types.map((tp) => (
                   <option key={tp.value} value={tp.value}>
@@ -116,7 +114,7 @@ export default function PropertySearch({
 
           {/* Location Area */}
           <div className="flex flex-col gap-1.5 lg:col-span-3">
-            <span className="text-xs font-bold text-slate-700 tracking-wide uppercase pl-1">
+            <span className="text-xs font-bold text-text-main tracking-wide uppercase pl-1">
               Location
             </span>
             <div className="flex flex-wrap gap-2">
@@ -126,8 +124,8 @@ export default function PropertySearch({
                   onClick={() => setSelectedCoast(c.value)}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
                     selectedCoast === c.value
-                      ? 'bg-slate-900 text-white shadow-sm'
-                      : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                  ? 'bg-accent text-text-on-accent shadow-sm'
+                  : 'bg-surface-alt border border-border-main text-text-secondary hover:bg-surface-muted hover:text-text-main'
                   }`}
                 >
                   {c.label}
@@ -140,8 +138,8 @@ export default function PropertySearch({
 
       {/* Results count */}
       <div className="flex justify-between items-center px-1">
-        <span className="text-xs text-slate-500 font-bold tracking-wide uppercase">
-          Found {filteredProperties.length} Properties
+        <span className="text-xs text-text-secondary font-bold tracking-wide uppercase">
+          Found {filteredProjects.length} Projects
         </span>
         {(searchQuery || selectedCoast !== 'All' || selectedType !== 'All') && (
           <button
@@ -150,7 +148,7 @@ export default function PropertySearch({
               setSelectedCoast('All');
               setSelectedType('All');
             }}
-            className="text-xs font-bold text-indigo-600 hover:text-indigo-950 transition-colors cursor-pointer underline underline-offset-2"
+            className="text-xs font-bold text-accent hover:text-accent-hover transition-colors cursor-pointer underline underline-offset-2"
           >
             Reset Filters
           </button>
@@ -158,10 +156,10 @@ export default function PropertySearch({
       </div>
 
       {/* Property Grid */}
-      {filteredProperties.length > 0 ? (
+      {filteredProjects.length > 0 ? (
         <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
-            {displayedProperties.map((p, idx) => (
+            {displayedProjects.map((p, idx) => (
               <motion.div
                 layout
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -170,27 +168,29 @@ export default function PropertySearch({
                 transition={{ duration: 0.4, delay: Math.min(idx * 0.05, 0.3) }}
                 whileHover={{ y: -6, scale: 1.01, boxShadow: "0 15px 35px rgba(0,0,0,0.06)" }}
                 key={p.id}
-                className="group bg-white rounded-3xl border border-slate-200/80 shadow-sm overflow-hidden flex flex-col justify-between cursor-pointer"
-              >
-                <div className="relative overflow-hidden aspect-[4/3] bg-slate-100">
+                className="group bg-surface-alt rounded-3xl border border-border-main/80 shadow-sm overflow-hidden flex flex-col justify-between cursor-pointer dark:card-hover-glow"
+              >                  <div className="relative overflow-hidden aspect-[4/3] bg-surface-muted">
                   <Image
                     src={p.image}
                     alt={p.title}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    loading="lazy"
                   />
                   
-                  <span className="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-widest uppercase">
-                    {p.coast} Coast
+                  <span className="absolute top-4 left-4 bg-black/70 dark:bg-black/80 backdrop-blur-md text-text-on-accent text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-widest uppercase">
+                    {p.type}
                   </span>
 
-                  {p.isFeatured && (
-                    <span className="absolute top-4 right-4 bg-amber-50 text-amber-700 text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-wider flex items-center gap-1">
-                      <Sparkles className="w-3 h-3" />
-                      Signature
-                    </span>
-                  )}
+                  <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-wider flex items-center gap-1 ${
+                    p.status === 'UNDER CONSTRUCTION'
+                      ? 'bg-amber-50 text-amber-700'
+                      : 'bg-emerald-50 text-emerald-700'
+                  }`}>
+                    <Sparkles className="w-3 h-3" />
+                    {p.status === 'UNDER CONSTRUCTION' ? 'Under Construction' : 'Pre-Launch'}
+                  </span>
                 </div>
 
                 <div className="p-5 flex flex-col gap-4 flex-1">
@@ -199,48 +199,50 @@ export default function PropertySearch({
                       <MapPin className="w-3.5 h-3.5" />
                       <span>{p.location}</span>
                     </div>
-                    <h3 className="text-base font-bold text-slate-900 tracking-tight leading-snug group-hover:text-indigo-950 transition-colors">
+                    <h3 className="text-base font-bold text-text-main tracking-tight leading-snug group-hover:text-accent-hover transition-colors">
                       {p.title}
                     </h3>
-                    <p className="text-xs text-slate-500 mt-2 line-clamp-3 leading-relaxed">
+                    <p className="text-xs text-text-secondary mt-2 line-clamp-3 leading-relaxed">
                       {p.description}
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-slate-100 text-slate-600">
-                    <div className="flex flex-col items-center justify-center p-1 bg-slate-50 rounded-xl">
-                      <BedDouble className="w-4 h-4 text-slate-500 mb-1" />
-                      <span className="text-[10px] font-bold">{p.bedrooms} Beds</span>
+                  <div className="grid grid-cols-3 gap-2 py-2.5 border-y border-border-light text-text-secondary">
+                    <div className="flex flex-col items-center justify-center p-1 bg-surface-muted rounded-xl">
+                      <Building2 className="w-4 h-4 text-text-muted mb-1" />
+                      <span className="text-[10px] font-bold">{p.totalUnits} Units</span>
                     </div>
-                    <div className="flex flex-col items-center justify-center p-1 bg-slate-50 rounded-xl">
-                      <Bath className="w-4 h-4 text-slate-500 mb-1" />
-                      <span className="text-[10px] font-bold">{p.bathrooms} Baths</span>
+                    <div className="flex flex-col items-center justify-center p-1 bg-surface-muted rounded-xl">
+                      <Calendar className="w-4 h-4 text-text-muted mb-1" />
+                      <span className="text-[10px] font-bold">{p.availableUnits} Avail.</span>
                     </div>
-                    <div className="flex flex-col items-center justify-center p-1 bg-slate-50 rounded-xl">
-                      <Square className="w-4 h-4 text-slate-500 mb-1" />
-                      <span className="text-[10px] font-bold">{p.areaSqm} sqm</span>
+                    <div className="flex flex-col items-center justify-center p-1 bg-surface-muted rounded-xl">
+                      <div className="w-4 h-4 rounded-full border-2 border-emerald-500 mb-1 flex items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      </div>
+                      <span className="text-[10px] font-bold">{p.percentAvailable}% Free</span>
                     </div>
                   </div>
 
-                  <div className="flex flex-wrap gap-1">
-                    {p.features.slice(0, 3).map((f) => (
-                      <span key={f} className="bg-stone-100 text-slate-600 text-[9px] font-bold px-2 py-1 rounded-lg">
-                        {f}
-                      </span>
-                    ))}
+                  {/* Progress bar */}
+                  <div className="w-full h-1.5 bg-surface-muted rounded-full overflow-hidden">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600"
+                      style={{ width: `${p.percentAvailable}%` }}
+                    />
                   </div>
                 </div>
 
-                <div className="p-5 pt-0 border-t border-slate-100/60 grid grid-cols-2 gap-2 mt-4">
+                <div className="p-5 pt-0 border-t border-border-light/60 grid grid-cols-2 gap-2 mt-4">
                   <button
                     onClick={() => setDetailedPropForModal(p)}
-                    className="w-full flex items-center justify-center bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold py-2.5 px-3 rounded-xl transition-all cursor-pointer"
+                    className="w-full flex items-center justify-center bg-surface-muted hover:bg-surface-muted text-text-main text-xs font-bold py-2.5 px-3 rounded-xl transition-all cursor-pointer"
                   >
                     View Details
                   </button>
                   <button
                     onClick={() => onInquire(p)}
-                    className="w-full flex items-center justify-center gap-1 bg-slate-900 text-white hover:bg-[#1e2a4a] text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 shadow-sm cursor-pointer"
+                    className="w-full flex items-center justify-center gap-1 bg-accent text-text-on-accent hover:bg-accent-hover text-xs font-bold py-2.5 px-3 rounded-xl transition-all duration-200 shadow-sm cursor-pointer dark:btn-glow-accent"
                   >
                     Enquire
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -251,17 +253,17 @@ export default function PropertySearch({
           </AnimatePresence>
         </motion.div>
       ) : (
-        <div className="bg-stone-50 border border-dashed border-slate-300 rounded-3xl p-12 text-center">
-          <HelpCircle className="w-10 h-10 text-slate-400 mx-auto mb-3" />
-          <h4 className="font-bold text-slate-800">No Properties Found</h4>
-          <p className="text-xs text-slate-500 mt-1">Try adjusting your search or filters.</p>
+        <div className="bg-surface-muted border border-dashed border-border-main rounded-3xl p-12 text-center">
+          <HelpCircle className="w-10 h-10 text-text-muted mx-auto mb-3" />
+          <h4 className="font-bold text-text-main">No Projects Found</h4>
+          <p className="text-xs text-text-secondary mt-1">Try adjusting your search or filters.</p>
           <button
             onClick={() => {
               setSearchQuery('');
               setSelectedCoast('All');
               setSelectedType('All');
             }}
-            className="mt-4 bg-slate-900 text-white text-xs font-bold px-5 py-2 rounded-full hover:bg-slate-800 transition-colors"
+            className="mt-4 bg-accent text-text-on-accent text-xs font-bold px-5 py-2 rounded-full hover:bg-accent-hover transition-colors"
           >
             Clear Filters
           </button>
@@ -269,20 +271,20 @@ export default function PropertySearch({
       )}
 
       {/* See More / View All Button */}
-      {viewAllHref && !isFiltering && filteredProperties.length > (maxItems || 0) && (
+      {viewAllHref && !isFiltering && filteredProjects.length > (maxItems || 0) && (
         <div className="flex justify-center pt-4">
           <Link
             href={viewAllHref}
-            className="inline-flex items-center gap-2.5 bg-slate-900 hover:bg-[#1e2a4a] text-white text-sm font-bold px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-95 group"
+            className="inline-flex items-center gap-2.5 bg-accent hover:bg-accent-hover text-text-on-accent text-sm font-bold px-8 py-3.5 rounded-full transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02] active:scale-95 group"
           >
-            <Eye className="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" />
-            <span>See More Projects</span>
-            <ArrowUpRight className="w-4 h-4 text-slate-300 group-hover:text-white transition-colors" />
+            <Eye className="w-4 h-4 text-text-muted group-hover:text-text-on-accent transition-colors" />
+            <span>See All Projects</span>
+            <ArrowUpRight className="w-4 h-4 text-text-muted group-hover:text-text-on-accent transition-colors" />
           </Link>
         </div>
       )}
 
-      {/* Property Detail Modal */}
+      {/* Project Detail Modal */}
       <AnimatePresence>
         {detailedPropForModal && (
           <div className="fixed inset-0 z-55 flex items-center justify-center p-4">
@@ -291,35 +293,36 @@ export default function PropertySearch({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setDetailedPropForModal(null)}
-              className="absolute inset-0 bg-stone-900/80 backdrop-blur-md"
+              className="absolute inset-0 bg-overlay backdrop-blur-md"
             />
 
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="relative w-full max-w-2xl bg-white rounded-[32px] overflow-hidden shadow-2xl border border-stone-200 flex flex-col max-h-[85vh]"
+              className="relative w-full max-w-2xl bg-surface-alt rounded-[32px] overflow-hidden shadow-2xl border border-border-main flex flex-col max-h-[85vh]"
             >
               <button
                 onClick={() => setDetailedPropForModal(null)}
-                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm border hover:bg-stone-100 text-stone-700 flex items-center justify-center"
+                className="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-surface-alt/90 backdrop-blur-sm border hover:bg-surface-muted text-text-secondary flex items-center justify-center"
               >
                 <X className="w-4 h-4" />
               </button>
 
               <div className="overflow-y-auto">
-                <div className="relative aspect-[16/10] bg-stone-100 overflow-hidden">
+                <div className="relative aspect-[16/10] bg-surface-muted overflow-hidden">
                   <Image
                     src={detailedPropForModal.image}
                     alt={detailedPropForModal.title}
                     fill
                     className="object-cover"
                     sizes="(max-width: 672px) 100vw, 672px"
+                    loading="lazy"
                   />
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                     <div>
                       <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-widest">
-                        {detailedPropForModal.coast} Coast
+                        {detailedPropForModal.coast} Coast · {detailedPropForModal.type}
                       </span>
                       <h3 className="text-2xl font-black text-white tracking-tight mt-1">
                         {detailedPropForModal.title}
@@ -334,7 +337,9 @@ export default function PropertySearch({
                       <MapPin className="w-4 h-4" />
                       <span>{detailedPropForModal.location}</span>
                     </div>
-                    <span className="text-xs font-bold text-emerald-600">RAJUK APPROVED</span>
+                    <span className={`text-xs font-bold ${detailedPropForModal.status === 'UNDER CONSTRUCTION' ? 'text-amber-600' : 'text-emerald-600'}`}>
+                      {detailedPropForModal.status === 'UNDER CONSTRUCTION' ? 'UNDER CONSTRUCTION' : 'PRE-LAUNCH MARKETING'}
+                    </span>
                   </div>
 
                   <div>
@@ -345,32 +350,33 @@ export default function PropertySearch({
                   </div>
 
                   <div className="grid grid-cols-3 gap-3">
-                    <div className="bg-stone-50 border border-stone-150 p-3.5 rounded-2xl text-center">
-                      <BedDouble className="w-5 h-5 mx-auto mb-1 text-stone-500" />
-                      <span className="text-xs font-black">{detailedPropForModal.bedrooms} Bedrooms</span>
+                    <div className="bg-surface-muted border border-border-main p-3.5 rounded-2xl text-center">
+                      <Building2 className="w-5 h-5 mx-auto mb-1 text-text-muted" />
+                      <span className="text-xs font-black">{detailedPropForModal.totalUnits} Total Units</span>
                     </div>
-                    <div className="bg-stone-50 border border-stone-150 p-3.5 rounded-2xl text-center">
-                      <Bath className="w-5 h-5 mx-auto mb-1 text-stone-500" />
-                      <span className="text-xs font-black">{detailedPropForModal.bathrooms} Bathrooms</span>
+                    <div className="bg-surface-muted border border-border-main p-3.5 rounded-2xl text-center">
+                      <Calendar className="w-5 h-5 mx-auto mb-1 text-text-muted" />
+                      <span className="text-xs font-black">{detailedPropForModal.availableUnits} Available</span>
                     </div>
-                    <div className="bg-stone-50 border border-stone-150 p-3.5 rounded-2xl text-center">
-                      <Square className="w-5 h-5 mx-auto mb-1 text-stone-500" />
-                      <span className="text-xs font-black">{detailedPropForModal.areaSqm} sqm</span>
+                    <div className="bg-surface-muted border border-border-main p-3.5 rounded-2xl text-center">
+                      <div className="w-6 h-6 rounded-full border-2 border-emerald-500 mx-auto mb-1 flex items-center justify-center">
+                        <div className="w-2 h-2 rounded-full bg-emerald-500" />
+                      </div>
+                      <span className="text-xs font-black">{detailedPropForModal.percentAvailable}% Free</span>
                     </div>
                   </div>
 
                   <div className="border-t border-stone-100 pt-5">
-                    <h4 className="text-[10px] font-extrabold text-[#b84822] tracking-widest uppercase mb-3">Features</h4>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                      {detailedPropForModal.features.map((feat) => (
-                        <div key={feat} className="flex items-center gap-2.5 text-sm text-stone-600">
-                          <div className="w-5 h-5 rounded bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-100">
-                            <Check className="w-3 h-3" />
-                          </div>
-                          <span>{feat}</span>
-                        </div>
-                      ))}
+                    <h4 className="text-[10px] font-extrabold text-[#b84822] tracking-widest uppercase mb-3">Availability</h4>
+                    <div className="w-full h-3 bg-stone-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-emerald-600"
+                        style={{ width: `${detailedPropForModal.percentAvailable}%` }}
+                      />
                     </div>
+                    <p className="text-xs text-stone-500 mt-2">
+                      {detailedPropForModal.percentAvailable}% of units currently available for booking
+                    </p>
                   </div>
 
                   <button

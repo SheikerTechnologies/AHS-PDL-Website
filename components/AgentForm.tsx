@@ -4,41 +4,41 @@
  */import React, { useState, FormEvent } from 'react';
 import Image from 'next/image';
 import { Send, Phone, Mail, CheckCircle, Sparkles } from 'lucide-react';
-import { Agent, Property } from '@/lib/types';
+import { Agent, DevelopmentProject } from '@/lib/types';
 import { AGENTS } from '@/lib/data';
 
 interface AgentFormProps {
-  selectedProperty?: Property | { title: string; location: string; image?: string; id?: string } | null;
+  selectedProject?: DevelopmentProject | null;
   onClose?: () => void;
 }
 
 export default function AgentForm({
-  selectedProperty,
+  selectedProject,
   onClose,
 }: AgentFormProps) {
-  // Use key on parent to force remount when selectedProperty changes
+  // Use key on parent to force remount when selectedProject changes
   // Form fields
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const initialMessage = selectedProperty
-    ? `Hello, I'm interested in viewing the "${selectedProperty.title}" located in ${selectedProperty.location}. Please provide pricing details and visiting times.`
+  const initialMessage = selectedProject
+    ? `Hello, I'm interested in viewing the "${selectedProject.title}" located in ${selectedProject.location}. Please provide pricing details and visiting times.`
     : "Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.";
   const [message, setMessage] = useState(initialMessage);
   const [selectedAgent, setSelectedAgent] = useState<Agent>(AGENTS[0]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Update message when selected property changes
+  // Update message when selected project changes
   /* eslint-disable react-hooks/set-state-in-effect */
   React.useEffect(() => {
-    if (selectedProperty) {
-      setMessage(`Hello, I'm interested in viewing the "${selectedProperty.title}" located in ${selectedProperty.location}. Please provide pricing details and visiting times.`);
+    if (selectedProject) {
+      setMessage(`Hello, I'm interested in viewing the "${selectedProject.title}" located in ${selectedProject.location}. Please provide pricing details and visiting times.`);
     } else {
       setMessage("Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.");
     }
-  }, [selectedProperty]);
+  }, [selectedProject]);
   /* eslint-enable react-hooks/set-state-in-effect */
 
   const handleSubmit = (e: FormEvent) => {
@@ -54,9 +54,9 @@ export default function AgentForm({
   };
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col md:flex-row pointer-events-auto">
+    <div className="bg-surface-alt rounded-3xl border border-border-main/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] overflow-hidden flex flex-col md:flex-row pointer-events-auto">
       {/* Handpicked Dedicated Agents Panel */}
-      <div className="bg-[#1e2a4a] text-white p-6 md:p-8 md:w-5/12 flex flex-col justify-between select-none relative">
+      <div className="bg-navy text-text-on-accent p-6 md:p-8 md:w-5/12 flex flex-col justify-between select-none relative">
         <div className="absolute top-0 right-0 w-44 h-44 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col gap-6 z-10">
@@ -94,6 +94,7 @@ export default function AgentForm({
                       fill
                       className="object-cover"
                       unoptimized
+                      sizes="40px"
                     />
                   </div>
                   <div className="flex-1">
@@ -130,22 +131,22 @@ export default function AgentForm({
       </div>
 
       {/* Inquiry Form Form Area */}
-      <div className="p-6 md:p-8 md:w-7/12 flex flex-col justify-center bg-white relative">
+      <div className="p-6 md:p-8 md:w-7/12 flex flex-col justify-center bg-surface-alt relative">
         {submitted ? (
           <div className="flex flex-col items-center text-center justify-center py-8 animate-in zoom-in-95 duration-200">
             <div className="w-12 h-12 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center mb-4">
               <CheckCircle className="w-6 h-6" />
             </div>
-            <h4 className="text-lg font-bold text-slate-900 tracking-tight">
+            <h4 className="text-lg font-bold text-text-main tracking-tight">
               Inquiry Sent Successfully!
             </h4>
-            <p className="text-xs text-slate-500 mt-2 max-w-sm leading-normal">
+            <p className="text-xs text-text-secondary mt-2 max-w-sm leading-normal">
               Thank you! Your private catalog request has been routed directly to <strong>{selectedAgent.name}</strong>. They will reach out to you within 2 hours with detailed materials or scheduling times.
             </p>
             {onClose && (
               <button
                 onClick={onClose}
-                className="mt-6 px-5 py-2 border border-slate-200 hover:bg-slate-50 text-xs font-bold rounded-full text-slate-600 transition-colors cursor-pointer"
+                className="mt-6 px-5 py-2 border border-border-main hover:bg-surface-muted text-xs font-bold rounded-full text-text-secondary transition-colors cursor-pointer"
               >
                 Close Inquiry Panel
               </button>
@@ -154,26 +155,27 @@ export default function AgentForm({
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
-              <span className="text-xs text-slate-400 font-bold uppercase tracking-wider block mb-1">
-                Routing to: <span className="text-slate-700">{selectedAgent.name}</span>
+              <span className="text-xs text-text-muted font-bold uppercase tracking-wider block mb-1">
+                Routing to: <span className="text-text-main">{selectedAgent.name}</span>
               </span>
-              <h3 className="text-xl font-bold tracking-tight text-slate-900 font-sans">
-                {selectedProperty ? 'Request Details & Pricing' : 'Design Private Placement Consultation'}
+              <h3 className="text-xl font-bold tracking-tight text-text-main font-sans">
+                {selectedProject ? 'Request Details & Pricing' : 'Design Private Placement Consultation'}
               </h3>
-              {selectedProperty && (
-                <div className="bg-slate-50 p-2.5 rounded-xl border border-slate-100/50 flex gap-2.5 items-center mt-2">
+              {selectedProject && (
+                <div className="bg-surface-muted p-2.5 rounded-xl border border-border-light/50 flex gap-2.5 items-center mt-2">
                   <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
                     <Image
-                      src={selectedProperty.image || '/assets/ahspdl1.png'}
-                      alt={selectedProperty.title}
+                      src={selectedProject.image || '/assets/ahspdl1.png'}
+                      alt={selectedProject.title}
                       fill
                       className="object-cover"
                       unoptimized
+                      sizes="40px"
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <span className="text-[10px] font-extrabold text-[#1e2a4a] tracking-widest block uppercase">Selected Property</span>
-                    <span className="text-xs font-bold text-slate-800 block truncate">{selectedProperty.title}</span>
+                    <span className="text-[10px] font-extrabold text-[#1e2a4a] tracking-widest block uppercase">Selected Project</span>
+                    <span className="text-xs font-bold text-slate-800 block truncate">{selectedProject.title}</span>
                   </div>
                 </div>
               )}
@@ -181,7 +183,7 @@ export default function AgentForm({
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-extrabold text-slate-600 uppercase tracking-widest pl-0.5">
+                <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-widest pl-0.5">
                   Full Name
                 </label>
                 <input
@@ -190,12 +192,12 @@ export default function AgentForm({
                   placeholder="Mr. Jean Pierre"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800"
+                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-[10px] font-extrabold text-slate-600 uppercase tracking-widest pl-0.5">
+                <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-widest pl-0.5">
                   Email Address
                 </label>
                 <input
@@ -204,41 +206,39 @@ export default function AgentForm({
                   placeholder="name@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800"
+                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main"
                 />
               </div>
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-extrabold text-slate-600 uppercase tracking-widest pl-0.5">
-                Phone Number (with country code)
-              </label>
-              <input
-                type="tel"
-                placeholder="+880 17XX XXXXXX"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                className="px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800"
+            <div className="flex flex-col gap-1.5">                <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-widest pl-0.5">
+                  Phone Number (with country code)
+                </label>
+                <input
+                  type="tel"
+                  placeholder="+880 17XX XXXXXX"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main"
               />
             </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label className="text-[10px] font-extrabold text-slate-600 uppercase tracking-widest pl-0.5">
-                Inquiry Message
-              </label>
-              <textarea
-                required
-                rows={3}
-                value={message}
-                onChange={(e) => setMessage(e.target.value)}
-                className="px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-300 transition-all font-medium text-slate-800 resize-none"
+            <div className="flex flex-col gap-1.5">                <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-widest pl-0.5">
+                  Inquiry Message
+                </label>
+                <textarea
+                  required
+                  rows={3}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main resize-none"
               />
             </div>
 
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-[#1e2a4a] text-white hover:bg-[#151f38] disabled:opacity-50 text-xs font-bold py-3 pr-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-1.5 mt-2 cursor-pointer"
+              className="w-full bg-accent text-text-on-accent hover:bg-accent-hover disabled:opacity-50 text-xs font-bold py-3 pr-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-1.5 mt-2 cursor-pointer dark:btn-glow-accent"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{loading ? 'Sending Request...' : 'Send Secure Inquiry'}</span>

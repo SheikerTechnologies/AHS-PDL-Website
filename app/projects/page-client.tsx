@@ -17,7 +17,7 @@ export default function ProjectsRouteClient() {
   };
 
   return (
-    <div className="w-full bg-[#fafaf9] min-h-screen py-12">
+    <div className="w-full bg-surface min-h-screen py-12">
       <section className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-8">
         <ProjectsOverview onInquire={handleInquire} />
       </section>

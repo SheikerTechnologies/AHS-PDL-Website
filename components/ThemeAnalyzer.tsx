@@ -38,7 +38,7 @@ export default function ThemeAnalyzer({
 
   const colors = [
     { name: 'Deep Indigo', hex: '#1e2a4a', text: 'white', tailwind: 'bg-[#1e2a4a]', desc: 'Core brand primary. Represents modern architectural structure and premium real estate trust.' },
-    { name: 'Sand Drift White', hex: '#fafaf9', text: 'slate-900', tailwind: 'bg-stone-50', desc: 'Slightly off-white background ensuring high eye-comfort under tropical sun lighting.' },
+    { name: 'Sand Drift White', hex: '#fafaf9', text: 'slate-900', tailwind: 'bg-surface', desc: 'Slightly off-white background ensuring high eye-comfort under tropical sun lighting.' },
     { name: 'Frosted Cloud', hex: 'rgba(255,255,255,0.25)', text: 'slate-800', tailwind: 'bg-white/25', desc: 'Micro-translucent navbar base carrying the backdrop-blur filter.' },
     { name: 'Lagoon Slate Accent', hex: '#475569', text: 'white', tailwind: 'bg-slate-600', desc: 'Secondary neutral for typography, subtle borders, and interactive indicators.' },
     { name: 'Gold Leaf Highlight', hex: '#d97706', text: 'white', tailwind: 'bg-amber-600', desc: 'Rare warning/focus highlight reflecting volcanic sunburst rays (used sparingly).' },
@@ -47,7 +47,7 @@ export default function ThemeAnalyzer({
   const glassmorphismClass = `backdrop-blur-${blurLevel} bg-white/25 border border-white/35 rounded-${roundedLevel} shadow-lg`;
 
   return (
-    <div className="bg-white rounded-3xl border border-slate-200/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-6 md:p-8 flex flex-col gap-6 animate-in fade-in duration-200">
+    <div className="bg-surface-alt rounded-3xl border border-border-main/80 shadow-[0_20px_50px_rgba(0,0,0,0.08)] p-6 md:p-8 flex flex-col gap-6 animate-in fade-in duration-200">
       {/* Header */}
       <div className="flex justify-between items-start">
         <div>
@@ -55,32 +55,31 @@ export default function ThemeAnalyzer({
             <Palette className="w-5 h-5" />
             <span className="text-xs font-bold uppercase tracking-wider">Design Audit</span>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 font-sans">
+          <h2 className="text-2xl font-bold tracking-tight text-text-main font-sans">
             AHS Brand Style & Theme Guide
           </h2>
-          <p className="text-sm text-slate-500 mt-1">
+          <p className="text-sm text-text-secondary mt-1">
             An in-depth UI/UX analysis of their premium luxury real estate portal design conventions.
           </p>
         </div>
         <button
           onClick={onClose}
-          className="px-3.5 py-1.5 rounded-full border border-slate-200 text-xs font-bold text-slate-500 hover:text-slate-900 hover:bg-slate-50 cursor-pointer transition-colors"
+          className="px-3.5 py-1.5 rounded-full border border-border-main text-xs font-bold text-text-secondary hover:text-text-main hover:bg-surface-muted cursor-pointer transition-colors"
         >
           Close Panel
         </button>
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-slate-100 gap-2 overflow-x-auto pb-1 scrollbar-none">
+      <div className="flex border-b border-border-light gap-2 overflow-x-auto pb-1 scrollbar-none">
         {(['palette', 'glass', 'philosophy', 'code'] as const).map((tab) => (
           <button
             key={tab}
-            onClick={() => setActiveTab(tab)}
-            className={`px-4 py-2 text-xs font-bold rounded-lg border-b-2 transition-all capitalize whitespace-nowrap ${
-              activeTab === tab
-                ? 'border-indigo-600 text-indigo-600 bg-indigo-50/40'
-                : 'border-transparent text-slate-500 hover:text-slate-800'
-            }`}
+            onClick={() => setActiveTab(tab)}                className={`px-4 py-2 text-xs font-bold rounded-lg border-b-2 transition-all capitalize whitespace-nowrap ${
+                  activeTab === tab
+                    ? 'border-accent text-accent bg-accent/10'
+                    : 'border-transparent text-text-secondary hover:text-text-main'
+                }`}
           >
             {tab === 'glass' ? 'Glass Sandbox' : tab}
           </button>
@@ -90,7 +89,7 @@ export default function ThemeAnalyzer({
       {/* Tab Contents */}
       {activeTab === 'palette' && (
         <div className="flex flex-col gap-4 animate-in fade-in-50 duration-150">
-          <p className="text-xs font-medium text-slate-500">
+          <p className="text-xs font-medium text-text-secondary">
             AHS utilizes a restrained, organic color palette drawing from the modern design layout: deep indigo, warm off-white sands, and modern architectural concrete.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-3.5 mt-2">
@@ -98,7 +97,7 @@ export default function ThemeAnalyzer({
               <div
                 key={c.hex}
                 onClick={() => copyToClipboard(c.hex, 'color')}
-                className="group relative flex flex-col justify-between p-4 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer bg-slate-50/50"
+                className="group relative flex flex-col justify-between p-4 rounded-2xl border border-border-light shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer bg-surface-muted/50"
               >
                 <div className={`${c.tailwind} w-full h-12 rounded-xl mb-3 border border-slate-200/50 relative flex items-center justify-center`}>
                   <Copy className="w-4 h-4 opacity-0 group-hover:opacity-100 text-slate-600 mix-blend-difference transition-all" />
@@ -106,7 +105,7 @@ export default function ThemeAnalyzer({
                 <div>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-xs font-bold text-slate-800">{c.name}</span>
-                    <span className="text-[10px] uppercase font-mono text-slate-400">{c.hex}</span>
+                    <span className="text-[10px] uppercase font-mono text-text-muted">{c.hex}</span>
                   </div>
                   <p className="text-[10px] text-slate-500 leading-normal">{c.desc}</p>
                 </div>
@@ -206,32 +205,32 @@ export default function ThemeAnalyzer({
 
       {activeTab === 'philosophy' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 animate-in fade-in-50 duration-150">
-          <div className="p-4 rounded-2xl bg-stone-50 border border-slate-100">
-            <h4 className="font-bold text-xs text-slate-900 flex items-center gap-1.5 mb-2.5">
-              <Sparkles className="w-4 h-4 text-indigo-500" />
+          <div className="p-4 rounded-2xl bg-surface-muted border border-border-light">
+            <h4 className="font-bold text-xs text-text-main flex items-center gap-1.5 mb-2.5">
+              <Sparkles className="w-4 h-4 text-accent" />
               1. Floating Architectural Layering
             </h4>
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-text-secondary leading-relaxed">
               Components like the core navigation bar float on elevated indexes. By using `fixed` anchors paired with generous negative spacing, layouts mimic modern structural cantilevers seen in luxury modern villas.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-stone-50 border border-slate-100">
-            <h4 className="font-bold text-xs text-slate-900 flex items-center gap-1.5 mb-2.5">
-              <Eye className="w-4 h-4 text-indigo-500" />
+          <div className="p-4 rounded-2xl bg-surface-muted border border-border-light">
+            <h4 className="font-bold text-xs text-text-main flex items-center gap-1.5 mb-2.5">
+              <Eye className="w-4 h-4 text-accent" />
               2. Atmospheric Transparency
             </h4>
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-text-secondary leading-relaxed">
               Real estate portals depend on gorgeous photography. By letting high-resolution seascapes bleed through a semi-transparent `backdrop-blur`, the UI remains beautiful, readable, and firmly integrated with the location.
             </p>
           </div>
 
-          <div className="p-4 rounded-2xl bg-stone-50 border border-slate-100">
-            <h4 className="font-bold text-xs text-slate-900 flex items-center gap-1.5 mb-2.5">
-              <BookOpen className="w-4 h-4 text-indigo-500" />
+          <div className="p-4 rounded-2xl bg-surface-muted border border-border-light">
+            <h4 className="font-bold text-xs text-text-main flex items-center gap-1.5 mb-2.5">
+              <BookOpen className="w-4 h-4 text-accent" />
               3. Curved Infinity Concept
             </h4>
-            <p className="text-[11px] text-slate-500 leading-relaxed">
+            <p className="text-[11px] text-text-secondary leading-relaxed">
               Extreme roundness (`rounded-full` / `rounded-3xl`) simulates natural land curves, infinity horizons, and waves. Sharp geometric edges are reserved exclusively for structural elements, emphasizing elegance.
             </p>
           </div>

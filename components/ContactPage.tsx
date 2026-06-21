@@ -119,10 +119,10 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
     `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=driving`;
 
   return (
-    <div className="w-full bg-[#fafaf9] pt-24 overflow-hidden selection:bg-[#1e2a4a] selection:text-white font-sans">
+    <div className="w-full bg-surface pt-24 overflow-hidden selection:bg-navy selection:text-text-on-accent font-sans">
 
       {/* HERO */}
-      <section className="relative w-full h-[45vh] md:h-[55vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b border-stone-200">
+      <section className="relative w-full h-[45vh] md:h-[55vh] flex flex-col items-center justify-center overflow-hidden bg-stone-900 border-b border-border-main">
         <div className="absolute inset-0 z-0">
           <motion.div
             initial={{ scale: 1.08, opacity: 0 }}
@@ -135,12 +135,13 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
               alt="Bangladesh Road Network Map"
               fill
               className="object-cover saturate-0 contrast-125"
-              preload
+              priority
+              sizes="100vw"
             />
           </motion.div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
           <div className="absolute inset-0 bg-gradient-to-r from-stone-950/80 via-transparent to-stone-950/80" />
-          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#fafaf9] to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-surface to-transparent" />
         </div>
 
         <div className="relative z-10 text-center px-6 max-w-4xl mx-auto flex flex-col items-center gap-4 text-white select-none">
@@ -164,13 +165,13 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
       </section>
 
       {/* ENQUIRY FORM */}
-      <section className="w-full py-20 bg-white border-b border-stone-100">
+      <section className="w-full py-20 bg-surface-alt border-b border-border-light">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-16">
           <div className="text-center max-w-3xl mx-auto flex flex-col gap-2 select-none">
-            <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-text-main tracking-tight">
               Send Us an Enquiry
             </h2>
-            <p className="text-sm text-stone-500 leading-normal font-normal">
+            <p className="text-sm text-text-secondary leading-normal font-normal">
               Fill out the form below and we&rsquo;ll get back to you within 24 hours
             </p>
           </div>
@@ -184,29 +185,29 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                     <Phone className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-extrabold text-[#dfad42] tracking-wider uppercase">PHONE</span>
+                    <span className="text-[10px] font-extrabold text-gold tracking-wider uppercase">PHONE</span>
                     <div className="flex flex-col gap-0.5 mt-0.5">
-                      <a href="tel:01625555700" className="text-sm font-bold text-stone-900 hover:text-[#dfad42] transition-colors">01625-555700</a>
-                      <a href="tel:01725555700" className="text-sm font-bold text-stone-900 hover:text-[#dfad42] transition-colors">01725-555700</a>
+                      <a href="tel:01625555700" className="text-sm font-bold text-text-main hover:text-gold transition-colors">01625-555700</a>
+                      <a href="tel:01725555700" className="text-sm font-bold text-text-main hover:text-gold transition-colors">01725-555700</a>
                     </div>
                   </div>
                 </div>
 
                 <div className="flex gap-4 items-start">
-                  <div className="w-10 h-10 rounded-xl bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-surface-muted flex items-center justify-center text-text-secondary shrink-0">
                     <Mail className="w-4 h-4" />
                   </div>
                   <div className="flex flex-col">
-                    <span className="text-[10px] font-extrabold text-[#dfad42] tracking-wider uppercase">EMAIL</span>
-                    <a href="mailto:ahspropertiesdevelopmentltd@gmail.com" className="text-sm font-bold text-stone-900 hover:text-[#dfad42] transition-colors mt-0.5 break-all">
+                    <span className="text-[10px] font-extrabold text-gold tracking-wider uppercase">EMAIL</span>
+                    <a href="mailto:ahspropertiesdevelopmentltd@gmail.com" className="text-sm font-bold text-text-main hover:text-gold transition-colors mt-0.5 break-all">
                       ahspropertiesdevelopmentltd@gmail.com
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="bg-stone-50/60 rounded-2xl border border-stone-200/80 p-6 flex flex-col gap-4 shadow-sm">
-                <h4 className="text-sm font-extrabold text-stone-900 tracking-tight">Why Choose AHS?</h4>
+              <div className="bg-surface-muted/60 rounded-2xl border border-border-main/80 p-6 flex flex-col gap-4 shadow-sm">
+                <h4 className="text-sm font-extrabold text-text-main tracking-tight">Why Choose AHS?</h4>
                 <ul className="flex flex-col gap-3">
                   {[
                     'Premium residential and commercial spaces across Bangladesh',
@@ -214,7 +215,7 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                     'Innovative architecture merging art with utility',
                     'Uncompromising material quality and delivery assurance',
                   ].map((bullet) => (
-                    <li key={bullet} className="flex gap-2 items-start text-xs text-stone-600 font-medium leading-normal">
+                    <li key={bullet} className="flex gap-2 items-start text-xs text-text-secondary font-medium leading-normal">
                       <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                       <span>{bullet}</span>
                     </li>
@@ -224,7 +225,7 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
             </div>
 
             {/* Right: Form */}
-            <div className="lg:col-span-7 bg-white border border-stone-200/80 rounded-[32px] p-6 md:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.04)]">
+            <div className="lg:col-span-7 bg-surface-alt border border-border-main/80 rounded-[32px] p-6 md:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.04)]">
               <AnimatePresence mode="wait">
                 {submitted ? (
                   <motion.div
@@ -240,9 +241,7 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                     <p className="text-xs md:text-sm text-stone-500 leading-relaxed mt-2 max-w-sm">
                       We have received your enquiry. A dedicated specialist will contact you within 24 hours.
                     </p>
-                    <button
-                      onClick={() => setSubmitted(false)}
-                      className="mt-6 font-extrabold bg-[#104a32] hover:bg-[#0b3322] text-white text-xs px-6 py-2.5 rounded-full shadow-md transition-all cursor-pointer"
+                    <button                       onClick={() => setSubmitted(false)}                       className="mt-6 font-extrabold bg-accent hover:bg-accent-hover text-text-on-accent text-xs px-6 py-2.5 rounded-full shadow-md transition-all cursor-pointer dark:btn-glow-accent"
                     >
                       Send Another Enquiry
                     </button>
@@ -252,42 +251,42 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                     {/* Form fields remain the same - unchanged for brevity */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">First Name *</label>
+                        <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">First Name *</label>
                         <input type="text" required placeholder="John" value={firstName} onChange={(e) => setFirstName(e.target.value)}
-                          className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-stone-300 transition-all font-medium text-stone-800" />
+                          className="px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main" />
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Last Name *</label>
+                        <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Last Name *</label>
                         <input type="text" required placeholder="Doe" value={lastName} onChange={(e) => setLastName(e.target.value)}
-                          className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-stone-300 transition-all font-medium text-stone-800" />
+                          className="px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main" />
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Email Address *</label>
+                      <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Email Address *</label>
                       <input type="email" required placeholder="john@example.com" value={email} onChange={(e) => setEmail(e.target.value)}
-                        className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-stone-300 transition-all font-medium text-stone-800" />
+                        className="px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main" />
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Phone Number</label>
+                      <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Phone Number</label>
                       <div className="flex gap-2">
                         <select value={phonePrefix} onChange={(e) => setPhonePrefix(e.target.value)}
-                          className="px-3 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm outline-none bg-stone-50 font-semibold cursor-pointer">
+                          className="px-3 py-2.5 rounded-xl border border-border-main text-xs md:text-sm outline-none bg-surface-muted font-semibold cursor-pointer">
                           <option value="BD">BD (+880)</option>
                           <option value="US">US (+1)</option>
                           <option value="UK">UK (+44)</option>
                         </select>
                         <input type="tel" placeholder="+880 XXXXX-XXXXXX" value={phoneVal} onChange={(e) => setPhoneVal(e.target.value)}
-                          className="flex-1 px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-stone-300 transition-all font-medium text-stone-800" />
+                          className="flex-1 px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main" />
                       </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Property Type</label>
+                        <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Property Type</label>
                         <select value={propertyType} onChange={(e) => setPropertyType(e.target.value)}
-                          className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm outline-none bg-transparent text-stone-700 font-medium cursor-pointer">
+                          className="px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm outline-none bg-transparent text-text-secondary font-medium cursor-pointer">
                           <option disabled>Select property type</option>
                           <option value="Luxury Villas">Luxury Villas</option>
                           <option value="Residential Apartments">Residential Apartments</option>
@@ -297,20 +296,19 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                         </select>
                       </div>
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Budget Range</label>
+                        <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Budget Range</label>
                         <input type="text" placeholder="e.g., 500,000 - 1,000,000" value={budgetRange} onChange={(e) => setBudgetRange(e.target.value)}
-                          className="px-4 py-2.5 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none transition-all font-medium text-stone-800" />
+                          className="px-4 py-2.5 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none transition-all font-medium text-text-main" />
                       </div>
                     </div>
 
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-extrabold text-stone-600 uppercase tracking-wider pl-0.5">Your Message *</label>
+                      <label className="text-[10px] font-extrabold text-text-secondary uppercase tracking-wider pl-0.5">Your Message *</label>
                       <textarea required rows={5} placeholder="Tell us about your property requirements..." value={message} onChange={(e) => setMessage(e.target.value)}
-                        className="px-4 py-3 rounded-xl border border-stone-200 text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-stone-300 transition-all font-medium text-stone-800 resize-none" />
+                        className="px-4 py-3 rounded-xl border border-border-main text-xs md:text-sm focus:outline-none focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main resize-none" />
                     </div>
 
-                    <button type="submit" disabled={loading}
-                      className="w-full bg-[#1e2a4a] text-white hover:bg-[#151f38] disabled:opacity-50 text-xs md:text-sm font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 mt-2 cursor-pointer">
+                    <button type="submit" disabled={loading}                       className="w-full bg-accent text-text-on-accent hover:bg-accent-hover disabled:opacity-50 text-xs md:text-sm font-bold uppercase tracking-wider py-3.5 px-6 rounded-xl transition-all shadow-md flex items-center justify-center gap-2 mt-2 cursor-pointer">
                       {loading ? 'Sending Enquiry...' : 'Send Enquiry'}
                     </button>
                   </form>
@@ -322,10 +320,10 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
       </section>
 
       {/* INTERACTIVE MAP + CARDS */}
-      <section className="w-full bg-stone-50 border-b border-stone-200">
+      <section className="w-full bg-surface-muted border-b border-border-main">
         <div className="w-full max-w-7xl mx-auto px-6 md:px-8 pt-16 pb-8 text-center flex flex-col gap-2 select-none">
           <span className="text-[10px] font-extrabold text-[#b84822] tracking-[0.2em] uppercase">📍 OUR LOCATIONS</span>
-          <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight leading-none mt-1">
+          <h2 className="text-3xl font-extrabold text-text-main tracking-tight leading-none mt-1">
             Interactive Office Locator
           </h2>
         </div>
@@ -340,9 +338,9 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                 onClick={() => setActiveMapTab(loc.id)}
                 className="flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-extrabold whitespace-nowrap transition-all border cursor-pointer"
                 style={{
-                  backgroundColor: isActive ? loc.accent : 'white',
-                  color: isActive ? 'white' : '#78716c',
-                  borderColor: isActive ? loc.accent : '#e7e5e4',
+                  backgroundColor: isActive ? loc.accent : 'var(--color-surface-alt)',
+                  color: isActive ? 'white' : 'var(--color-text-secondary)',
+                  borderColor: isActive ? loc.accent : 'var(--color-border)',
                   boxShadow: isActive ? `0 4px 14px ${loc.accent}40` : 'none',
                 }}
               >
@@ -383,15 +381,15 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                   onClick={() => setActiveMapTab(loc.id)}
                   whileHover={{ y: -4 }}
                   transition={{ duration: 0.2 }}
-                  className="text-left w-full rounded-3xl overflow-hidden cursor-pointer transition-all bg-white border shadow-sm"
+                  className="text-left w-full rounded-3xl overflow-hidden cursor-pointer transition-all bg-surface-alt border shadow-sm"
                   style={{
-                    borderColor: isActive ? loc.accent : '#e7e5e4',
+                    borderColor: isActive ? loc.accent : 'var(--color-border)',
                     boxShadow: isActive
                       ? `0 20px 50px ${loc.accent}20`
                       : '0 2px 8px rgba(0,0,0,0.04)',
                   }}
                 >
-                  <div className="h-1 w-full" style={{ backgroundColor: isActive ? loc.accent : '#e7e5e4' }} />
+                  <div className="h-1 w-full" style={{ backgroundColor: isActive ? loc.accent : 'var(--color-border)' }} />
 
                   <div className="p-6 flex flex-col gap-4">
                     <div className="flex items-start justify-between">
@@ -399,17 +397,17 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
                         <span className="text-[9px] font-extrabold tracking-widest uppercase" style={{ color: isActive ? loc.accent : '#a8a29e' }}>
                           {loc.label}
                         </span>
-                        <h3 className="text-sm font-black text-stone-900 mt-1">{loc.title}</h3>
+                        <h3 className="text-sm font-black text-text-main mt-1">{loc.title}</h3>
                       </div>
                       <div className="shrink-0 w-9 h-9 rounded-xl flex items-center justify-center text-sm font-black"
-                        style={{ backgroundColor: isActive ? loc.accent : '#f5f5f4', color: isActive ? 'white' : '#a8a29e' }}>
+                        style={{ backgroundColor: isActive ? loc.accent : 'var(--color-surface-muted)', color: isActive ? 'white' : 'var(--color-text-muted)' }}>
                         {i + 1}
                       </div>
                     </div>
 
                     <div className="flex gap-3 items-start">
                       <MapPin className="w-5 h-5 mt-0.5 shrink-0" style={{ color: isActive ? loc.accent : '#a8a29e' }} />
-                      <p className="text-xs text-stone-600 leading-relaxed">{loc.address}</p>
+                      <p className="text-xs text-text-secondary leading-relaxed">{loc.address}</p>
                     </div>
 
                     <a
@@ -425,7 +423,7 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
 
                     {/* Other details (landmarks, routes) unchanged */}
                     <div className="text-[9px] font-mono font-bold px-3 py-1.5 rounded-lg w-fit"
-                      style={{ backgroundColor: isActive ? `${loc.accent}10` : '#f5f5f4', color: isActive ? loc.accent : '#a8a29e' }}>
+                      style={{ backgroundColor: isActive ? `${loc.accent}10` : 'var(--color-surface-muted)', color: isActive ? loc.accent : 'var(--color-text-muted)' }}>
                       {loc.coords}
                     </div>
                   </div>
@@ -437,33 +435,33 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
       </section>
 
       {/* FINAL CTA */}
-      <section className="w-full py-16 bg-[#fafaf9]">
+      <section className="w-full py-16 bg-surface">
         <div className="w-full max-w-6xl mx-auto px-6 md:px-8">
           <motion.div
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-white rounded-[40px] border border-stone-200/60 p-8 md:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] grid grid-cols-1 md:grid-cols-12 gap-10 items-center"
+            className="bg-surface-alt rounded-[40px] border border-border-main/60 p-8 md:p-12 shadow-[0_15px_45px_rgba(0,0,0,0.03)] grid grid-cols-1 md:grid-cols-12 gap-10 items-center"
           >
             <div className="md:col-span-7">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight leading-snug">
+              <h2 className="text-3xl md:text-4xl font-extrabold text-text-main tracking-tight leading-snug">
                 Ready to Find Your Perfect Property?
               </h2>
-              <p className="text-sm text-stone-500 mt-3 max-w-md">
+              <p className="text-sm text-text-secondary mt-3 max-w-md">
                 Browse our exclusive listings or speak with our expert team.
               </p>
               <div className="flex flex-wrap gap-3 mt-6">
-                <button onClick={onInquireClick} className="bg-[#104a32] hover:bg-[#0b3322] text-white text-xs font-extrabold px-6 py-3 rounded-full flex items-center gap-2 transition-all">
+                <button onClick={onInquireClick} className="bg-accent hover:bg-accent-hover text-text-on-accent text-xs font-extrabold px-6 py-3 rounded-full flex items-center gap-2 transition-all dark:btn-glow-accent">
                   View Properties <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
-                <button onClick={onInquireClick} className="border border-[#104a32] text-[#104a32] text-xs font-extrabold px-6 py-3 rounded-full hover:bg-stone-50 transition-all">
+                <button onClick={onInquireClick} className="border border-accent text-accent text-xs font-extrabold px-6 py-3 rounded-full hover:bg-accent/10 transition-all">
                   Schedule a Viewing
                 </button>
               </div>
             </div>
 
             <div className="md:col-span-5 flex justify-center">
-              <div className="w-56 h-56 bg-stone-50 rounded-2xl border border-stone-200 flex items-center justify-center">
+              <div className="w-56 h-56 bg-white rounded-2xl border border-border-main flex items-center justify-center">
                 <AHSLogo type="full" iconSize={65} textColor="dark" />
               </div>
             </div>

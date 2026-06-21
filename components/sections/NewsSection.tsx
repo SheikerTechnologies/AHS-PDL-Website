@@ -40,14 +40,14 @@ export default function NewsSection() {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.7 }}
       id="insights-section"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16 flex flex-col gap-8 border-t border-stone-200/50 scroll-mt-24 select-none"
+      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16 flex flex-col gap-8 border-t border-border-main/50 scroll-mt-24 select-none"
     >
       <div>
-        <span className="text-xs font-bold text-stone-500 tracking-widest uppercase block mb-1">
+        <span className="text-xs font-bold text-text-secondary tracking-widest uppercase block mb-1">
           NEWS & INSIGHTS
         </span>
-        <h2 className="text-3xl font-extrabold text-stone-900 tracking-tight">Publications</h2>
-        <p className="text-sm text-stone-500">
+        <h2 className="text-3xl font-extrabold text-text-main tracking-tight">Publications</h2>
+        <p className="text-sm text-text-secondary">
           Keep up with Bangladesh real estate laws, guidelines, and modern smart city perspectives.
         </p>
       </div>
@@ -65,7 +65,7 @@ export default function NewsSection() {
               scale: 1.01,
               boxShadow: "0 12px 30px rgba(0,0,0,0.05)",
             }}
-            className="group bg-white rounded-2xl border border-stone-200 shadow-sm overflow-hidden flex flex-col justify-between hover:shadow-md transition-all duration-300 cursor-pointer"
+            className="group bg-surface-alt rounded-2xl border border-border-main shadow-sm overflow-hidden flex flex-col justify-between transition-all duration-300 cursor-pointer dark:card-hover-glow"
           >
             <div className="relative aspect-[16/10] overflow-hidden bg-stone-100">
               <Image
@@ -74,6 +74,7 @@ export default function NewsSection() {
                 fill
                 className="object-cover group-hover:scale-105 transition-transform duration-300"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                loading="lazy"
               />
               <span className="absolute top-3 left-3 bg-[#111827]/90 text-white text-[8px] font-extrabold tracking-wider uppercase px-2 py-0.5 rounded-md">
                 {n.tag}
@@ -81,7 +82,7 @@ export default function NewsSection() {
             </div>
             <div className="p-4 flex flex-col gap-1.5 flex-1 text-left">
               <span className="text-[10px] text-stone-400 font-bold">{n.date}</span>
-              <h4 className="text-sm font-extrabold text-stone-900 group-hover:text-[#1e2a4a] transition-colors leading-snug line-clamp-2">
+              <h4 className="text-sm font-extrabold text-shadow-gray-800 group-hover:text-[#1d3e5a] transition-colors leading-snug line-clamp-2">
                 {n.title}
               </h4>
               <p className="text-[11px] text-stone-500 leading-relaxed line-clamp-3 mt-1 font-normal">

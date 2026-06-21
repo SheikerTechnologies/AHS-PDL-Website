@@ -3,21 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export interface Property {
-  id: string;
-  title: string;
-  location: string;
-  coast: 'North' | 'East' | 'South' | 'West';
-  type: 'Villa' | 'Apartment' | 'Penthouse' | 'Duplex';
-  bedrooms: number;
-  bathrooms: number;
-  areaSqm: number;
-  image: string;
-  description: string;
-  features: string[];
-  isFeatured?: boolean;
-}
-
 export interface DevelopmentProject {
   id: string;
   title: string;
@@ -30,6 +15,7 @@ export interface DevelopmentProject {
   status: 'UNDER CONSTRUCTION' | 'PRE LAUNCH MARKETING';
   description: string;
   image: string;
+  images?: string[];
 }
 
 export interface Agent {

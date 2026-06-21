@@ -33,11 +33,12 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
             alt="AHS Bangladesh Luxury Real Estate"
             fill
             className="object-cover scale-105"
-            preload
+            priority
+            sizes="100vw"
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/80 via-slate-900/40 to-transparent" />
-        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#fafaf9] via-[#fafaf9]/80 to-transparent" />
+        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-surface via-surface/80 to-transparent" />
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-12 text-white h-full">

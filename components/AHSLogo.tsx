@@ -32,6 +32,7 @@ export default function AHSLogo({
           alt="AHS Logo"
           fill
           className="object-contain"
+          sizes="40px"
         />
       </div>
     );
@@ -46,6 +47,7 @@ export default function AHSLogo({
             alt="AHS Properties & Development Ltd."
             fill
             className="object-contain"
+            sizes="120px"
           />
         </div>
       </div>
@@ -64,6 +66,7 @@ export default function AHSLogo({
           alt="AHS Logo"
           fill
           className="object-contain"
+          sizes="180px"
         />
       </div>
     </div>

@@ -15,7 +15,7 @@ export default function FloatingContactIcons() {
         href="https://wa.me/8801725555700"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#25D366] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95 dark:hover:shadow-[0_0_20px_rgba(37,211,102,0.4)]"
         title="Chat on WhatsApp"
         aria-label="Chat on WhatsApp"
       >
@@ -29,7 +29,7 @@ export default function FloatingContactIcons() {
         href="https://m.me/ahsp"
         target="_blank"
         rel="noopener noreferrer"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#006AFF] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#006AFF] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95 dark:hover:shadow-[0_0_20px_rgba(0,106,255,0.4)]"
         title="Send us a message on Messenger"
         aria-label="Send us a message on Messenger"
       >
@@ -41,7 +41,7 @@ export default function FloatingContactIcons() {
       {/* Phone */}
       <a
         href="tel:01725555700"
-        className="w-12 h-12 flex items-center justify-center rounded-full bg-[#b84822] text-white shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95"
+        className="w-12 h-12 flex items-center justify-center rounded-full bg-accent text-text-on-accent shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95 dark:btn-glow-accent dark:hover:shadow-[0_0_20px_rgba(208,74,34,0.45)]"
         title="Call us at 01625-555700"
         aria-label="Call us at 01625-555700"
       >
