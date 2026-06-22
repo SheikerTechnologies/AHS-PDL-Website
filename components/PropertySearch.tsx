@@ -13,16 +13,16 @@ import { DEVELOPMENT_PROJECTS } from '@/lib/data';
 
 interface PropertySearchProps {
   onInquire: (project: DevelopmentProject) => void;
-  selectedCoast: string;
-  setSelectedCoast: (coast: string) => void;
+  selectedArea: string;
+  setSelectedArea: (area: string) => void;
   maxItems?: number;
   viewAllHref?: string;
 }
 
 export default function PropertySearch({
   onInquire,
-  selectedCoast,
-  setSelectedCoast,
+  selectedArea,
+  setSelectedArea,
   maxItems,
   viewAllHref,
 }: PropertySearchProps) {
@@ -30,13 +30,11 @@ export default function PropertySearch({
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [detailedPropForModal, setDetailedPropForModal] = useState<DevelopmentProject | null>(null);
 
-  // Coasts list
-  const coasts = [
-    { value: 'All', label: 'All Coasts' },
-    { value: 'North', label: 'North Coast' },
-    { value: 'East', label: 'East Coast' },
-    { value: 'South', label: 'South Coast' },
-    { value: 'West', label: 'West Coast' },
+  // Areas list — Dhaka-relevant locations
+  const areas = [
+    { value: 'All', label: 'All Locations' },
+    { value: 'Jolshiri Abashon', label: 'Jolshiri Abashon' },
+    { value: 'Nayapaltan', label: 'Nayapaltan' },
   ];
 
   // Derive unique types from DEVELOPMENT_PROJECTS
@@ -48,7 +46,7 @@ export default function PropertySearch({
 
   // Filters logic
   const filteredProjects = DEVELOPMENT_PROJECTS.filter((p) => {
-    const matchesCoast = selectedCoast === 'All' || p.coast === selectedCoast;
+    const matchesArea = selectedArea === 'All' || p.area === selectedArea;
     const matchesType = selectedType === 'All' || p.type === selectedType;
     const matchesSearch =
       searchQuery === '' ||
@@ -56,11 +54,11 @@ export default function PropertySearch({
       p.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
       p.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-    return matchesCoast && matchesType && matchesSearch;
+    return matchesArea && matchesType && matchesSearch;
   });
 
   // Limit displayed items when maxItems is set and no filters are active
-  const isFiltering = searchQuery !== '' || selectedCoast !== 'All' || selectedType !== 'All';
+  const isFiltering = searchQuery !== '' || selectedArea !== 'All' || selectedType !== 'All';
   const displayedProjects = !isFiltering && maxItems ? filteredProjects.slice(0, maxItems) : filteredProjects;
 
   return (
@@ -112,23 +110,23 @@ export default function PropertySearch({
             </div>
           </div>
 
-          {/* Location Area */}
+          {/* Location Area — Dhaka-relevant areas */}
           <div className="flex flex-col gap-1.5 lg:col-span-3">
             <span className="text-xs font-bold text-text-main tracking-wide uppercase pl-1">
               Location
             </span>
             <div className="flex flex-wrap gap-2">
-              {coasts.map((c) => (
+              {areas.map((a) => (
                 <button
-                  key={c.value}
-                  onClick={() => setSelectedCoast(c.value)}
+                  key={a.value}
+                  onClick={() => setSelectedArea(a.value)}
                   className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all duration-200 ${
-                    selectedCoast === c.value
+                    selectedArea === a.value
                   ? 'bg-accent text-text-on-accent shadow-sm'
                   : 'bg-surface-alt border border-border-main text-text-secondary hover:bg-surface-muted hover:text-text-main'
                   }`}
                 >
-                  {c.label}
+                  {a.label}
                 </button>
               ))}
             </div>
@@ -141,11 +139,11 @@ export default function PropertySearch({
         <span className="text-xs text-text-secondary font-bold tracking-wide uppercase">
           Found {filteredProjects.length} Projects
         </span>
-        {(searchQuery || selectedCoast !== 'All' || selectedType !== 'All') && (
+        {(searchQuery || selectedArea !== 'All' || selectedType !== 'All') && (
           <button
             onClick={() => {
               setSearchQuery('');
-              setSelectedCoast('All');
+              setSelectedArea('All');
               setSelectedType('All');
             }}
             className="text-xs font-bold text-accent hover:text-accent-hover transition-colors cursor-pointer underline underline-offset-2"
@@ -184,12 +182,12 @@ export default function PropertySearch({
                   </span>
 
                   <span className={`absolute top-4 right-4 text-[10px] font-extrabold px-3 py-1.5 rounded-full tracking-wider flex items-center gap-1 ${
-                    p.status === 'UNDER CONSTRUCTION'
+                    p.status === 'ONGOING'
                       ? 'bg-amber-50 text-amber-700'
                       : 'bg-emerald-50 text-emerald-700'
                   }`}>
                     <Sparkles className="w-3 h-3" />
-                    {p.status === 'UNDER CONSTRUCTION' ? 'Under Construction' : 'Pre-Launch'}
+                    {p.status === 'ONGOING' ? 'Ongoing Project' : 'Completed Project'}
                   </span>
                 </div>
 
@@ -220,7 +218,7 @@ export default function PropertySearch({
                       <div className="w-4 h-4 rounded-full border-2 border-emerald-500 mb-1 flex items-center justify-center">
                         <div className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
                       </div>
-                      <span className="text-[10px] font-bold">{p.percentAvailable}% Free</span>
+                      <span className="text-[10px] font-bold">{p.percentAvailable}% Avail.</span>
                     </div>
                   </div>
 
@@ -260,7 +258,7 @@ export default function PropertySearch({
           <button
             onClick={() => {
               setSearchQuery('');
-              setSelectedCoast('All');
+              setSelectedArea('All');
               setSelectedType('All');
             }}
             className="mt-4 bg-accent text-text-on-accent text-xs font-bold px-5 py-2 rounded-full hover:bg-accent-hover transition-colors"
@@ -322,7 +320,7 @@ export default function PropertySearch({
                   <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/80 to-transparent flex items-end p-6">
                     <div>
                       <span className="text-[10px] font-extrabold text-amber-400 uppercase tracking-widest">
-                        {detailedPropForModal.coast} Coast · {detailedPropForModal.type}
+                        {detailedPropForModal.area} · {detailedPropForModal.type}
                       </span>
                       <h3 className="text-2xl font-black text-white tracking-tight mt-1">
                         {detailedPropForModal.title}
@@ -337,8 +335,8 @@ export default function PropertySearch({
                       <MapPin className="w-4 h-4" />
                       <span>{detailedPropForModal.location}</span>
                     </div>
-                    <span className={`text-xs font-bold ${detailedPropForModal.status === 'UNDER CONSTRUCTION' ? 'text-amber-600' : 'text-emerald-600'}`}>
-                      {detailedPropForModal.status === 'UNDER CONSTRUCTION' ? 'UNDER CONSTRUCTION' : 'PRE-LAUNCH MARKETING'}
+                    <span className={`text-xs font-bold ${detailedPropForModal.status === 'ONGOING' ? 'text-amber-600' : 'text-emerald-600'}`}>
+                      {detailedPropForModal.status === 'ONGOING' ? 'ONGOING PROJECT' : 'COMPLETED PROJECT'}
                     </span>
                   </div>
 
@@ -362,7 +360,7 @@ export default function PropertySearch({
                       <div className="w-6 h-6 rounded-full border-2 border-emerald-500 mx-auto mb-1 flex items-center justify-center">
                         <div className="w-2 h-2 rounded-full bg-emerald-500" />
                       </div>
-                      <span className="text-xs font-black">{detailedPropForModal.percentAvailable}% Free</span>
+                      <span className="text-xs font-black">{detailedPropForModal.percentAvailable}% Available</span>
                     </div>
                   </div>
 

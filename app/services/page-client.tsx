@@ -142,20 +142,6 @@ export default function ServicesPageClient() {
           </div>
         </div>
 
-        <div className="text-center bg-gradient-to-br from-stone-900 to-navy text-text-on-accent rounded-3xl py-20 px-8">
-          <h2 className="text-5xl font-bold mb-6">Ready to Own Your Dream Plot?</h2>
-          <p className="text-xl text-stone-300 mb-10 max-w-xl mx-auto">
-            Book your site visit today and explore the most promising residential project in Dhaka.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-5 justify-center">
-            <Link href="#contact" className="inline-block bg-[#b84822] hover:bg-[#a03d1b] px-12 py-5 rounded-2xl text-xl font-semibold transition-all">
-              Schedule Site Visit
-            </Link>
-            <Link href="/sectors" className="inline-block border border-white/50 hover:bg-white/10 px-12 py-5 rounded-2xl text-xl font-semibold transition-all">
-              Explore All Sectors
-            </Link>
-          </div>
-        </div>
       </div>
     </div>
   );

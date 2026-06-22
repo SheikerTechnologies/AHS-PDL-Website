@@ -88,16 +88,16 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
           >
             <div className="flex flex-col gap-1.5">
               <span className="bg-[#e49b2c] text-white text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider w-fit">
-                👑 Featured Space
+                Featured Property
               </span>
             </div>
 
             <div>
               <h3 className="text-3xl font-bold tracking-tight text-white font-sans">
-                Premium Suite
+                Premium Residence
               </h3>
               <p className="text-xs text-stone-300 leading-normal mt-2 line-clamp-2">
-                Luxurious layout situated in structural hubs, offering metropolitan vistas and immediate urban access.
+                Refined living spaces in Dhaka&rsquo;s most coveted locations, offering panoramic views and immediate urban access.
               </p>
             </div>
 

@@ -77,7 +77,7 @@ export default function Navbar({
             onClick={onGetStartedClick}
             className="bg-accent text-text-on-accent hover:bg-accent-hover text-[12px] font-bold tracking-tight px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-[0_4px_12px_rgba(184,72,34,0.25)] dark:shadow-[0_4px_12px_rgba(208,74,34,0.35)] transition-all duration-300 hover:scale-[1.03] active:scale-95 cursor-pointer dark:btn-glow-accent"
           >
-            Get Started
+            View Properties
           </button>
 
           {/* Mobile Menu Button toggles mobile drawer */}
@@ -121,7 +121,7 @@ export default function Navbar({
               }}
               className="flex-1 bg-accent text-text-on-accent py-2.5 rounded-full text-xs font-bold shadow-md hover:bg-accent-hover transition-colors dark:btn-glow-accent"
             >
-              Get Started
+              View Properties
             </button>
           </div>
         </div>

@@ -38,10 +38,10 @@ export default function ClientMarqueeSection() {
         </div>
 
         <span className="text-[10px] font-black text-[#c5a257] uppercase tracking-[0.25em] block mb-2">
-          OUR TRUSTED ACCREDITATIONS & PRESTIGIOUS CLIENTS
+          Trusted by leading authorities
         </span>
-        <h2 className="text-xl md:text-2xl font-black text-text-main tracking-tight font-sans uppercase">
-          GOVERNMENT PARTNERS
+        <h2 className="text-xl md:text-2xl font-black text-text-main tracking-tight font-sans">
+          Government & Institutional Partners
         </h2>
         <p className="text-xs text-text-secondary max-w-2xl mx-auto mt-1 leading-relaxed">
           We coordinate, build, and deliver high-specification properties fully aligned with

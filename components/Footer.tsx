@@ -88,11 +88,25 @@ export default function Footer() {
             </nav>
           </div>
 
-          {/* Contact Information */}
+          {/* Contact Information — consolidated, clearly labeled */}
           <div>              <h3 className="font-semibold text-text mb-4 text-sm uppercase tracking-wide">
               Contact Info
             </h3>
             <div className="flex flex-col gap-4">
+              <div className="flex items-start gap-3">
+                <Phone className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Sales</p>
+                  <a href="tel:01625555700" className="text-sm text-text-secondary hover:text-accent transition-colors">01625-555700</a>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Phone className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
+                <div>
+                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">WhatsApp</p>
+                  <a href="tel:01725555700" className="text-sm text-text-secondary hover:text-accent transition-colors">01725-555700</a>
+                </div>
+              </div>
               <div className="flex items-start gap-3">
                 <Mail className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
                 <div>
@@ -106,21 +120,9 @@ export default function Footer() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Phone</p>
-                  <a
-                    href={`tel:${primaryAgent.phone}`}
-                    className="text-sm text-text-secondary hover:text-accent transition-colors"
-                  >
-                    {primaryAgent.phone}
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
                 <MapPin className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Location</p>
+                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Office</p>
                   <p className="text-sm text-text-secondary">
                     Dhaka, Bangladesh
                   </p>

@@ -27,7 +27,7 @@ export default function Home() {
   const [blurLevel, setBlurLevel] = useState<string>("md");
   const [roundedLevel, setRoundedLevel] = useState<string>("full");
   const [activeProjectInquiry, setActiveProjectInquiry] = useState<DevelopmentProject | null>(null);
-  const [selectedCoast, setSelectedCoast] = useState<string>("All");
+  const [selectedArea, setSelectedArea] = useState<string>("All");
 
   const handleGetStarted = () => {
     const element = document.getElementById("discover-properties-section");
@@ -129,8 +129,8 @@ export default function Home() {
           </p>
         </div>
         <PropertySearch
-          selectedCoast={selectedCoast}
-          setSelectedCoast={setSelectedCoast}
+          selectedArea={selectedArea}
+          setSelectedArea={setSelectedArea}
           maxItems={6}
           viewAllHref="/projects"
           onInquire={(project) => {

@@ -7,12 +7,12 @@ export interface DevelopmentProject {
   id: string;
   title: string;
   location: string;
-  coast: 'North' | 'East' | 'South' | 'West';
+  area: 'Jolshiri Abashon' | 'Nayapaltan';
   type: string;
   availableUnits: number;
   totalUnits: number;
   percentAvailable: number;
-  status: 'UNDER CONSTRUCTION' | 'PRE LAUNCH MARKETING';
+  status: 'ONGOING' | 'COMPLETED';
   description: string;
   image: string;
   images?: string[];

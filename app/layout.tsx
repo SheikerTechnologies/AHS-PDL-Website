@@ -37,7 +37,7 @@ const organizationSchema = {
     "https://facebook.com/ahsp",
     "https://instagram.com/ahsp",
   ],
-  foundingDate: "1995",
+  foundingDate: "2025",
   founder: {
     "@type": "Person",
     name: "Md. Sohanur Rahman Sohan",
@@ -152,7 +152,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "AHS Properties & Development Ltd. | Premium Real Estate in Bangladesh",
     description:
-      "Bangladesh's premier real estate developer. Luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka. 30+ years of excellence.",
+      "Bangladesh's premier real estate developer. Luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka. 1+ years of excellence.",
     type: "website",
     siteName: "AHS Properties & Development Ltd.",
     url: siteUrl,
@@ -185,6 +185,9 @@ export const metadata: Metadata = {
     images: ["/opengraph-image.png"],
   },
   category: "real estate",
+  verification: {
+    google: "rCFH_3QS1E94ZVw-vxkhdNQBbV-XjkuaSxHb5m39DhE", 
+  },
 };
 
 export default function RootLayout({

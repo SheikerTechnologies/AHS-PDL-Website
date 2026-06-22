@@ -42,8 +42,8 @@ export default function FloatingContactIcons() {
       <a
         href="tel:01725555700"
         className="w-12 h-12 flex items-center justify-center rounded-full bg-accent text-text-on-accent shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-200 active:scale-95 dark:btn-glow-accent dark:hover:shadow-[0_0_20px_rgba(208,74,34,0.45)]"
-        title="Call us at 01625-555700"
-        aria-label="Call us at 01625-555700"
+        title="Call our sales team at 01625-555700"
+        aria-label="Call our sales team at 01625-555700"
       >
         <Phone className="w-6 h-6" />
       </a>

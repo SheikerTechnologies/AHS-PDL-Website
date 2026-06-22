@@ -14,15 +14,14 @@ import {
   Heart,
   ArrowRight,
   Sparkles,
-  Building2,
 } from 'lucide-react';
 import { DevelopmentProject } from '@/lib/types';
 
 interface ProjectGridProps {
   searchQuery: string;
   setSearchQuery: (val: string) => void;
-  selectedCoast: string;
-  setSelectedCoast: (val: string) => void;
+  selectedArea: string;
+  setSelectedArea: (val: string) => void;
   selectedStatus: string;
   setSelectedStatus: (val: string) => void;
   filteredProjects: DevelopmentProject[];
@@ -34,8 +33,8 @@ interface ProjectGridProps {
 export default function ProjectGrid({
   searchQuery,
   setSearchQuery,
-  selectedCoast,
-  setSelectedCoast,
+  selectedArea,
+  setSelectedArea,
   selectedStatus,
   setSelectedStatus,
   filteredProjects,
@@ -58,30 +57,6 @@ export default function ProjectGrid({
         </p>
       </div>
 
-      {/* STATISTICS BAR */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-surface-alt p-6 rounded-2xl border border-border-main/80 shadow-sm animate-in fade-in duration-300">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
-          <div className="flex items-center gap-2">
-          <span className="text-2xl font-black text-text-main">71</span>
-          <span className="text-xs font-bold text-text-muted uppercase tracking-widest">Total Listings</span>
-          </div>
-          <div className="hidden md:block w-[1px] h-8 bg-border-main" />
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500" />
-            <span className="text-xl font-bold text-text-main">70</span>
-            <span className="text-xs font-bold text-text-secondary uppercase tracking-widest">For Sale</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-amber-500" />
-            <span className="text-xl font-bold text-text-main">1</span>
-            <span className="text-xs font-bold text-text-secondary uppercase tracking-widest">For Rent</span>
-          </div>
-        </div>
-        <div className="text-[11px] font-bold text-text-muted uppercase tracking-widest flex items-center gap-1.5 bg-surface-muted px-3.5 py-1.5 rounded-lg border border-border-light">
-          <Building2 className="w-3.5 h-3.5 text-text-muted" />
-          <span>EDB Scheme Approved Real Estate</span>
-        </div>
-      </div>
 
       {/* SEARCH AND FILTER CONTROLS */}
       <div className="bg-surface-alt border border-border-main/80 rounded-3xl p-5 md:p-6 shadow-sm flex flex-col gap-5">
@@ -114,8 +89,8 @@ export default function ProjectGrid({
                 className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border-main bg-surface-alt text-sm focus:outline-none focus:border-text-muted transition-all font-medium text-text-main appearance-none cursor-pointer"
               >
                 <option value="All">All Investment Types</option>
-                <option value="Under Construction">Under Construction</option>
-                <option value="Pre-Launch">Pre-Launch Marketing</option>
+                <option value="Ongoing">Ongoing Project</option>
+                <option value="Completed">Completed Project</option>
               </select>
               <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-stone-400">▼</div>
             </div>
@@ -123,33 +98,31 @@ export default function ProjectGrid({
 
           <div className="col-span-1 md:col-span-3 flex flex-col gap-1.5 font-sans">
             <label className="text-xs font-bold text-text-secondary uppercase tracking-wider pl-1">
-              Select Location
+              Select Development Area
             </label>
             <div className="relative">
               <Compass className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-text-muted pointer-events-none" />
               <select
-                value={selectedCoast}
-                onChange={(e) => setSelectedCoast(e.target.value)}
-                aria-label="Filter locations by region"
+                value={selectedArea}
+                onChange={(e) => setSelectedArea(e.target.value)}
+                aria-label="Filter projects by development area"
                 className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-border-main bg-surface-alt text-sm focus:outline-none focus:border-text-muted transition-all font-medium text-text-main appearance-none cursor-pointer"
               >
                 <option value="All">All Locations</option>
-                <option value="North">North</option>
-                <option value="West">West</option>
-                <option value="East">East</option>
-                <option value="South">South</option>
+                <option value="Jolshiri Abashon">Jolshiri Abashon</option>
+                <option value="Nayapaltan">Nayapaltan</option>
               </select>
               <div className="absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-[10px] text-stone-400">▼</div>
             </div>
           </div>
         </div>
 
-        {(searchQuery || selectedCoast !== 'All' || selectedStatus !== 'All') && (
+        {(searchQuery || selectedArea !== 'All' || selectedStatus !== 'All') && (
           <div className="flex justify-end">
             <button
               onClick={() => {
                 setSearchQuery('');
-                setSelectedCoast('All');
+                setSelectedArea('All');
                 setSelectedStatus('All');
               }}
               className="text-xs font-bold text-gold-dark hover:text-gold underline underline-offset-2 transition-colors"
@@ -265,12 +238,12 @@ export default function ProjectGrid({
           <HelpCircle className="w-10 h-10 text-text-muted mb-3" />
           <h4 className="font-extrabold text-text-main text-sm">No Development Projects Found</h4>
           <p className="text-xs text-text-secondary mt-1 max-w-sm">
-            We currently don&rsquo;t have ongoing construction or pre-launch real estate matching your current coastal filter tags.
+            We currently don&rsquo;t have projects matching your current search criteria. Please try different filters.
           </p>
           <button
             onClick={() => {
               setSearchQuery('');
-              setSelectedCoast('All');
+              setSelectedArea('All');
               setSelectedStatus('All');
             }}
             className="mt-4 bg-accent hover:bg-accent-hover text-text-on-accent text-xs font-bold px-5 py-2.5 rounded-full shadow-sm transition-colors text-center"

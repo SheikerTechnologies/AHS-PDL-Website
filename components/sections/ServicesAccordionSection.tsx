@@ -80,16 +80,25 @@ export default function ServicesAccordionSection() {
                 className="group py-5 border-b border-border-main cursor-pointer flex flex-col justify-start text-left transition-all duration-300 overflow-hidden"
               >
                 <div className="flex justify-between items-center">
-                  <h3
-                    className={`text-base md:text-lg font-bold transition-colors ${
-                      isOpen
-                        ? "text-[#1e2a4a]"
-                        : "text-stone-700 group-hover:text-stone-900"
-                    }`}
-                  >
-                    {serv.title}
-                  </h3>
-                  <span className="text-xs font-mono font-bold text-stone-400">{serv.num}</span>
+                  <div className="flex items-center gap-3">
+                    <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-bold transition-all duration-300 ${
+                      isOpen 
+                        ? 'bg-accent text-text-on-accent rotate-45' 
+                        : 'bg-surface-muted border border-border-main text-text-secondary'
+                    }`}>
+                      +
+                    </span>
+                    <h3
+                      className={`text-base md:text-lg font-bold transition-colors ${
+                        isOpen
+                          ? "text-accent"
+                          : "text-text-main group-hover:text-accent-hover"
+                      }`}
+                    >
+                      {serv.title}
+                    </h3>
+                  </div>
+                  <span className="text-xs font-mono font-bold text-text-muted">{serv.num}</span>
                 </div>
 
                 <AnimatePresence initial={false}>

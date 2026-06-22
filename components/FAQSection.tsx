@@ -16,7 +16,7 @@ interface FAQItem {
 }
 
 export default function FAQSection() {
-  const [activeFAQ, setActiveFAQ] = useState<number | null>(null);
+  const [activeFAQ, setActiveFAQ] = useState<number | null>(1); // First FAQ open by default for better UX
   const [selectedCategory, setSelectedCategory] = useState<'All' | 'General' | 'Legalities' | 'Investments'>('All');
 
   const faqs: FAQItem[] = [

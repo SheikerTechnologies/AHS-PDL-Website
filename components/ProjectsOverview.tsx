@@ -20,7 +20,7 @@ interface ProjectsOverviewProps {
 export default function ProjectsOverview({ onInquire }: ProjectsOverviewProps) {
   // Grid view state
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedCoast, setSelectedCoast] = useState('All');
+  const [selectedArea, setSelectedArea] = useState('All');
   const [selectedStatus, setSelectedStatus] = useState('All');
   const [savedProjects, setSavedProjects] = useState<string[]>([]);
 
@@ -47,14 +47,14 @@ export default function ProjectsOverview({ onInquire }: ProjectsOverviewProps) {
         project.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
         project.description.toLowerCase().includes(searchQuery.toLowerCase());
 
-      const matchesCoast = selectedCoast === 'All' || project.coast === selectedCoast;
+      const matchesArea = selectedArea === 'All' || project.area === selectedArea;
       const matchesStatus = selectedStatus === 'All' ||
-        (selectedStatus === 'Under Construction' && project.status === 'UNDER CONSTRUCTION') ||
-        (selectedStatus === 'Pre-Launch' && project.status === 'PRE LAUNCH MARKETING');
+        (selectedStatus === 'Ongoing' && project.status === 'ONGOING') ||
+        (selectedStatus === 'Completed' && project.status === 'COMPLETED');
 
-      return matchesSearch && matchesCoast && matchesStatus;
+      return matchesSearch && matchesArea && matchesStatus;
     }),
-    [searchQuery, selectedCoast, selectedStatus]
+    [searchQuery, selectedArea, selectedStatus]
   );
 
   const handleBackToGrid = () => {
@@ -126,8 +126,8 @@ export default function ProjectsOverview({ onInquire }: ProjectsOverviewProps) {
     <ProjectGrid
       searchQuery={searchQuery}
       setSearchQuery={setSearchQuery}
-      selectedCoast={selectedCoast}
-      setSelectedCoast={setSelectedCoast}
+      selectedArea={selectedArea}
+      setSelectedArea={setSelectedArea}
       selectedStatus={selectedStatus}
       setSelectedStatus={setSelectedStatus}
       filteredProjects={filteredProjects}

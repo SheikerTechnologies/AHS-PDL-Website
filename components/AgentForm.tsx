@@ -22,24 +22,18 @@ export default function AgentForm({
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
-  const initialMessage = selectedProject
-    ? `Hello, I'm interested in viewing the "${selectedProject.title}" located in ${selectedProject.location}. Please provide pricing details and visiting times.`
-    : "Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.";
-  const [message, setMessage] = useState(initialMessage);
+  const [message, setMessage] = useState('');
   const [selectedAgent, setSelectedAgent] = useState<Agent>(AGENTS[0]);
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  // Update message when selected project changes
-  /* eslint-disable react-hooks/set-state-in-effect */
-  React.useEffect(() => {
+  // Set placeholder message based on selected project
+  const getPlaceholder = () => {
     if (selectedProject) {
-      setMessage(`Hello, I'm interested in viewing the "${selectedProject.title}" located in ${selectedProject.location}. Please provide pricing details and visiting times.`);
-    } else {
-      setMessage("Hello, I'd like to schedule a luxury real estate investment consultation in Bangladesh.");
+      return `Hi, I'm interested in learning more about "${selectedProject.title}" in ${selectedProject.location}. Please share pricing and availability details.`;
     }
-  }, [selectedProject]);
-  /* eslint-enable react-hooks/set-state-in-effect */
+    return "Tell us about your property interests and requirements...";
+  };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -141,7 +135,7 @@ export default function AgentForm({
               Inquiry Sent Successfully!
             </h4>
             <p className="text-xs text-text-secondary mt-2 max-w-sm leading-normal">
-              Thank you! Your private catalog request has been routed directly to <strong>{selectedAgent.name}</strong>. They will reach out to you within 2 hours with detailed materials or scheduling times.
+              Thank you! Your inquiry has been sent to <strong>{selectedAgent.name}</strong>. They will reach out to you within 2 hours with detailed information and scheduling options.
             </p>
             {onClose && (
               <button
@@ -156,10 +150,10 @@ export default function AgentForm({
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <div>
               <span className="text-xs text-text-muted font-bold uppercase tracking-wider block mb-1">
-                Routing to: <span className="text-text-main">{selectedAgent.name}</span>
+                Your consultant: <span className="text-text-main">{selectedAgent.name}</span>
               </span>
               <h3 className="text-xl font-bold tracking-tight text-text-main font-sans">
-                {selectedProject ? 'Request Details & Pricing' : 'Design Private Placement Consultation'}
+                {selectedProject ? 'Request Details & Pricing' : 'Book a Consultation'}
               </h3>
               {selectedProject && (
                 <div className="bg-surface-muted p-2.5 rounded-xl border border-border-light/50 flex gap-2.5 items-center mt-2">
@@ -231,7 +225,8 @@ export default function AgentForm({
                   rows={3}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main resize-none"
+                  placeholder={getPlaceholder()}
+                  className="px-3.5 py-2 rounded-xl border border-border-main text-xs placeholder:text-text-muted focus:outline-none focus:border-text-muted focus:ring-1 focus:ring-surface-muted transition-all font-medium text-text-main resize-none"
               />
             </div>
 
@@ -241,7 +236,7 @@ export default function AgentForm({
               className="w-full bg-accent text-text-on-accent hover:bg-accent-hover disabled:opacity-50 text-xs font-bold py-3 pr-4 rounded-xl shadow-md transition-colors flex items-center justify-center gap-1.5 mt-2 cursor-pointer dark:btn-glow-accent"
             >
               <Send className="w-3.5 h-3.5" />
-              <span>{loading ? 'Sending Request...' : 'Send Secure Inquiry'}</span>
+              <span>{loading ? 'Sending...' : 'Send Inquiry'}</span>
             </button>
           </form>
         )}
