@@ -12,6 +12,8 @@ const routeMap: Record<string, ActiveTab> = {
   '/layout': 'Layout',
   '/contact': 'Contact',
   '/services': 'Services',
+  '/landowners': 'Landowners',
+  '/blog': 'Blog',
 };
 
 export default function RootLayoutClient({
@@ -32,11 +34,11 @@ export default function RootLayoutClient({
       Layout: '/layout',
       Contact: '/contact',
       Services: '/services',
+      Landowners: '/landowners',
+      Blog: '/blog',
     };
     router.push(paths[tab]);
   };
-
-  const handleGetStartedClick = () => router.push('/services');
 
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact-broker-section');
@@ -52,7 +54,6 @@ export default function RootLayoutClient({
       <Navbar
         activeTab={activeTab}
         setActiveTab={handleSetActiveTab}
-        onGetStartedClick={handleGetStartedClick}
       />
 
       <main className="flex-grow pb-16 md:pb-0">{children}</main>

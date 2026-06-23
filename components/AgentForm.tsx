@@ -35,16 +35,34 @@ export default function AgentForm({
     return "Tell us about your property interests and requirements...";
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!name || !email) return;
 
     setLoading(true);
-    // Simulate API request
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/broker-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+          selectedAgent: selectedAgent.name,
+          selectedProject: selectedProject?.title,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to submit');
+
       setLoading(false);
       setSubmitted(true);
-    }, 1200);
+    } catch (err) {
+      console.error('Broker inquiry error:', err);
+      setLoading(false);
+      alert('Something went wrong. Please try again.');
+    }
   };
 
   return (

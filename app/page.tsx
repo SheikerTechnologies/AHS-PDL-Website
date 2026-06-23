@@ -107,7 +107,7 @@ export default function Home() {
             />
           </div>
           <p className="text-center text-xs text-text-muted mt-4 select-none">
-            Official Registration Certificate — AHS Properties &amp; Development Ltd.
+            RJSC Registration Certificate — AHS Properties &amp; Development Ltd.
           </p>
         </div>
       </section>

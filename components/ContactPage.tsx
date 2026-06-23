@@ -47,14 +47,31 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const handleFormSubmit = (e: FormEvent) => {
+  const handleFormSubmit = async (e: FormEvent) => {
     e.preventDefault();
     if (!firstName || !lastName || !email || !message) {
       alert('Please fill out all required fields.');
       return;
     }
     setLoading(true);
-    setTimeout(() => {
+    try {
+      const res = await fetch('/api/contact-inquiry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          firstName,
+          lastName,
+          email,
+          phonePrefix,
+          phoneNumber: phoneVal,
+          propertyType,
+          budgetRange,
+          message,
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed to submit');
+
       setLoading(false);
       setSubmitted(true);
       // Reset form
@@ -65,7 +82,11 @@ export default function ContactPage({ onInquireClick }: ContactPageProps) {
       setPropertyType('Select property type');
       setBudgetRange('');
       setMessage('');
-    }, 1200);
+    } catch (err) {
+      console.error('Contact form error:', err);
+      setLoading(false);
+      alert('Something went wrong. Please try again or call us directly.');
+    }
   };
 
   const mapSrcs: Record<string, string> = {

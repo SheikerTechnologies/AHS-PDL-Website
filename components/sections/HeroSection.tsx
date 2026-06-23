@@ -29,8 +29,8 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
           className="absolute inset-0"
         >
           <Image
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
-            alt="AHS Bangladesh Luxury Real Estate"
+            src="/assets/projects/Properties01-01.jpg"
+            alt="AHS Properties & Development Ltd. — Premium Real Estate"
             fill
             className="object-cover scale-105"
             priority
@@ -59,9 +59,9 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.15, ease: "easeOut" }}
             className="text-4xl md:text-6xl font-extrabold tracking-tight leading-[1.1] text-white"
           >
-            We Build<br />
-            Tomorrow&apos;s<br />
-            Addresses Today
+            AHS Properties<br />
+            <span className="text-[#dfad42]">&amp; Development</span><br />
+            Limited
           </motion.h1>
 
           <motion.p
@@ -70,7 +70,7 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
             transition={{ duration: 0.8, delay: 0.25, ease: "easeOut" }}
             className="text-sm md:text-[15px] text-stone-200/90 leading-relaxed font-normal max-w-[550px]"
           >
-            AHS Properties & Development Ltd. crafts premium residential and commercial spaces across Bangladesh — merging architectural vision with uncompromising quality.
+            We Build Tomorrow&rsquo;s Addresses Today &mdash; crafting premium residential and commercial spaces across Bangladesh with architectural vision and uncompromising quality.
           </motion.p>
         </div>
 

@@ -27,6 +27,44 @@ export default function Footer() {
             <p className="text-sm text-text-secondary leading-relaxed">
               Premium properties and development in Bangladesh. Transforming real estate dreams into reality.
             </p>
+            {/* Group Companies */}
+            <div className="pt-2">
+              <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3">
+                AHS Group
+              </p>
+              <div className="flex flex-col gap-2.5">
+                <a
+                  href="https://ahspdl.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
+                  aria-label="Visit AHS Properties & Development Ltd. website"
+                >
+                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
+                  AHS Properties &amp; Development Ltd.
+                </a>
+                <a
+                  href="https://sunsolaris.ltd/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
+                  aria-label="Visit Sun Solaris Ltd. website"
+                >
+                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
+                  Sun Solaris Ltd.
+                </a>
+                <a
+                  href="https://ahs.redesstech.online/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
+                  aria-label="Visit AHS Enterprise website"
+                >
+                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
+                  M/S. AHS Enterprise
+                </a>
+              </div>
+            </div>
             {/* Social Media Links */}
             <div className="flex gap-3 pt-2">
               <a
@@ -122,10 +160,16 @@ export default function Footer() {
               <div className="flex items-start gap-3">
                 <MapPin className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
                 <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Office</p>
-                  <p className="text-sm text-text-secondary">
-                    Dhaka, Bangladesh
-                  </p>
+                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">China Town Office</p>
+                  <a
+                    href="https://maps.google.com/?q=W-20/2+67/1+China+Town+VIP+Road+Naya+Palton+Dhaka+Bangladesh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-text-secondary hover:text-accent transition-colors"
+                    aria-label="Open China Town office location on Google Maps"
+                  >
+                    W-20/2, 67/1, China Town,<br />VIP Road, Naya Palton, Dhaka
+                  </a>
                 </div>
               </div>
             </div>

@@ -12,7 +12,13 @@ interface FooterLogoProps {
 
 export default function FooterLogo({ className = '' }: FooterLogoProps) {
   return (
-    <div className={`flex flex-col items-start gap-2 select-none ${className}`}>
+    <a
+      href="https://ahspdl.com/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className={`flex flex-col items-start gap-2 select-none hover:opacity-80 transition-opacity duration-200 ${className}`}
+      aria-label="Visit AHS Properties & Development Ltd. official website"
+    >
       <div className="relative" style={{ width: 220, height: 100 }}>
         <Image
           src="/assets/ahspdLogoM.png"
@@ -23,6 +29,6 @@ export default function FooterLogo({ className = '' }: FooterLogoProps) {
           loading="lazy"
         />
       </div>
-    </div>
+    </a>
   );
 }

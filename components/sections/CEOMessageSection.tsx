@@ -44,7 +44,7 @@ export default function CEOMessageSection() {
               <h4 className="text-xl font-bold text-text-main tracking-tight">
                 Md. Sohanur Rahman Sohan
               </h4>
-              <p className="text-xs font-semibold uppercase tracking-wider text-[#104a32] mt-1">
+              <p className="text-sm font-bold uppercase tracking-widest text-[#104a32] mt-1">
                 Chief Executive Officer
               </p>
               <p className="text-xs text-text-muted mt-0.5">AHS Properties & Development Ltd.</p>
@@ -198,27 +198,51 @@ export default function CEOMessageSection() {
           <div className="flex flex-col gap-4">
             <span className="text-[10px] font-extrabold text-[#104a32] tracking-widest uppercase">Part of the AHS Group</span>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow">
+              <a
+                href="https://ahspdl.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow block"
+                aria-label="Visit AHS Properties & Development Ltd. website"
+              >
                 <div className="w-10 h-10 rounded-full bg-[#104a32]/10 flex items-center justify-center mx-auto mb-2">
                   <svg className="w-5 h-5 text-[#104a32]" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
                 </div>
                 <h4 className="text-xs font-bold text-text-main">AHS Properties &<br/>Development Ltd.</h4>
                 <p className="text-[9px] text-text-secondary mt-1">Real Estate Development</p>
-              </div>
-              <div className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow">
-                <div className="w-10 h-10 rounded-full bg-amber-50 flex items-center justify-center mx-auto mb-2">
-                  <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+              </a>
+              <a
+                href="https://sunsolaris.ltd/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow block"
+                aria-label="Visit Sun Solaris Ltd. website"
+              >
+                <div className="w-12 h-12 flex items-center justify-center mx-auto mb-2 relative">
+                  <Image
+                    src="/assets/sunSolarisLimited.png"
+                    alt="Sun Solaris Ltd."
+                    width={48}
+                    height={48}
+                    className="object-contain"
+                  />
                 </div>
                 <h4 className="text-xs font-bold text-text-main">Sun Solaris Ltd.</h4>
                 <p className="text-[9px] text-text-secondary mt-1">Renewable Energy Solutions</p>
-              </div>
-              <div className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow">
+              </a>
+              <a
+                href="https://ahs.redesstech.online/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-surface border border-border-main rounded-2xl p-4 text-center hover:shadow-md transition-shadow block"
+                aria-label="Visit AHS Enterprise website"
+              >
                 <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center mx-auto mb-2">
                   <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                 </div>
                 <h4 className="text-xs font-bold text-text-main">M/S. AHS Enterprise</h4>
                 <p className="text-[9px] text-text-secondary mt-1">Supply &amp; Contracting</p>
-              </div>
+              </a>
             </div>
           </div>
         </div>

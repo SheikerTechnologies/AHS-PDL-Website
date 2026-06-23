@@ -12,13 +12,11 @@ import ThemeToggle from './ThemeToggle';
 interface NavbarProps {
   activeTab: ActiveTab;
   setActiveTab: (tab: ActiveTab) => void;
-  onGetStartedClick: () => void;
 }
 
 export default function Navbar({
   activeTab,
   setActiveTab,
-  onGetStartedClick,
 }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -26,6 +24,8 @@ export default function Navbar({
     { label: 'Home', tab: 'Home' },
     { label: 'Projects', tab: 'Projects' },
     { label: 'Services', tab: 'Services' },
+    { label: 'Landowners', tab: 'Landowners' },
+    { label: 'Blog', tab: 'Blog' },
     { label: 'Layout', tab: 'Layout' },
     { label: 'About', tab: 'About' },
     { label: 'Contact', tab: 'Contact' },
@@ -42,13 +42,15 @@ export default function Navbar({
         className="w-full bg-surface-alt/90 dark:bg-nav-bg backdrop-blur-xl border border-border-main/80 rounded-full py-2 px-3 md:px-6 shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] flex items-center justify-between pointer-events-auto transition-all duration-300 hover:shadow-[0_12px_40px_rgba(0,0,0,0.12)] dark:hover:shadow-[0_12px_40px_rgba(0,0,0,0.6)] overflow-hidden"
       >
         {/* Left: Brand Logo & Typography */}
-        <div
-          onClick={() => setActiveTab('Home')}
-          className="flex items-center gap-0 cursor-pointer pl-0 select-none group"
+        <a
+          href="https://ahspdl.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-0 pl-0 select-none group"
+          aria-label="Visit AHS Properties & Development Ltd. official website"
         >
-
           <AHSLogo type="horizontal" iconSize={45} className="pl-1 scale-150 transition-transform duration-300 group-hover:scale-[1.53]" />
-        </div>
+        </a>
 
         {/* Center: Desktop Navigation Links */}
         <nav className="hidden lg:flex items-center gap-1.5">
@@ -71,14 +73,6 @@ export default function Navbar({
         <div className="flex items-center gap-2">
           {/* Theme Toggle */}
           <ThemeToggle />
-
-          {/* Core Get Started CTA */}
-          <button
-            onClick={onGetStartedClick}
-            className="bg-accent text-text-on-accent hover:bg-accent-hover text-[12px] font-bold tracking-tight px-4 md:px-5 py-2 md:py-2.5 rounded-full shadow-[0_4px_12px_rgba(184,72,34,0.25)] dark:shadow-[0_4px_12px_rgba(208,74,34,0.35)] transition-all duration-300 hover:scale-[1.03] active:scale-95 cursor-pointer dark:btn-glow-accent"
-          >
-            View Properties
-          </button>
 
           {/* Mobile Menu Button toggles mobile drawer */}
           <button
@@ -111,19 +105,7 @@ export default function Navbar({
             ))}
           </nav>
 
-          <div className="h-[1px] bg-border-main/70" />
 
-          <div className="flex gap-2">
-            <button
-              onClick={() => {
-                onGetStartedClick();
-                setMobileMenuOpen(false);
-              }}
-              className="flex-1 bg-accent text-text-on-accent py-2.5 rounded-full text-xs font-bold shadow-md hover:bg-accent-hover transition-colors dark:btn-glow-accent"
-            >
-              View Properties
-            </button>
-          </div>
         </div>
       )}
     </header>

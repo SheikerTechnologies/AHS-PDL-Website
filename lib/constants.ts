@@ -26,6 +26,8 @@ export const ROUTES = {
   RESOURCES: '/resources',
   LAYOUT: '/layout',
   SERVICES: '/services',
+  LANDOWNERS: '/landowners',
+  BLOG: '/blog',
 } as const;
 
 // API endpoints (if needed for future backend integration)

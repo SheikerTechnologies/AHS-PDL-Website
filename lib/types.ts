@@ -33,4 +33,6 @@ export type ActiveTab =
   | 'About'
   | 'Layout'
   | 'Contact'
-  | 'Services';
+  | 'Services'
+  | 'Landowners'
+  | 'Blog';
