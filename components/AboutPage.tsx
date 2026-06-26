@@ -10,6 +10,7 @@ import AboutLeadership from '@/components/sections/AboutLeadership';
 import AboutLocationsGrid from '@/components/sections/AboutLocationsGrid';
 import AboutStatsBanner from '@/components/sections/AboutStatsBanner';
 import AboutCTA from '@/components/sections/AboutCTA';
+import AboutCEOMessageFull from '@/components/sections/AboutCEOMessageFull';
 
 interface AboutPageProps {
   onInquireClick: () => void;
@@ -22,6 +23,7 @@ export default function AboutPage({ onInquireClick }: AboutPageProps) {
       <AboutContentSection />
       <AboutBenefitsGrid />
       <AboutLeadership />
+      <AboutCEOMessageFull />
       <AboutLocationsGrid />
       <AboutStatsBanner />
       <AboutCTA onInquireClick={onInquireClick} />

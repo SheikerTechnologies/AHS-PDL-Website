@@ -9,7 +9,7 @@ export const APP_DESCRIPTION = 'Premium real estate in beautiful Bangladesh';
 
 // Pagination constants
 export const ITEMS_PER_PAGE = 6;
-export const PROJECTS_PER_PAGE = 8;
+export const PROJECTS_PER_PAGE = 12;
 
 // Filter defaults
 export const DEFAULT_COAST = 'All Locations';

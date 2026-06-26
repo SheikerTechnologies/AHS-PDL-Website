@@ -47,7 +47,7 @@ export const PROJECT_EXTRAS: Record<string, ProjectExtras> = {
       'Dual-glazed sound dampened structures',
       'Assigned basement charging blocks',
       'Private residents-only sports court',
-      'On-site managed rental desk'
+      'Prime central business corridor location'
     ],
     units: [
       { name: '2-Bed Sunset Vista Flat', beds: 2, sizeSqm: 120, status: 'Available' },

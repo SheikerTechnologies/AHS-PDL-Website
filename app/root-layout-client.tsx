@@ -24,7 +24,7 @@ export default function RootLayoutClient({
   const pathname = usePathname();
   const router = useRouter();
 
-  const activeTab: ActiveTab = routeMap[pathname] || 'Home';
+  const activeTab: ActiveTab = routeMap[pathname] || (pathname.startsWith('/projects') ? 'Projects' as ActiveTab : 'Home');
 
   const handleSetActiveTab = (tab: ActiveTab) => {
     const paths: Record<ActiveTab, string> = {

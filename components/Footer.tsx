@@ -3,10 +3,27 @@
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
+ *
+ * Site-wide footer for AHS Properties & Development Ltd.
+ * 4-column layout on desktop, stacks to single column on mobile.
+ * Includes brand, navigation, AHS Group links, contact info, map card, and legal bottom bar.
  */
 
 import React from 'react';
-import { Mail, Phone, MapPin, Facebook, Instagram } from 'lucide-react';
+import { motion } from 'motion/react';
+import Link from 'next/link';
+import {
+  MapPin,
+  Phone,
+  MessageCircle,
+  Mail,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Youtube,
+  ArrowUpRight,
+  ChevronRight,
+} from 'lucide-react';
 import FooterLogo from './FooterLogo';
 import { AGENTS } from '@/lib/data';
 
@@ -16,216 +33,314 @@ export default function Footer() {
 
   return (
     <footer className="w-full bg-surface-muted border-t border-border-main">
-      <div className="max-w-7xl mx-auto px-4 md:px-8 py-16">
-       
-
-        {/* Footer Content Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
-          {/* Brand Section */}
-          <div className="lg:col-span-1 flex flex-col gap-4">
+      <div className="max-w-7xl mx-auto px-6 md:px-8 py-16">
+        {/* ============================================================
+             MAIN 4-COLUMN GRID — staggered fade-in on scroll
+             ============================================================ */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
+          {/* ==========================================
+               COLUMN 1 — Brand
+               ========================================== */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="flex flex-col gap-5"
+          >
             <FooterLogo />
-            <p className="text-sm text-text-secondary leading-relaxed">
-              Premium properties and development in Bangladesh. Transforming real estate dreams into reality.
-            </p>
-            {/* Group Companies */}
-            <div className="pt-2">
-              <p className="text-[10px] font-bold text-text-muted uppercase tracking-wider mb-3">
-                AHS Group
+
+            <div>
+              <h2 className="text-base font-bold text-text-main tracking-tight">
+                AHS Properties &amp; Development Ltd.
+              </h2>
+              <p className="text-sm text-text-secondary leading-relaxed mt-1">
+                Premium real estate development in Bangladesh — transforming properties into
+                landmark destinations.
               </p>
-              <div className="flex flex-col gap-2.5">
-                <a
-                  href="https://ahspdl.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
-                  aria-label="Visit AHS Properties & Development Ltd. website"
-                >
-                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                  AHS Properties &amp; Development Ltd.
-                </a>
-                <a
-                  href="https://sunsolaris.ltd/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
-                  aria-label="Visit Sun Solaris Ltd. website"
-                >
-                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                  Sun Solaris Ltd.
-                </a>
-                <a
-                  href="https://ahs.redesstech.online/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-xs text-text-secondary hover:text-accent transition-colors group"
-                  aria-label="Visit AHS Enterprise website"
-                >
-                  <span className="w-1 h-1 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                  M/S. AHS Enterprise
-                </a>
-              </div>
             </div>
-            {/* Social Media Links */}
-            <div className="flex gap-3 pt-2">
+
+            {/* Social Icon Row */}
+            <div className="flex items-center gap-3 pt-1">
               <a
                 href="https://facebook.com/ahsp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-accent/10 hover:bg-accent text-accent hover:text-text-on-accent rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 dark:hover:shadow-[0_0_16px_rgba(208,74,34,0.4)]"
+                className="w-10 h-10 rounded-full border border-border-main bg-surface-alt text-text-secondary hover:bg-accent hover:text-text-on-accent hover:border-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
                 title="Facebook"
                 aria-label="Follow us on Facebook"
               >
-                <Facebook size={18} />
+                <Facebook size={16} />
               </a>
               <a
                 href="https://instagram.com/ahsp"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-accent/10 hover:bg-accent text-accent hover:text-text-on-accent rounded-full flex items-center justify-center transition-all duration-300 transform hover:scale-110 dark:hover:shadow-[0_0_16px_rgba(208,74,34,0.4)]"
+                className="w-10 h-10 rounded-full border border-border-main bg-surface-alt text-text-secondary hover:bg-accent hover:text-text-on-accent hover:border-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
                 title="Instagram"
                 aria-label="Follow us on Instagram"
               >
-                <Instagram size={18} />
+                <Instagram size={16} />
+              </a>
+              <a
+                href="https://linkedin.com/company/ahsp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-border-main bg-surface-alt text-text-secondary hover:bg-accent hover:text-text-on-accent hover:border-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
+                title="LinkedIn"
+                aria-label="Follow us on LinkedIn"
+              >
+                <Linkedin size={16} />
+              </a>
+              <a
+                href="https://youtube.com/@ahsp"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-border-main bg-surface-alt text-text-secondary hover:bg-accent hover:text-text-on-accent hover:border-accent flex items-center justify-center transition-all duration-200 hover:scale-110"
+                title="YouTube"
+                aria-label="Subscribe to our YouTube channel"
+              >
+                <Youtube size={16} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Services */}
-          <div>              <h3 className="font-semibold text-text mb-4 text-sm uppercase tracking-wide">
-              Services
-            </h3>
+          {/* ==========================================
+               COLUMN 2 — Explore (Site Navigation)
+               ========================================== */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.1, ease: 'easeOut' }}
+            className="flex flex-col gap-4"
+          >
+            <span className="text-[10px] font-bold text-text-muted uppercase tracking-[0.15em]">
+              Explore
+            </span>
             <nav className="flex flex-col gap-3">
-              <a
-                href="/#discover-properties-section"
-                className="text-sm text-text-secondary hover:text-accent transition-colors duration-200 flex items-center gap-2 group"
-              >
-                <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                Property Search
-              </a>
-              <a
-                href="/services"
-                className="text-sm text-text-secondary hover:text-accent transition-colors duration-200 flex items-center gap-2 group"
-              >
-                <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                Investment Advisory
-              </a>
-              <a
-                href="/services"
-                className="text-sm text-text-secondary hover:text-accent transition-colors duration-200 flex items-center gap-2 group"
-              >
-                <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                Consultation
-              </a>
-              <a
-                href="/services"
-                className="text-sm text-text-secondary hover:text-accent transition-colors duration-200 flex items-center gap-2 group"
-              >
-                <span className="w-1.5 h-1.5 bg-accent/50 rounded-full group-hover:bg-accent transition-colors" />
-                Resources
-              </a>
+              {[
+                { label: 'Projects', href: '/projects' },
+                { label: 'Landowners', href: '/landowners' },
+                { label: 'Blog', href: '/blog' },
+                { label: 'About Us', href: '/about' },
+                { label: 'Contact', href: '/contact' },
+              ].map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="group inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200 w-fit"
+                >
+                  <span>{link.label}</span>
+                  <ChevronRight className="w-3 h-3 text-text-muted group-hover:text-accent transition-colors opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 duration-200" />
+                </Link>
+              ))}
             </nav>
-          </div>
+          </motion.div>
 
-          {/* Contact Information — consolidated, clearly labeled */}
-          <div>              <h3 className="font-semibold text-text mb-4 text-sm uppercase tracking-wide">
-              Contact Info
-            </h3>
-            <div className="flex flex-col gap-4">
-              <div className="flex items-start gap-3">
-                <Phone className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Sales</p>
-                  <a href="tel:01625555700" className="text-sm text-text-secondary hover:text-accent transition-colors">01625-555700</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">WhatsApp</p>
-                  <a href="tel:01725555700" className="text-sm text-text-secondary hover:text-accent transition-colors">01725-555700</a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <Mail className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">Email</p>
-                  <a
-                    href={`mailto:${primaryAgent.email}`}
-                    className="text-sm text-text-secondary hover:text-accent transition-colors break-all"
-                  >
-                    {primaryAgent.email}
-                  </a>
-                </div>
-              </div>
-              <div className="flex items-start gap-3">
-                <MapPin className="text-[#b84822] flex-shrink-0 mt-1" size={18} />
-                <div>
-                  <p className="text-xs text-text-muted uppercase tracking-wide mb-1">China Town Office</p>
-                  <a
-                    href="https://maps.google.com/?q=W-20/2+67/1+China+Town+VIP+Road+Naya+Palton+Dhaka+Bangladesh"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-text-secondary hover:text-accent transition-colors"
-                    aria-label="Open China Town office location on Google Maps"
-                  >
-                    W-20/2, 67/1, China Town,<br />VIP Road, Naya Palton, Dhaka
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* ==========================================
+               COLUMN 3 — AHS Group
+               ========================================== */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.2, ease: 'easeOut' }}
+            className="flex flex-col gap-4"
+          >
+            <span className="text-[10px] font-bold text-text-muted uppercase tracking-[0.15em]">
+              AHS Group
+            </span>
+            <nav className="flex flex-col gap-3">
+              {[
+                {
+                  label: 'AHS Properties & Development Ltd.',
+                  href: 'https://ahspdl.com/',
+                  external: true,
+                },
+                {
+                  label: 'Sun Solaris Ltd.',
+                  href: 'https://sunsolaris.ltd/',
+                  external: true,
+                },
+                {
+                  label: 'AHS Enterprise',
+                  href: 'https://ahs.redesstech.online/',
+                  external: true,
+                },
+              ].map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
+                  className="group inline-flex items-center gap-1.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200 w-fit"
+                >
+                  <span>{link.label}</span>
+                  {link.external && (
+                    <ArrowUpRight className="w-3 h-3 text-text-muted group-hover:text-accent transition-colors" />
+                  )}
+                </a>
+              ))}
+            </nav>
+          </motion.div>
 
-          {/* Agent Highlight */}
-          <div>              <h3 className="font-semibold text-text mb-4 text-sm uppercase tracking-wide">
-              Expert Contact
-            </h3>
-            <div className="bg-surface-alt border border-border-main rounded-lg p-4 hover:shadow-md transition-shadow">
-              <p className="text-sm font-semibold text-text mb-1">
-                {primaryAgent.name}
-              </p>
-              <p className="text-xs text-accent font-medium mb-3">
-                {primaryAgent.role}
-              </p>
-              <p className="text-xs text-text-secondary mb-3 leading-relaxed">
-                {primaryAgent.specialty}
-              </p>
+          {/* ==========================================
+               COLUMN 4 — Get in Touch
+               ========================================== */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.5, delay: 0.3, ease: 'easeOut' }}
+            className="flex flex-col gap-4"
+          >
+            <span className="text-[10px] font-bold text-text-muted uppercase tracking-[0.15em]">
+              Get in touch
+            </span>
+            <div className="flex flex-col gap-3.5">
+              {/* Address */}
               <a
-                href={`tel:${primaryAgent.phone}`}
-                className="inline-block text-xs px-3 py-1.5 bg-accent text-text-on-accent rounded hover:bg-accent-hover transition-colors font-medium dark:btn-glow-accent"
+                href="https://maps.google.com/?q=W-20/2+67/1+China+Town+VIP+Road+Naya+Palton+Dhaka+Bangladesh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-start gap-2.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200"
+                aria-label="Open office location on Google Maps"
               >
-                Call Now
+                <MapPin className="w-4 h-4 text-accent shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                <span>
+                  W-20/2, 67/1, China Town,
+                  <br />
+                  VIP Road, Naya Palton, Dhaka
+                </span>
+              </a>
+
+              {/* Phone (Sales) */}
+              <a
+                href="tel:01625555700"
+                className="group flex items-center gap-2.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200"
+                aria-label="Call sales at 01625-555700"
+              >
+                <Phone className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                <span>01625-555700 (Sales)</span>
+              </a>
+
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/8801725555700"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-2.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200"
+                aria-label="Chat on WhatsApp at 01725-555700"
+              >
+                <MessageCircle className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                <span>01725-555700 (WhatsApp)</span>
+              </a>
+
+              {/* Email */}
+              <a
+                href={`mailto:${primaryAgent.email}`}
+                className="group flex items-center gap-2.5 text-sm text-text-secondary hover:text-accent transition-colors duration-200 break-all"
+                aria-label="Send us an email"
+              >
+                <Mail className="w-4 h-4 text-accent shrink-0 group-hover:scale-110 transition-transform" />
+                <span>{primaryAgent.email}</span>
               </a>
             </div>
-          </div>
+
+            {/* Enquire Now Button */}
+            <Link
+              href="/#contact-broker-section"
+              className="mt-2 inline-flex items-center justify-center gap-2 bg-accent hover:bg-accent-hover text-text-on-accent text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md w-fit dark:btn-glow-accent"
+            >
+              Enquire Now
+              <ArrowUpRight className="w-3.5 h-3.5" />
+            </Link>
+          </motion.div>
         </div>
 
-        {/* Divider */}
-        <div className="h-[1px] bg-border-main my-8" />
+        {/* ============================================================
+             DIVIDER — fade in
+             ============================================================ */}
+        <motion.div
+          initial={{ opacity: 0, scaleX: 0.8 }}
+          whileInView={{ opacity: 1, scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="h-px bg-border-main/80 mb-8 origin-left"
+        />
 
-        {/* Footer Bottom */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary">
-          <p>
-            &copy; {currentYear} AHS Properties & Development Ltd. All rights reserved.
-          </p>
-          <div className="flex gap-6 flex-wrap justify-center">
+        {/* ============================================================
+             MAP CARD (replaces newsletter — no signup form)
+             ============================================================ */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-30px' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="bg-surface-alt border border-border-main rounded-2xl overflow-hidden flex flex-col sm:flex-row items-stretch mb-10"
+        >
+          {/* Map Thumbnail */}
+          <div className="relative w-full sm:w-[160px] h-[130px] shrink-0 overflow-hidden bg-surface-muted">
+            <iframe
+              src="https://maps.google.com/maps?q=W-20%2F2+67%2F1+China+Town+VIP+Road+Naya+Palton+Dhaka&output=embed"
+              width="160"
+              height="130"
+              style={{ border: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="AHS Properties office location map"
+              className="opacity-80 hover:opacity-100 transition-opacity"
+            />
+          </div>
+
+          {/* Map Card Text */}
+          <div className="flex-1 flex flex-col justify-center px-6 py-5 sm:py-0 gap-1.5">
+            <h4 className="text-sm font-bold text-text-main tracking-tight">
+              Visit our Naya Paltan office
+            </h4>
+            <p className="text-xs text-text-secondary leading-relaxed">
+              W-20/2, 67/1, China Town, VIP Road, Naya Palton, Dhaka-1000
+            </p>
             <a
+              href="https://maps.google.com/?q=W-20/2+67/1+China+Town+VIP+Road+Naya+Palton+Dhaka+Bangladesh"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-xs font-semibold text-accent hover:text-accent-hover transition-colors mt-1 w-fit"
+            >
+              Get directions
+              <ArrowUpRight className="w-3 h-3" />
+            </a>
+          </div>
+        </motion.div>
+
+        {/* ============================================================
+             BOTTOM BAR
+             ============================================================ */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-20px' }}
+          transition={{ duration: 0.5, delay: 0.15, ease: 'easeOut' }}
+          className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-text-secondary"
+        >
+          <p className="text-center md:text-left">
+            &copy; {currentYear} AHS Properties &amp; Development Ltd. All rights reserved.
+          </p>
+          <div className="flex gap-5 flex-wrap justify-center">
+            <Link
               href="/legal#privacy-policy"
               className="hover:text-accent transition-colors duration-200"
             >
               Privacy Policy
-            </a>
-            <a
+            </Link>
+            <Link
               href="/legal#terms-of-service"
               className="hover:text-accent transition-colors duration-200"
             >
               Terms of Service
-            </a>
-            <a
-              href="/legal#cookie-settings"
-              className="hover:text-accent transition-colors duration-200"
-            >
-              Cookie Settings
-            </a>
+            </Link>
             <a
               href="/sitemap.xml"
               target="_blank"
@@ -235,7 +350,7 @@ export default function Footer() {
               Sitemap
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );

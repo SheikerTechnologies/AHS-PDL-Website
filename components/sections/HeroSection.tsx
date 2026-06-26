@@ -7,13 +7,14 @@
 
 import { motion } from "motion/react";
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Home, MessageCircle } from "lucide-react";
 
 interface HeroSectionProps {
-  onFeaturedInquiry: () => void;
+  onViewProperties: () => void;
+  onEnquireNow: () => void;
 }
 
-export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
+export default function HeroSection({ onViewProperties, onEnquireNow }: HeroSectionProps) {
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -72,38 +73,54 @@ export default function HeroSection({ onFeaturedInquiry }: HeroSectionProps) {
           >
             We Build Tomorrow&rsquo;s Addresses Today &mdash; crafting premium residential and commercial spaces across Bangladesh with architectural vision and uncompromising quality.
           </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.35, ease: "easeOut" }}
+            className="flex flex-wrap gap-3 mt-2"
+          >
+            <button
+              onClick={onViewProperties}
+              className="inline-flex items-center gap-2 bg-[#dfad42] hover:bg-[#c5a257] text-slate-950 text-sm font-extrabold px-7 py-3.5 rounded-full transition-all duration-200 shadow-lg hover:shadow-xl active:scale-95 cursor-pointer"
+            >
+              <Home className="w-4 h-4" />
+              <span>View Properties</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={onEnquireNow}
+              className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/30 text-white text-sm font-bold px-7 py-3.5 rounded-full transition-all duration-200 active:scale-95 cursor-pointer"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>Enquire Now</span>
+            </button>
+          </motion.div>
         </div>
 
-        {/* Right: Floating featured card */}
+        {/* Right: Trust badge */}
         <motion.div
           initial={{ opacity: 0, x: 40, scale: 0.95 }}
           animate={{ opacity: 1, x: 0, scale: 1 }}
           transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-          whileHover={{ y: -6, scale: 1.02 }}
-          className="w-full lg:w-[360px] self-end lg:self-center"
+          className="w-full lg:w-[280px] self-end lg:self-center"
         >
-          <div
-            onClick={onFeaturedInquiry}
-            className="backdrop-blur-xl bg-slate-900/35 hover:bg-slate-900/45 border border-white/20 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 text-left cursor-pointer transition-all duration-300 transform select-none"
-          >
-            <div className="flex flex-col gap-1.5">
-              <span className="bg-[#e49b2c] text-white text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider w-fit">
-                Featured Property
+          <div className="backdrop-blur-xl bg-slate-900/35 border border-white/15 p-6 rounded-3xl shadow-2xl flex flex-col gap-4 text-left">
+            <div className="flex flex-col gap-2">
+              <span className="bg-[#dfad42]/20 text-[#dfad42] text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider w-fit border border-[#dfad42]/20">
+                RJSC Registered
+              </span>
+              <span className="bg-emerald-500/15 text-emerald-300 text-[9px] font-extrabold uppercase px-2.5 py-1 rounded-md tracking-wider w-fit border border-emerald-500/20">
+                100% RAJUK Approved
               </span>
             </div>
-
-            <div>
-              <h3 className="text-3xl font-bold tracking-tight text-white font-sans">
-                Premium Residence
-              </h3>
-              <p className="text-xs text-stone-300 leading-normal mt-2 line-clamp-2">
-                Refined living spaces in Dhaka&rsquo;s most coveted locations, offering panoramic views and immediate urban access.
-              </p>
-            </div>
-
-            <div className="flex items-center gap-1 text-[11px] font-bold text-[#c5a257] mt-2">
-              <span>View Details</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+            <p className="text-xs text-stone-300/80 leading-relaxed">
+              Bangladesh&rsquo;s trusted real estate developer with military-grade precision and government-institutional partnerships.
+            </p>
+            <div className="flex items-center gap-2 text-[10px] text-stone-400">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Part of the AHS Group</span>
             </div>
           </div>
         </motion.div>

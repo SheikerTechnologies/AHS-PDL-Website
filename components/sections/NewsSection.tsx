@@ -40,8 +40,9 @@ export default function NewsSection() {
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 0.7 }}
       id="insights-section"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-16 flex flex-col gap-8 border-t border-border-main/50 scroll-mt-24 select-none"
+      className="w-full bg-surface-muted/30 py-16 md:py-20 border-t border-border-main/30 scroll-mt-24 select-none"
     >
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 flex flex-col gap-8">
       <div>
         <span className="text-xs font-bold text-text-secondary tracking-widest uppercase block mb-1">
           NEWS & INSIGHTS
@@ -91,6 +92,7 @@ export default function NewsSection() {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </motion.section>
   );

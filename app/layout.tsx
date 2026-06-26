@@ -16,7 +16,7 @@ const organizationSchema = {
   "@type": "RealEstateDeveloper",
   name: "AHS Properties & Development Ltd.",
   url: siteUrl,
-  logo: `${siteUrl}/assets/ahspdLogoL.png`,
+  logo: `${siteUrl}/assets/ahspdl1.png`,
   image: `${siteUrl}/opengraph-image.png`,
   description:
     "Premium real estate development company in Bangladesh specializing in residential plots, apartments, villas, and luxury properties in Jolshiri Abashon and Dhaka.",
@@ -86,6 +86,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "AHS Properties & Development Ltd.",
+  alternateName: "AHS PDL",
   url: siteUrl,
   description:
     "Premium real estate development company in Bangladesh. Find luxury villas, apartments, residential plots in Jolshiri Abashon and Dhaka.",
