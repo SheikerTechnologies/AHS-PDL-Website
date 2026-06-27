@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg-dining-bf" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3535"/>
+      <stop offset="100%" stop-color="#2a2525"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-dining-bf)"/>
+  <!-- Empty room -->
+  <rect x="80" y="60" width="640" height="440" rx="4" fill="#4a4545"/>
+  <!-- Bare floor marks -->
+  <line x1="80" y1="400" x2="720" y2="400" stroke="#5a5555" stroke-width="2"/>
+  <!-- Old wiring/pipe marks -->
+  <circle cx="200" cy="150" r="8" fill="#5a5555"/>
+  <circle cx="600" cy="150" r="8" fill="#5a5555"/>
+  <line x1="200" y1="150" x2="200" y2="200" stroke="#5a5555" stroke-width="2"/>
+  <line x1="600" y1="150" x2="600" y2="200" stroke="#5a5555" stroke-width="2"/>
+  <!-- Wall damage marks -->
+  <rect x="300" y="250" width="200" height="100" fill="#3a3535" rx="2"/>
+  <!-- Title -->
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#8a8585" letter-spacing="3">BEFORE RENOVATION</text>
+  <rect x="30" y="30" width="100" height="30" rx="15" fill="#6a6565"/>
+  <text x="80" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#e0ddd5" font-weight="bold" letter-spacing="2">BEFORE</text>
+</svg>

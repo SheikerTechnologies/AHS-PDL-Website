@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg-before" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a3735"/>
+      <stop offset="100%" stop-color="#2a2826"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-before)"/>
+  <!-- Empty room outline -->
+  <rect x="100" y="80" width="600" height="400" rx="4" fill="#4a4745" stroke="#5a5755" stroke-width="1"/>
+  <!-- Bare window frame -->
+  <rect x="300" y="120" width="200" height="200" rx="4" fill="#5a5755" stroke="#6a6765" stroke-width="2"/>
+  <!-- Construction marks -->
+  <line x1="200" y1="180" x2="600" y2="180" stroke="#6a6765" stroke-width="1" stroke-dasharray="8,8"/>
+  <line x1="200" y1="280" x2="600" y2="280" stroke="#6a6765" stroke-width="1" stroke-dasharray="8,8"/>
+  <line x1="300" y1="120" x2="300" y2="320" stroke="#6a6765" stroke-width="1" stroke-dasharray="8,8"/>
+  <line x1="500" y1="120" x2="500" y2="320" stroke="#6a6765" stroke-width="1" stroke-dasharray="8,8"/>
+  <!-- Bare floor -->
+  <rect x="100" y="480" width="600" height="40" fill="#3a3735"/>
+  <!-- Ceiling line -->
+  <line x1="100" y1="80" x2="700" y2="80" stroke="#5a5755" stroke-width="2"/>
+  <!-- Title -->
+  <text x="400" y="560" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#8a8785" letter-spacing="3">BEFORE</text>
+  <!-- Badge -->
+  <rect x="30" y="30" width="100" height="30" rx="15" fill="#6a6765"/>
+  <text x="80" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#e0ddd5" font-weight="bold" letter-spacing="2">BEFORE</text>
+</svg>

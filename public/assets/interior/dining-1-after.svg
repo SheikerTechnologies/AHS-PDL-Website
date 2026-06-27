@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg-dining" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2525"/>
+      <stop offset="100%" stop-color="#1a1515"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-dining)"/>
+  <!-- Chandelier -->
+  <line x1="400" y1="30" x2="400" y2="80" stroke="#c19a6b" stroke-width="2"/>
+  <ellipse cx="400" cy="85" rx="60" ry="15" fill="none" stroke="#c19a6b" stroke-width="2"/>
+  <line x1="350" y1="85" x2="340" y2="70" stroke="#c19a6b" stroke-width="1"/>
+  <line x1="450" y1="85" x2="460" y2="70" stroke="#c19a6b" stroke-width="1"/>
+  <circle cx="340" cy="70" r="3" fill="#d4a574"/>
+  <circle cx="460" cy="70" r="3" fill="#d4a574"/>
+  <circle cx="400" cy="90" r="4" fill="#d4a574"/>
+  <!-- Dining table -->
+  <ellipse cx="400" cy="330" rx="180" ry="60" fill="#3a3535" stroke="#4a4545" stroke-width="2"/>
+  <!-- Table setting -->
+  <ellipse cx="400" cy="330" rx="120" ry="40" fill="#2a2525"/>
+  <!-- Plates -->
+  <circle cx="340" cy="310" r="15" fill="#e8ddd5"/>
+  <circle cx="460" cy="310" r="15" fill="#e8ddd5"/>
+  <circle cx="370" cy="350" r="15" fill="#e8ddd5"/>
+  <circle cx="430" cy="350" r="15" fill="#e8ddd5"/>
+  <circle cx="400" cy="320" r="15" fill="#e8ddd5"/>
+  <!-- Centerpiece -->
+  <rect x="385" y="300" width="30" height="40" rx="5" fill="#c19a6b"/>
+  <circle cx="400" cy="295" r="3" fill="#d4a574"/>
+  <circle cx="390" cy="290" r="2" fill="#d4a574"/>
+  <circle cx="410" cy="290" r="2" fill="#d4a574"/>
+  <!-- Chairs -->
+  <circle cx="280" cy="330" r="25" fill="#3a3535" stroke="#c19a6b" stroke-width="1.5"/>
+  <circle cx="520" cy="330" r="25" fill="#3a3535" stroke="#c19a6b" stroke-width="1.5"/>
+  <circle cx="400" cy="410" r="25" fill="#3a3535" stroke="#c19a6b" stroke-width="1.5"/>
+  <circle cx="330" cy="390" r="25" fill="#3a3535" stroke="#c19a6b" stroke-width="1.5"/>
+  <circle cx="470" cy="390" r="25" fill="#3a3535" stroke="#c19a6b" stroke-width="1.5"/>
+  <!-- Floor -->
+  <rect x="0" y="520" width="800" height="80" fill="#1a1515"/>
+  <text x="400" y="580" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#c19a6b" letter-spacing="3">ELEGANT DINING ROOM</text>
+  <rect x="30" y="30" width="100" height="30" rx="15" fill="#c19a6b"/>
+  <text x="80" y="50" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#1a1515" font-weight="bold" letter-spacing="2">AFTER</text>
+  <text x="770" y="40" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c19a6b" opacity="0.5" letter-spacing="2">AHS INTERIOR</text>
+</svg>

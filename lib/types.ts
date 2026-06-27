@@ -50,8 +50,21 @@ export type ActiveTab =
   | 'Home'
   | 'Projects'
   | 'About'
-  | 'Layout'
   | 'Contact'
   | 'Services'
+  | 'Layout'
   | 'Landowners'
   | 'Blog';
+
+export interface Job {
+  slug: string;
+  title: string;
+  department: string;
+  location: string;
+  type: string;
+  remoteFriendly: boolean;
+  published?: string;
+  description: string;
+  responsibilities: string[];
+  requirements: string[];
+}

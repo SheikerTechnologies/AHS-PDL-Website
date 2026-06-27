@@ -5,9 +5,10 @@
 
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useScroll, useTransform, useSpring } from "motion/react";
 import Image from "next/image";
 import { ArrowRight, Home, MessageCircle } from "lucide-react";
+import { useRef } from "react";
 
 interface HeroSectionProps {
   onViewProperties: () => void;
@@ -15,8 +16,21 @@ interface HeroSectionProps {
 }
 
 export default function HeroSection({ onViewProperties, onEnquireNow }: HeroSectionProps) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Parallax — track scroll progress through this section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Map progress to Y offset (image moves slightly opposite to scroll)
+  const rawY = useTransform(scrollYProgress, [0, 1], ["-20%", "20%"]);
+  const parallaxY = useSpring(rawY, { stiffness: 120, damping: 20, mass: 0.5 });
+
   return (
     <motion.section
+      ref={sectionRef}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
@@ -28,6 +42,7 @@ export default function HeroSection({ onViewProperties, onEnquireNow }: HeroSect
           animate={{ scale: 1.05, opacity: 0.9 }}
           transition={{ duration: 2, ease: "easeOut" }}
           className="absolute inset-0"
+          style={{ y: parallaxY }}
         >
           <Image
             src="/assets/projects/Properties01-01.jpg"

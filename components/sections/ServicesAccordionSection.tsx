@@ -5,8 +5,9 @@
 
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "motion/react";
+import Image from "next/image";
 
 const SERVICES = [
   {
@@ -37,13 +38,42 @@ const SERVICES = [
 
 export default function ServicesAccordionSection() {
   const [activeService, setActiveService] = useState<number>(1);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Parallax — track scroll progress through this section
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Map progress to a subtle Y offset (image moves opposite to scroll direction)
+  const rawY = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const parallaxY = useSpring(rawY, { stiffness: 120, damping: 20, mass: 0.5 });
 
   return (
     <section
+      ref={sectionRef}
       id="about-services-section"
-      className="w-full py-20 bg-surface-alt border-y border-border-light select-none"
+      className="relative w-full py-20 bg-surface-alt border-y border-border-light select-none overflow-hidden"
     >
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+      {/* Background image with overlay */}
+      <motion.div
+        className="absolute inset-0"
+        style={{ y: parallaxY }}
+      >
+        <Image
+          src="/assets/ahspdl1.png"
+          alt=""
+          fill
+          className="object-cover object-center"
+          sizes="100vw"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-surface-alt/80 via-surface-alt/70 to-surface-alt/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface-alt/30" />
+      </motion.div>
+
+      <div className="relative w-full max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start z-10">
         <motion.div
           initial={{ opacity: 0, x: -30 }}
           whileInView={{ opacity: 1, x: 0 }}

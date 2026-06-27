@@ -1,0 +1,61 @@
+[
+  {
+    "id": "living-room-1",
+    "title": "Modern Living Room",
+    "category": "Residential",
+    "before": "/assets/interior/living-room-1-before.svg",
+    "after": "/assets/interior/living-room-1-after.svg",
+    "hasBeforeAfter": true
+  },
+  {
+    "id": "master-bedroom-1",
+    "title": "Master Bedroom Suite",
+    "category": "Residential",
+    "after": "/assets/interior/master-bedroom-1.svg",
+    "hasBeforeAfter": false
+  },
+  {
+    "id": "open-kitchen-1",
+    "title": "Open-Plan Kitchen",
+    "category": "Residential",
+    "before": "/assets/interior/kitchen-1-before.svg",
+    "after": "/assets/interior/kitchen-1-after.svg",
+    "hasBeforeAfter": true
+  },
+  {
+    "id": "executive-office-1",
+    "title": "Executive Office Interior",
+    "category": "Commercial",
+    "after": "/assets/interior/office-1.svg",
+    "hasBeforeAfter": false
+  },
+  {
+    "id": "bathroom-luxury-1",
+    "title": "Luxury Bathroom",
+    "category": "Residential",
+    "after": "/assets/interior/bathroom-1.svg",
+    "hasBeforeAfter": false
+  },
+  {
+    "id": "dining-room-1",
+    "title": "Elegant Dining Room",
+    "category": "Residential",
+    "before": "/assets/interior/dining-1-before.svg",
+    "after": "/assets/interior/dining-1-after.svg",
+    "hasBeforeAfter": true
+  },
+  {
+    "id": "lobby-reception-1",
+    "title": "Hotel Lobby Reception",
+    "category": "Commercial",
+    "after": "/assets/interior/lobby-1.svg",
+    "hasBeforeAfter": false
+  },
+  {
+    "id": "kids-bedroom-1",
+    "title": "Kids' Bedroom Design",
+    "category": "Residential",
+    "after": "/assets/interior/kids-room-1.svg",
+    "hasBeforeAfter": false
+  }
+]

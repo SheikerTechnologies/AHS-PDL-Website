@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg-kitchen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a2825"/>
+      <stop offset="100%" stop-color="#1a1815"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-kitchen)"/>
+  <!-- Backsplash -->
+  <rect x="0" y="80" width="800" height="320" fill="#3a3835"/>
+  <!-- Cabinets upper -->
+  <rect x="40" y="80" width="260" height="140" rx="4" fill="#4a4845" stroke="#5a5855" stroke-width="1"/>
+  <rect x="500" y="80" width="260" height="140" rx="4" fill="#4a4845" stroke="#5a5855" stroke-width="1"/>
+  <!-- Cabinet doors -->
+  <rect x="50" y="90" width="110" height="120" rx="2" fill="#5a5855"/>
+  <rect x="180" y="90" width="110" height="120" rx="2" fill="#5a5855"/>
+  <rect x="510" y="90" width="110" height="120" rx="2" fill="#5a5855"/>
+  <rect x="640" y="90" width="110" height="120" rx="2" fill="#5a5855"/>
+  <!-- Countertop -->
+  <rect x="0" y="220" width="800" height="25" rx="0" fill="#6a6865"/>
+  <!-- Sink -->
+  <rect x="320" y="230" width="160" height="60" rx="15" fill="#8a8885" stroke="#7a7875" stroke-width="2"/>
+  <!-- Faucet -->
+  <path d="M400 230 L400 200 Q400 190 410 190 L430 190" fill="none" stroke="#c19a6b" stroke-width="4" stroke-linecap="round"/>
+  <!-- Stove -->
+  <rect x="520" y="245" width="200" height="60" rx="4" fill="#3a3835" stroke="#5a5855" stroke-width="1"/>
+  <circle cx="560" cy="270" r="10" fill="#5a5855"/>
+  <circle cx="620" cy="270" r="10" fill="#5a5855"/>
+  <circle cx="680" cy="270" r="10" fill="#5a5855"/>
+  <!-- Island -->
+  <rect x="200" y="370" width="400" height="80" rx="8" fill="#4a4845" stroke="#c19a6b" stroke-width="2"/>
+  <!-- Bar stools -->
+  <rect x="240" y="460" width="40" heigh

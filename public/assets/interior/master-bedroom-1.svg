@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <linearGradient id="bg-bed" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2c2a35"/>
+      <stop offset="100%" stop-color="#1c1a25"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-bed)"/>
+  <!-- Headboard wall -->
+  <rect x="100" y="60" width="600" height="480" rx="0" fill="#3a3845"/>
+  <!-- Headboard -->
+  <rect x="220" y="100" width="360" height="140" rx="20" fill="#4a4855" stroke="#c19a6b" stroke-width="2"/>
+  <!-- Bed frame -->
+  <rect x="200" y="220" width="400" height="200" rx="10" fill="#5a5865"/>
+  <!-- Bedding -->
+  <rect x="210" y="230" width="380" height="80" rx="8" fill="#e8e0d5"/>
+  <rect x="210" y="260" width="380" height="50" rx="4" fill="#d8d0c5"/>
+  <!-- Pillows -->
+  <rect x="220" y="235" width="60" height="40" rx="8" fill="#f0eae0"/>
+  <rect x="285" y="235" width="60" height="40" rx="8" fill="#f0eae0"/>
+  <!-- Nightstands -->
+  <rect x="130" y="360" width="60" height="60" rx="4" fill="#3a3845"/>
+  <rect x="610" y="360" width="60" height="60" rx="4" fill="#3a3845"/>
+  <!-- Lamps -->
+  <rect x="152" y="320" width="6" height="40" fill="#c19a6b"/>
+  <ellipse cx="155" cy="315" rx="15" ry="8" fill="#d4a574"/>
+  <rect x="642" y="320" width="6" height="40" fill="#c19a6b"/>
+  <ellipse cx="645" cy="315" rx="15" ry="8" fill="#d4a574"/>
+  <!-- Floor -->
+  <rect x="0" y="520" width="800" height="80" fill="#1c1a25"/>
+  <!-- Title -->
+  <text x="400" y="570" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#c19a6b" letter-spacing="3">MASTER BEDROOM SUITE</text>
+  <text x="770" y="40" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c19a6b" opacity="0.5" letter-spacing="2">AHS INTERIOR</text>
+</svg>

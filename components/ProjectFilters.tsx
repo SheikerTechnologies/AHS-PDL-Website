@@ -332,7 +332,7 @@ export default function ProjectFilters({
       {/* Header row: title + count + map toggle */}
       <div className="flex items-center justify-between flex-wrap gap-3">
         <div>
-          <h1 className="text-2xl md:text-3xl font-bold text-text-main tracking-tight">
+          <h1 className="text-2xl md:text-3xl font-bold mt-10 text-text-main tracking-tight">
             Our Developments
           </h1>
           <p className="text-sm text-text-secondary mt-1">

@@ -1,0 +1,184 @@
+[
+  {
+    "slug": "senior-architect",
+    "title": "Senior Architect",
+    "department": "Engineering & Architecture",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-06-15",
+    "description": "We are looking for an experienced Senior Architect to lead the design and planning of our premium residential and commercial projects in Jolshiri Abashon and beyond.",
+    "responsibilities": [
+      "Lead architectural design from concept through construction documentation",
+      "Coordinate with structural, MEP, and interior design teams",
+      "Ensure compliance with RAJUK building codes and BNBC standards",
+      "Review and approve detailed drawings and specifications",
+      "Mentor junior architects and review their work",
+      "Present design proposals to clients and regulatory authorities"
+    ],
+    "requirements": [
+      "Bachelor's or Master's degree in Architecture from a recognized university",
+      "8+ years of experience in residential and commercial architecture",
+      "Registered with the Institute of Architects Bangladesh (IAB)",
+      "Proficiency in AutoCAD, Revit, SketchUp, and rendering software",
+      "Strong knowledge of Bangladesh building codes and regulations",
+      "Excellent communication and leadership skills"
+    ]
+  },
+  {
+    "slug": "structural-engineer",
+    "title": "Structural Engineer",
+    "department": "Engineering & Architecture",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-06-10",
+    "description": "We are seeking a skilled Structural Engineer to design and oversee the construction of safe, durable, and cost-effective structures for our real estate developments.",
+    "responsibilities": [
+      "Design structural systems for RCC and steel-framed buildings",
+      "Perform structural analysis and load calculations",
+      "Prepare detailed structural drawings and bar bending schedules",
+      "Conduct site inspections to ensure construction quality",
+      "Coordinate with architects and MEP engineers",
+      "Review soil investigation reports and recommend foundation systems"
+    ],
+    "requirements": [
+      "Bachelor's degree in Civil/Structural Engineering",
+      "5+ years of experience in building structural design",
+      "Proficiency in ETABS, SAP2000, SAFE, and AutoCAD",
+      "Registered with the Bangladesh Engineering Council",
+      "Experience with high-rise residential buildings preferred",
+      "Strong analytical and problem-solving skills"
+    ]
+  },
+  {
+    "slug": "sales-manager",
+    "title": "Sales Manager — Real Estate",
+    "department": "Sales & Marketing",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-06-01",
+    "description": "We are looking for a dynamic Sales Manager to lead our real estate sales team and drive revenue growth across our premium property portfolio.",
+    "responsibilities": [
+      "Lead and manage the real estate sales team to achieve targets",
+      "Develop and implement sales strategies for new project launches",
+      "Build and maintain relationships with high-net-worth clients",
+      "Conduct property presentations and site visits for prospective buyers",
+      "Track sales performance and prepare regular reports for management",
+      "Train and mentor junior sales associates"
+    ],
+    "requirements": [
+      "Bachelor's degree in Business, Marketing, or related field",
+      "6+ years of real estate sales experience, with 2+ years in management",
+      "Proven track record of meeting or exceeding sales targets",
+      "Excellent negotiation and communication skills",
+      "Strong network in the Dhaka real estate market",
+      "Proficiency in CRM software and Microsoft Office"
+    ]
+  },
+  {
+    "slug": "interior-designer",
+    "title": "Interior Designer",
+    "department": "Design",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-05-20",
+    "description": "We are seeking a creative Interior Designer to join our in-house design team and deliver exceptional interior spaces for our luxury residential and commercial projects.",
+    "responsibilities": [
+      "Develop interior design concepts and mood boards for client presentations",
+      "Prepare detailed drawings, 3D renders, and material specifications",
+      "Select furniture, fixtures, finishes, and accessories",
+      "Coordinate with contractors and vendors during execution",
+      "Conduct site visits to ensure design intent is maintained",
+      "Stay updated on design trends and new materials"
+    ],
+    "requirements": [
+      "Bachelor's degree in Interior Design or Architecture",
+      "3+ years of professional interior design experience",
+      "Proficiency in AutoCAD, SketchUp, 3ds Max, and Adobe Creative Suite",
+      "Strong portfolio demonstrating residential and commercial projects",
+      "Knowledge of local material sources and vendors",
+      "Excellent visual and verbal communication skills"
+    ]
+  },
+  {
+    "slug": "marketing-specialist",
+    "title": "Digital Marketing Specialist",
+    "department": "Sales & Marketing",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": true,
+    "published": "2026-05-15",
+    "description": "We are looking for a Digital Marketing Specialist to manage our online presence, run campaigns, and generate qualified leads for our real estate projects.",
+    "responsibilities": [
+      "Plan and execute digital marketing campaigns across Meta, Google, and LinkedIn",
+      "Manage social media content calendar and community engagement",
+      "Create compelling ad copy, landing pages, and marketing collateral",
+      "Track and report on campaign performance metrics (ROI, CPA, CTR)",
+      "Optimize website SEO and manage Google Business Profile",
+      "Coordinate with external agencies and content creators"
+    ],
+    "requirements": [
+      "Bachelor's degree in Marketing, Communications, or related field",
+      "3+ years of digital marketing experience, preferably in real estate",
+      "Proficiency in Meta Ads Manager, Google Ads, and Google Analytics",
+      "Experience with email marketing platforms (Mailchimp, HubSpot)",
+      "Strong copywriting skills in both English and Bengali",
+      "Data-driven mindset with excellent analytical abilities"
+    ]
+  },
+  {
+    "slug": "project-coordinator",
+    "title": "Project Coordinator — Construction",
+    "department": "Operations",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-05-10",
+    "description": "We are seeking a highly organized Project Coordinator to support our construction project managers and ensure smooth project execution.",
+    "responsibilities": [
+      "Assist project managers in planning, scheduling, and monitoring construction activities",
+      "Prepare and maintain project documentation, including progress reports",
+      "Coordinate with subcontractors, suppliers, and site teams",
+      "Track project budgets, expenses, and material procurement",
+      "Schedule and document project meetings and site inspections",
+      "Ensure health and safety compliance on construction sites"
+    ],
+    "requirements": [
+      "Bachelor's degree in Civil Engineering, Construction Management, or related field",
+      "2+ years of experience in construction project coordination",
+      "Familiarity with project management software (MS Project, Primavera)",
+      "Knowledge of Bangladesh construction practices and regulations",
+      "Strong organizational and multitasking abilities",
+      "Excellent communication and interpersonal skills"
+    ]
+  },
+  {
+    "slug": "hr-executive",
+    "title": "HR & Administration Executive",
+    "department": "Operations",
+    "location": "Dhaka, Bangladesh",
+    "type": "Full-time",
+    "remoteFriendly": false,
+    "published": "2026-05-05",
+    "description": "We are looking for an HR & Administration Executive to handle recruitment, employee relations, and office administration for our growing team.",
+    "responsibilities": [
+      "Manage end-to-end recruitment and onboarding processes",
+      "Maintain employee records, contracts, and HR documentation",
+      "Coordinate training and professional development programs",
+      "Handle office administration, vendor management, and facilities",
+      "Ensure compliance with Bangladesh labor laws",
+      "Organize team events and employee engagement activities"
+    ],
+    "requirements": [
+      "Bachelor's degree in HRM, Business Administration, or related field",
+      "3+ years of experience in HR and administration",
+      "Knowledge of Bangladesh Labor Act and compliance requirements",
+      "Proficiency in Microsoft Office and HRIS systems",
+      "Strong interpersonal and conflict resolution skills",
+      "Excellent English and Bengali communication skills"
+    ]
+  }
+]
